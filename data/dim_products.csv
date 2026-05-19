@@ -1,11 +1,11 @@
 product_id,product_name,product_category,pricing_tier
-1,Product 1,Security,Basic
-2,Product 2,AI,Basic
-3,Product 3,Infrastructure,Enterprise
-4,Product 4,Analytics,Professional
-5,Product 5,Security,Basic
-6,Product 6,AI,Professional
-7,Product 7,Analytics,Professional
-8,Product 8,Security,Professional
-9,Product 9,AI,Enterprise
-10,Product 10,Infrastructure,Enterprise
+1,Product 1,Security,Enterprise
+2,Product 2,Infrastructure,Enterprise
+3,Product 3,Analytics,Professional
+4,Product 4,Analytics,Basic
+5,Product 5,Infrastructure,Enterprise
+6,Product 6,Analytics,Enterprise
+7,Product 7,AI,Basic
+8,Product 8,Infrastructure,Professional
+9,Product 9,AI,Professional
+10,Product 10,Security,Enterprise

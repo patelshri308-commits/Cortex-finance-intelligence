@@ -106,7 +106,7 @@ for date in dates:
         bookings = random.randint(1000, 50000)
 
         revenue_rows.append({
-            "date": date,
+            "revenue_month": date,
             "customer_id": customer_id,
             "product_line": random.choice(product_lines),
             "arr": arr,
