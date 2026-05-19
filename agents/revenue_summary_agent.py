@@ -1,7 +1,9 @@
 import os
+from pathlib import Path
 
 import google.generativeai as genai
 import pandas as pd
+import yaml
 from dotenv import load_dotenv
 
 
@@ -12,7 +14,12 @@ def calculate_growth(current_value, previous_value):
     return ((current_value - previous_value) / previous_value) * 100
 
 
-def main():
+def load_prompt_config(path):
+    with open(path, "r") as file:
+        return yaml.safe_load(file)
+
+
+def generate_revenue_summary() -> str:
     load_dotenv()
 
     api_key = os.getenv("GEMINI_API_KEY")
@@ -23,6 +30,8 @@ def main():
     genai.configure(api_key=api_key)
 
     model = genai.GenerativeModel("gemini-3.5-flash")
+
+    prompt_config = load_prompt_config("prompts/revenue_summary.yaml")
 
     df = pd.read_csv("data/monthly_kpis.csv")
 
@@ -42,16 +51,6 @@ def main():
         previous["total_bookings"]
     )
 
-    print("Revenue Summary")
-    print("----------------")
-    print(f"Latest Month: {latest['revenue_month'].date()}")
-    print(f"Total ARR: ${latest['total_arr']:,.2f}")
-    print(f"ARR Growth vs Previous Month: {arr_growth:.2f}%")
-    print(f"Total Bookings: ${latest['total_bookings']:,.2f}")
-    print(f"Bookings Growth vs Previous Month: {bookings_growth:.2f}%")
-    print(f"Expansion Revenue: ${latest['expansion_revenue']:,.2f}")
-    print(f"Churned Revenue: ${latest['churned_revenue']:,.2f}")
-
     context = f"""
 Latest revenue month: {latest['revenue_month'].date()}
 
@@ -66,29 +65,9 @@ Churned revenue: ${latest['churned_revenue']:,.2f}
 """
 
     prompt = f"""
-You are a strategic finance analyst.
+{prompt_config["system_prompt"]}
 
-Generate concise executive-level revenue commentary for leadership based on the following KPI metrics.
-
-Focus on:
-- ARR trends
-- bookings performance
-- churn risk
-- business trajectory
-- expansion revenue versus churned revenue
-
-Use a professional, CFO-ready tone.
-
-Return the output in this format:
-
-Executive Summary:
-- 3 concise bullets
-
-Key Risks:
-- 2 concise bullets
-
-Recommended Follow-Up:
-- 2 concise bullets
+{prompt_config["output_format"]}
 
 Metrics:
 {context}
@@ -96,9 +75,24 @@ Metrics:
 
     response = model.generate_content(prompt)
 
+    output_dir = Path("outputs")
+    output_dir.mkdir(exist_ok=True)
+
+    output_path = output_dir / "revenue_summary.txt"
+
+    with open(output_path, "w") as file:
+        file.write(response.text)
+
+    return response.text
+
+
+def main():
+    summary = generate_revenue_summary()
+
     print("\nAI Executive Summary")
     print("--------------------")
-    print(response.text)
+    print(summary)
+    print("\nSaved output to outputs/revenue_summary.txt")
 
 
 if __name__ == "__main__":

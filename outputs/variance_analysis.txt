@@ -1,0 +1,17 @@
+### Variance Summary
+* **ARR Contraction:** ARR declined by **-1.16% MoM (-$475,882)**, landing at **$40,384,499**, driven by a sharp decline in renewal revenue and an increase in contraction.
+* **Flat Bookings Performance:** Bookings remained virtually flat MoM, edging up just **0.09% (+$11,175)** to **$12,899,531**, indicating that new transactional velocity failed to offset systemic losses in the installed base.
+* **Leaky Bucket Dynamics:** Despite strong performance in expansion (+$295,460) and new business (+$212,261), the gains were entirely erased by a combined **-$436,925** drag from renewal declines and increased contraction.
+
+### Primary Drivers
+* **Robust Expansion & New Business:** Customer expansion (+$295,460) and new business acquisition (+$212,261) served as key growth engines, reflecting healthy pipeline execution and effective account penetration.
+* **Severe Renewal Erosion:** Renewal revenue fell by **-$255,435** MoM, pointing to either elevated non-renewals or significant contract slippage out of the December close period.
+* **Elevated Customer Contraction:** Account contraction worsened by **+$181,490** MoM, signaling that existing customers downsized their spend, which significantly diluted the positive impact of the month’s expansion wins.
+
+### Risks / Watchouts
+* **Divergence of Bookings and ARR:** The divergence between stable bookings (+$11k) and falling ARR (-$476k) suggests a critical gap where gross sales activity is being masked by high customer down-tiering and structural revenue leakage.
+* **Year-End Downselling Pressure:** The simultaneous spike in contraction (+$181.5k) and drop in renewals (-$255.4k) indicates potential budget flushes or aggressive renegotiations by enterprise customers at fiscal year-end.
+
+### Recommended Follow-Up
+* **Renewal & Slippage Audit:** Partner with Customer Success to conduct an immediate audit of the December renewal cohort to determine if the -$255k deficit is permanent churn or temporary slippage into Q1 2025.
+* **Contraction Root-Cause Analysis:** Run a targeted analysis on the $181.5k contraction increase to identify if the downselling is concentrated in specific product tiers, customer segments, or discount-expiration cycles.
