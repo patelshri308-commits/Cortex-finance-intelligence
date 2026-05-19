@@ -1,0 +1,501 @@
+customer_id,customer_name,industry,region,company_size,signup_date,sales_channel
+1,Wilkerson-Morrison,Manufacturing,LATAM,Mid-Market,2024-10-14,Self-Service
+2,"Rodriguez, Brown and Sullivan",Manufacturing,APAC,Enterprise,2025-12-25,Self-Service
+3,Peterson Group,Manufacturing,North America,Enterprise,2024-05-20,Direct Sales
+4,"Madden, Ware and Horn",Manufacturing,North America,SMB,2025-07-25,Direct Sales
+5,Bruce-Pennington,Technology,LATAM,Mid-Market,2024-07-24,Partner
+6,Mills Inc,Healthcare,LATAM,Mid-Market,2025-05-17,Direct Sales
+7,"Lee, Moore and Smith",Manufacturing,North America,Mid-Market,2024-10-18,Self-Service
+8,Mora-Brown,Healthcare,EMEA,SMB,2024-11-03,Self-Service
+9,Bray-Young,Retail,EMEA,Mid-Market,2024-01-17,Self-Service
+10,Martin Group,Healthcare,EMEA,Enterprise,2026-03-26,Self-Service
+11,Hammond-Trujillo,Manufacturing,EMEA,SMB,2024-06-29,Self-Service
+12,Anderson Ltd,Finance,APAC,SMB,2025-07-28,Direct Sales
+13,"Miller, Henderson and Tyler",Manufacturing,North America,SMB,2024-10-20,Self-Service
+14,Hill Inc,Finance,EMEA,Enterprise,2023-06-18,Direct Sales
+15,Martin-Carney,Finance,LATAM,Mid-Market,2026-02-10,Partner
+16,Cook-Cowan,Healthcare,APAC,SMB,2026-05-06,Partner
+17,Rodriguez Inc,Healthcare,APAC,Mid-Market,2025-01-02,Partner
+18,Navarro-Allison,Retail,North America,Mid-Market,2025-06-29,Partner
+19,Jones Ltd,Retail,North America,SMB,2024-01-24,Self-Service
+20,Williams-Butler,Manufacturing,EMEA,Enterprise,2024-02-22,Partner
+21,Jones-Jackson,Finance,North America,Mid-Market,2023-11-01,Direct Sales
+22,Haas-Zimmerman,Manufacturing,EMEA,SMB,2025-11-27,Self-Service
+23,Martinez LLC,Manufacturing,APAC,Enterprise,2025-01-22,Self-Service
+24,Jones-Anderson,Healthcare,LATAM,Mid-Market,2023-11-26,Self-Service
+25,Mcdonald-Cooper,Manufacturing,EMEA,SMB,2023-11-14,Self-Service
+26,Shannon-Spears,Manufacturing,EMEA,Enterprise,2025-07-23,Partner
+27,Roy PLC,Retail,APAC,Mid-Market,2023-08-20,Partner
+28,"Smith, Johnson and Gould",Healthcare,EMEA,Enterprise,2023-05-27,Direct Sales
+29,Martin LLC,Technology,LATAM,Enterprise,2024-02-12,Self-Service
+30,Shelton-Bailey,Healthcare,APAC,SMB,2025-01-24,Direct Sales
+31,Flores PLC,Finance,APAC,SMB,2023-12-23,Partner
+32,"Black, Gonzalez and Shah",Manufacturing,North America,Mid-Market,2024-09-04,Self-Service
+33,Davila-Reynolds,Finance,LATAM,SMB,2024-11-25,Direct Sales
+34,"Hill, Barry and Morrison",Manufacturing,APAC,Enterprise,2026-02-12,Self-Service
+35,Stevens-Andrews,Manufacturing,North America,SMB,2024-05-19,Partner
+36,Smith-Lee,Finance,LATAM,Mid-Market,2025-09-11,Self-Service
+37,"Powell, Gomez and Ramirez",Manufacturing,North America,Enterprise,2024-05-10,Partner
+38,Carr-Thompson,Finance,LATAM,SMB,2023-12-13,Direct Sales
+39,Jennings Ltd,Healthcare,APAC,SMB,2025-06-29,Partner
+40,"Garcia, Roach and Miller",Technology,EMEA,Mid-Market,2024-06-29,Self-Service
+41,"Herring, Ferguson and Stout",Retail,North America,Mid-Market,2024-09-01,Partner
+42,Mora PLC,Manufacturing,APAC,SMB,2024-03-01,Partner
+43,"Murphy, Crawford and Wilson",Retail,APAC,SMB,2024-07-24,Self-Service
+44,"Woods, Riley and Salas",Technology,APAC,Enterprise,2024-11-10,Direct Sales
+45,Anderson-Campbell,Technology,APAC,Mid-Market,2023-11-15,Partner
+46,Richard-Reyes,Finance,EMEA,SMB,2026-01-29,Partner
+47,Anderson-Hopkins,Finance,LATAM,Enterprise,2025-08-08,Partner
+48,Cline Group,Manufacturing,EMEA,SMB,2024-08-22,Direct Sales
+49,Wilson Inc,Manufacturing,APAC,Mid-Market,2025-09-13,Self-Service
+50,Lawson-Fowler,Healthcare,North America,SMB,2023-11-01,Self-Service
+51,"Johnson, Flores and Oliver",Technology,LATAM,SMB,2023-06-07,Direct Sales
+52,"Ross, Collins and Moore",Finance,North America,SMB,2023-08-04,Partner
+53,"Sharp, Gonzales and Miller",Healthcare,APAC,Enterprise,2025-07-08,Direct Sales
+54,"Craig, Donovan and Hernandez",Finance,North America,SMB,2024-09-18,Partner
+55,"Solis, Thomas and Hernandez",Manufacturing,North America,Enterprise,2025-01-25,Self-Service
+56,"Williams, Wang and Gamble",Healthcare,EMEA,SMB,2024-06-08,Direct Sales
+57,Bradshaw PLC,Finance,APAC,Mid-Market,2026-04-03,Direct Sales
+58,"Ali, Thompson and Webster",Finance,North America,Enterprise,2024-12-13,Partner
+59,Mcclure-Jones,Finance,APAC,Mid-Market,2024-01-20,Direct Sales
+60,"Gordon, Williams and Roberts",Healthcare,APAC,SMB,2025-09-09,Direct Sales
+61,Ellis-Cohen,Technology,EMEA,SMB,2025-05-02,Partner
+62,Beasley-Mason,Finance,APAC,SMB,2026-04-08,Partner
+63,"Mcgee, Garcia and Smith",Retail,LATAM,SMB,2023-11-29,Self-Service
+64,"Johnson, Everett and Higgins",Technology,APAC,SMB,2025-04-28,Self-Service
+65,Fitzpatrick-Allen,Finance,EMEA,Enterprise,2024-08-31,Direct Sales
+66,Ramos-Mcknight,Manufacturing,North America,Enterprise,2024-04-21,Direct Sales
+67,"Molina, Richardson and Hardy",Manufacturing,EMEA,Enterprise,2026-04-23,Direct Sales
+68,Smith-Johnson,Manufacturing,EMEA,Enterprise,2024-11-02,Partner
+69,Wade-Freeman,Retail,LATAM,Enterprise,2023-11-28,Direct Sales
+70,Kelly Inc,Manufacturing,EMEA,Mid-Market,2025-12-20,Self-Service
+71,Bender Inc,Technology,APAC,SMB,2025-11-27,Direct Sales
+72,"Sullivan, Andrews and Gill",Retail,North America,Mid-Market,2025-05-18,Self-Service
+73,Morgan-Carter,Finance,North America,Mid-Market,2024-12-08,Self-Service
+74,Mcdonald and Sons,Manufacturing,LATAM,SMB,2024-07-12,Direct Sales
+75,"Larson, Thompson and Johnson",Manufacturing,APAC,SMB,2024-01-19,Direct Sales
+76,"Hernandez, Schultz and Lynch",Healthcare,APAC,Mid-Market,2025-10-01,Self-Service
+77,Dickerson Ltd,Finance,APAC,SMB,2024-01-13,Direct Sales
+78,"Cox, Murphy and Brown",Technology,North America,SMB,2025-03-22,Partner
+79,Haas-Powers,Finance,APAC,SMB,2023-12-06,Direct Sales
+80,May LLC,Manufacturing,North America,SMB,2023-09-04,Partner
+81,"Larson, Wagner and Reyes",Technology,APAC,SMB,2025-07-10,Partner
+82,Hull LLC,Technology,LATAM,SMB,2024-10-21,Self-Service
+83,"Stone, Mathews and Allen",Retail,EMEA,Enterprise,2023-06-27,Direct Sales
+84,Washington-Mccarthy,Technology,EMEA,SMB,2025-05-19,Self-Service
+85,Myers-Potter,Finance,LATAM,SMB,2023-12-09,Partner
+86,Bush-Martin,Finance,LATAM,SMB,2026-03-11,Partner
+87,Washington-Franklin,Technology,APAC,SMB,2024-08-22,Self-Service
+88,"Day, Thompson and Rogers",Technology,APAC,SMB,2023-12-13,Self-Service
+89,Shaffer-Kim,Technology,EMEA,Mid-Market,2026-03-09,Partner
+90,Hancock Inc,Finance,LATAM,SMB,2025-09-02,Self-Service
+91,Owens-Lopez,Manufacturing,APAC,Mid-Market,2025-10-05,Direct Sales
+92,Henry PLC,Retail,EMEA,Mid-Market,2026-01-07,Self-Service
+93,Hill PLC,Healthcare,North America,Mid-Market,2023-12-07,Direct Sales
+94,West and Sons,Manufacturing,LATAM,Enterprise,2025-03-22,Direct Sales
+95,Tapia-Brown,Technology,EMEA,Enterprise,2026-05-11,Direct Sales
+96,Baxter-Jackson,Retail,North America,Mid-Market,2024-02-17,Partner
+97,"Cisneros, Patton and Madden",Retail,APAC,Enterprise,2023-07-30,Direct Sales
+98,Bush Inc,Manufacturing,North America,Mid-Market,2024-09-26,Self-Service
+99,Turner-Campbell,Technology,APAC,Enterprise,2023-10-23,Partner
+100,"Jackson, Adams and Marquez",Technology,EMEA,Enterprise,2025-02-10,Direct Sales
+101,Jensen Ltd,Retail,APAC,Mid-Market,2023-09-10,Self-Service
+102,"Martin, Smith and Alexander",Healthcare,EMEA,Mid-Market,2024-10-20,Partner
+103,Wolf-Clark,Manufacturing,EMEA,SMB,2025-01-18,Partner
+104,Jones LLC,Healthcare,LATAM,Enterprise,2025-11-22,Self-Service
+105,Jackson-Williams,Manufacturing,LATAM,Enterprise,2024-07-23,Direct Sales
+106,Solomon PLC,Manufacturing,LATAM,SMB,2026-02-10,Partner
+107,"Smith, Owens and Jones",Technology,LATAM,SMB,2023-09-02,Partner
+108,"Morris, Jones and Garcia",Technology,APAC,Mid-Market,2025-10-23,Partner
+109,Dorsey-Houston,Manufacturing,EMEA,Mid-Market,2024-08-10,Partner
+110,Bautista PLC,Manufacturing,North America,SMB,2025-07-27,Direct Sales
+111,"Meyer, Thomas and Gregory",Technology,APAC,SMB,2023-05-26,Self-Service
+112,"Thomas, Wagner and Schroeder",Manufacturing,APAC,SMB,2023-09-17,Self-Service
+113,"Singh, Walker and Robles",Manufacturing,EMEA,SMB,2025-04-18,Direct Sales
+114,Lopez-Best,Technology,EMEA,Enterprise,2023-09-24,Self-Service
+115,Johnson and Sons,Finance,LATAM,Enterprise,2024-01-06,Partner
+116,"Kennedy, Briggs and Johnson",Manufacturing,EMEA,Enterprise,2025-01-25,Direct Sales
+117,"Long, Fernandez and Harris",Retail,EMEA,SMB,2023-11-08,Direct Sales
+118,"Garcia, Larson and Hawkins",Technology,EMEA,Enterprise,2025-02-14,Self-Service
+119,Mejia-Hicks,Healthcare,North America,Enterprise,2025-01-24,Partner
+120,"Novak, Carter and Miller",Finance,North America,Enterprise,2023-11-03,Direct Sales
+121,"Morris, Green and Hall",Manufacturing,EMEA,Mid-Market,2025-08-07,Direct Sales
+122,"Perez, Robinson and Freeman",Healthcare,EMEA,Mid-Market,2025-08-23,Partner
+123,Velasquez-Palmer,Retail,EMEA,Mid-Market,2025-03-19,Partner
+124,Collins-Allen,Finance,North America,Enterprise,2025-01-30,Partner
+125,Walker PLC,Manufacturing,APAC,Mid-Market,2023-08-19,Direct Sales
+126,"Hawkins, Cook and Morgan",Retail,APAC,Mid-Market,2023-12-02,Self-Service
+127,Silva LLC,Finance,LATAM,SMB,2025-02-06,Direct Sales
+128,Long LLC,Finance,APAC,Enterprise,2024-07-19,Partner
+129,Middleton PLC,Technology,APAC,Mid-Market,2025-12-17,Partner
+130,"Garcia, Harris and Yu",Manufacturing,APAC,Mid-Market,2025-10-10,Direct Sales
+131,Hernandez Inc,Healthcare,EMEA,Mid-Market,2025-07-31,Partner
+132,"Kirk, Richard and Mendez",Healthcare,APAC,Mid-Market,2025-12-31,Partner
+133,"Gutierrez, Gordon and Archer",Retail,APAC,Enterprise,2025-07-18,Self-Service
+134,Williams LLC,Manufacturing,APAC,Mid-Market,2026-04-18,Partner
+135,Lam LLC,Technology,EMEA,SMB,2025-02-21,Direct Sales
+136,Lewis LLC,Healthcare,APAC,Enterprise,2024-01-21,Self-Service
+137,"Shea, Sutton and Mcintyre",Retail,North America,Enterprise,2024-03-19,Direct Sales
+138,Blanchard-Buck,Manufacturing,LATAM,Mid-Market,2023-08-11,Direct Sales
+139,Miller and Sons,Retail,EMEA,Mid-Market,2025-01-20,Self-Service
+140,Franco-Hodges,Finance,North America,Enterprise,2025-02-02,Self-Service
+141,"Zamora, Miller and Smith",Technology,EMEA,SMB,2023-07-24,Self-Service
+142,"Graham, Green and Austin",Healthcare,LATAM,SMB,2024-01-21,Direct Sales
+143,Everett-Pearson,Finance,APAC,Mid-Market,2025-07-09,Self-Service
+144,Whitehead Ltd,Healthcare,APAC,Mid-Market,2024-07-01,Self-Service
+145,James-Rojas,Healthcare,LATAM,Enterprise,2023-05-31,Self-Service
+146,Potts Ltd,Manufacturing,LATAM,SMB,2025-07-27,Direct Sales
+147,Allen Group,Healthcare,EMEA,Enterprise,2023-07-06,Partner
+148,"Dunlap, Myers and Mills",Manufacturing,LATAM,SMB,2024-08-27,Direct Sales
+149,Martin and Sons,Finance,North America,SMB,2023-07-23,Self-Service
+150,Ramos-Fuller,Finance,North America,Mid-Market,2025-04-25,Partner
+151,"Hart, Payne and Baker",Technology,EMEA,SMB,2025-07-23,Self-Service
+152,"Freeman, Rivera and Sanchez",Manufacturing,EMEA,Enterprise,2023-10-06,Self-Service
+153,"Brown, Reed and Jefferson",Retail,APAC,SMB,2025-09-20,Self-Service
+154,Hodges-Blair,Technology,APAC,Mid-Market,2023-11-16,Partner
+155,"Bullock, Jones and Farmer",Finance,EMEA,Enterprise,2024-12-14,Partner
+156,"Gonzales, Wilson and Lewis",Manufacturing,LATAM,Mid-Market,2024-12-08,Self-Service
+157,Joseph Group,Manufacturing,APAC,Mid-Market,2025-12-15,Partner
+158,Trujillo-Rojas,Technology,APAC,SMB,2023-09-03,Partner
+159,Henson LLC,Technology,North America,SMB,2024-05-20,Direct Sales
+160,"Johnson, Thompson and Blair",Finance,APAC,Enterprise,2023-06-23,Direct Sales
+161,Williams-Williams,Manufacturing,APAC,Mid-Market,2025-10-21,Partner
+162,Turner and Sons,Manufacturing,North America,Mid-Market,2024-01-05,Partner
+163,Jenkins Group,Finance,North America,Mid-Market,2025-12-09,Partner
+164,"Hammond, Weeks and Johnson",Technology,North America,Enterprise,2025-05-25,Self-Service
+165,Soto-Ashley,Retail,APAC,SMB,2026-01-06,Self-Service
+166,Erickson-Love,Technology,APAC,SMB,2025-12-06,Partner
+167,Holder LLC,Finance,North America,Mid-Market,2026-03-18,Self-Service
+168,Torres-Johnson,Retail,LATAM,Enterprise,2024-04-29,Partner
+169,"Fernandez, Martin and Ho",Healthcare,APAC,Enterprise,2024-01-13,Direct Sales
+170,Duarte and Sons,Retail,LATAM,Mid-Market,2024-02-22,Direct Sales
+171,Walker Inc,Retail,EMEA,SMB,2026-05-02,Self-Service
+172,Fox-Torres,Finance,LATAM,Mid-Market,2025-03-14,Direct Sales
+173,Davis-Perez,Retail,LATAM,SMB,2023-09-22,Partner
+174,"Brandt, Tapia and Ortega",Technology,APAC,Mid-Market,2024-11-14,Direct Sales
+175,Hall-Davis,Finance,APAC,Mid-Market,2023-09-30,Partner
+176,Aguilar PLC,Finance,LATAM,Enterprise,2024-01-22,Partner
+177,"Brown, Hall and Wade",Healthcare,LATAM,Mid-Market,2024-10-31,Direct Sales
+178,Cox PLC,Manufacturing,North America,Enterprise,2024-04-22,Self-Service
+179,Warren LLC,Technology,North America,Enterprise,2025-02-13,Partner
+180,Spears LLC,Healthcare,LATAM,Mid-Market,2025-03-04,Partner
+181,Owens PLC,Healthcare,LATAM,Enterprise,2025-07-04,Direct Sales
+182,West Group,Manufacturing,EMEA,Enterprise,2023-10-27,Partner
+183,"Hanson, White and Williams",Technology,North America,SMB,2023-10-06,Self-Service
+184,Kelley-White,Manufacturing,EMEA,Mid-Market,2026-04-03,Direct Sales
+185,Shepherd-Nguyen,Finance,LATAM,Enterprise,2024-11-11,Direct Sales
+186,Kaiser Ltd,Healthcare,LATAM,Mid-Market,2024-03-29,Partner
+187,"Miller, Sampson and Lee",Manufacturing,LATAM,Enterprise,2023-07-23,Direct Sales
+188,Lewis-Freeman,Technology,EMEA,Mid-Market,2024-01-07,Self-Service
+189,Taylor Inc,Healthcare,EMEA,Enterprise,2024-03-30,Direct Sales
+190,"Roberson, Walker and Ford",Technology,North America,SMB,2025-02-21,Self-Service
+191,Ali Inc,Manufacturing,North America,SMB,2025-10-02,Self-Service
+192,Ortiz and Sons,Healthcare,APAC,Mid-Market,2025-06-17,Self-Service
+193,Figueroa-Walker,Technology,EMEA,Enterprise,2024-01-11,Direct Sales
+194,Bell LLC,Retail,North America,SMB,2025-03-15,Partner
+195,Foster and Sons,Healthcare,LATAM,Enterprise,2024-05-26,Partner
+196,"Soto, Johnson and Zimmerman",Technology,North America,Enterprise,2025-09-18,Partner
+197,"Jackson, Chase and Maddox",Retail,LATAM,Enterprise,2026-05-13,Self-Service
+198,Johnson Inc,Healthcare,EMEA,SMB,2024-04-28,Direct Sales
+199,"Short, Walker and Hale",Finance,APAC,Enterprise,2023-08-15,Self-Service
+200,"Romero, Robbins and Tanner",Finance,EMEA,SMB,2025-10-11,Direct Sales
+201,"Mcknight, Simpson and Mcmillan",Finance,EMEA,SMB,2023-10-21,Partner
+202,Smith Group,Healthcare,EMEA,Mid-Market,2025-06-10,Direct Sales
+203,Moore-Phillips,Retail,APAC,Mid-Market,2025-01-12,Partner
+204,"Miller, Bray and Woods",Technology,EMEA,Enterprise,2025-12-18,Partner
+205,Hartman-James,Finance,North America,Enterprise,2024-12-02,Direct Sales
+206,Washington-Jones,Technology,LATAM,Mid-Market,2025-11-17,Direct Sales
+207,Carroll Inc,Manufacturing,North America,SMB,2024-04-26,Direct Sales
+208,"Hart, Tucker and Gallagher",Manufacturing,LATAM,Mid-Market,2023-10-29,Self-Service
+209,Campbell Inc,Retail,EMEA,SMB,2024-09-21,Self-Service
+210,"Young, Rodriguez and Weaver",Finance,LATAM,Mid-Market,2025-05-09,Direct Sales
+211,Smith-Alexander,Manufacturing,North America,Enterprise,2026-01-03,Partner
+212,"Rogers, Foster and Vazquez",Retail,APAC,Enterprise,2023-12-26,Partner
+213,"Cannon, Hall and Phillips",Finance,North America,Enterprise,2025-10-22,Direct Sales
+214,"Garrison, Rodriguez and Moreno",Healthcare,North America,Enterprise,2025-08-29,Self-Service
+215,Parker Inc,Finance,North America,Mid-Market,2026-04-05,Self-Service
+216,"Cook, Reilly and Williams",Technology,APAC,SMB,2024-05-26,Direct Sales
+217,Brewer Ltd,Healthcare,LATAM,SMB,2023-10-01,Self-Service
+218,Cisneros-Pruitt,Manufacturing,LATAM,Enterprise,2025-10-12,Self-Service
+219,"Davis, Brown and Smith",Manufacturing,EMEA,Enterprise,2026-01-11,Direct Sales
+220,Gay-Copeland,Finance,North America,Mid-Market,2024-07-07,Self-Service
+221,"Todd, Jennings and Sanchez",Retail,North America,Enterprise,2025-04-09,Partner
+222,Schroeder-Bailey,Retail,APAC,Mid-Market,2024-05-21,Self-Service
+223,Doyle LLC,Retail,LATAM,Mid-Market,2025-03-10,Self-Service
+224,"Beck, Lang and Mullen",Finance,EMEA,SMB,2024-07-31,Direct Sales
+225,Marsh Group,Retail,APAC,Enterprise,2024-01-11,Self-Service
+226,Cooper PLC,Finance,EMEA,Mid-Market,2024-11-11,Self-Service
+227,Cole PLC,Retail,EMEA,SMB,2024-08-13,Direct Sales
+228,Bautista-Sanders,Technology,EMEA,Enterprise,2024-06-17,Partner
+229,Dennis-Ruiz,Finance,EMEA,SMB,2025-07-02,Self-Service
+230,"Perez, Johnson and Nunez",Healthcare,EMEA,Mid-Market,2025-05-19,Direct Sales
+231,Bradley-Moore,Finance,EMEA,SMB,2024-12-20,Self-Service
+232,Moore-Thompson,Retail,LATAM,Mid-Market,2023-10-09,Direct Sales
+233,"Marks, Gonzalez and Gross",Manufacturing,LATAM,SMB,2023-08-17,Direct Sales
+234,Barker-Perry,Retail,EMEA,Enterprise,2025-07-05,Self-Service
+235,Snyder LLC,Retail,North America,Enterprise,2024-02-25,Direct Sales
+236,"Adams, Potter and Dillon",Manufacturing,LATAM,Enterprise,2024-04-03,Direct Sales
+237,Sherman-Graham,Healthcare,APAC,Enterprise,2025-08-19,Partner
+238,King Inc,Technology,EMEA,SMB,2024-08-18,Partner
+239,"Duarte, Kelley and Jacobs",Finance,EMEA,Mid-Market,2024-06-25,Self-Service
+240,"Anderson, Martin and Johnson",Technology,APAC,Mid-Market,2025-01-01,Direct Sales
+241,Sanders Group,Healthcare,LATAM,Enterprise,2024-11-06,Partner
+242,Villarreal-Fitzgerald,Healthcare,EMEA,Mid-Market,2025-06-26,Direct Sales
+243,"Schmitt, Wheeler and Clark",Retail,North America,Enterprise,2025-06-05,Partner
+244,Luna-Hicks,Finance,APAC,SMB,2023-07-01,Self-Service
+245,Jennings and Sons,Retail,APAC,SMB,2024-05-19,Self-Service
+246,Young-Robertson,Healthcare,LATAM,SMB,2024-02-25,Direct Sales
+247,Salinas Inc,Healthcare,North America,Enterprise,2024-02-28,Direct Sales
+248,"Sherman, Brock and Johnson",Retail,APAC,Enterprise,2025-05-28,Direct Sales
+249,Williams LLC,Finance,EMEA,SMB,2023-12-27,Self-Service
+250,Douglas and Sons,Finance,LATAM,Mid-Market,2024-01-12,Partner
+251,"Gonzalez, Wood and Ray",Retail,APAC,Mid-Market,2025-01-03,Direct Sales
+252,Johnson-Butler,Healthcare,APAC,SMB,2025-01-15,Direct Sales
+253,Pratt Ltd,Finance,APAC,Enterprise,2023-09-30,Partner
+254,"Allen, Rodriguez and Lamb",Manufacturing,North America,Enterprise,2024-07-11,Direct Sales
+255,"Gonzales, Pugh and Ballard",Retail,North America,Mid-Market,2023-07-13,Partner
+256,Hughes-Garcia,Manufacturing,APAC,Mid-Market,2025-01-02,Self-Service
+257,Mueller and Sons,Retail,EMEA,Enterprise,2024-02-09,Direct Sales
+258,"Stone, Davidson and Riley",Manufacturing,EMEA,SMB,2024-08-15,Self-Service
+259,"Greene, Holmes and Smith",Finance,North America,Enterprise,2023-07-04,Direct Sales
+260,Miller-Swanson,Retail,EMEA,Mid-Market,2026-03-23,Self-Service
+261,Hill-Cooper,Healthcare,APAC,SMB,2024-08-24,Partner
+262,Cook Inc,Healthcare,North America,Enterprise,2026-05-12,Direct Sales
+263,"Miller, Phillips and Pena",Healthcare,APAC,SMB,2025-05-15,Self-Service
+264,"Chan, Sanders and Rose",Technology,North America,Enterprise,2025-03-28,Self-Service
+265,"Franklin, Vaughn and Maldonado",Manufacturing,North America,Mid-Market,2025-05-14,Partner
+266,Kemp Inc,Finance,LATAM,Enterprise,2025-07-05,Direct Sales
+267,Price-Carter,Finance,EMEA,Mid-Market,2023-09-15,Self-Service
+268,Goodwin Inc,Finance,LATAM,SMB,2025-04-10,Partner
+269,"Baker, Hood and Morris",Finance,North America,Mid-Market,2024-04-25,Partner
+270,"Thomas, Castro and Quinn",Finance,North America,Enterprise,2025-08-21,Self-Service
+271,"Boyd, Roberts and Simon",Finance,APAC,SMB,2023-07-22,Self-Service
+272,Watts-Watson,Finance,EMEA,Mid-Market,2025-08-04,Partner
+273,Leonard-Hansen,Technology,North America,Mid-Market,2026-02-12,Self-Service
+274,Howell Ltd,Manufacturing,EMEA,Mid-Market,2023-10-01,Partner
+275,Weber-Vazquez,Technology,North America,Enterprise,2025-01-29,Partner
+276,"Parker, Sims and Smith",Retail,North America,Enterprise,2026-02-26,Partner
+277,Cobb-Richardson,Technology,APAC,SMB,2023-07-03,Self-Service
+278,Robinson-Velez,Manufacturing,North America,SMB,2023-08-22,Direct Sales
+279,Miller-King,Retail,APAC,Enterprise,2024-10-07,Self-Service
+280,Ellis-Fox,Healthcare,APAC,SMB,2025-03-28,Partner
+281,Spencer and Sons,Manufacturing,APAC,Enterprise,2024-03-18,Direct Sales
+282,Ferguson Inc,Retail,APAC,Mid-Market,2024-01-07,Direct Sales
+283,"Anderson, Burton and Li",Technology,LATAM,SMB,2023-07-26,Self-Service
+284,Williams-Ramirez,Healthcare,LATAM,SMB,2024-11-10,Self-Service
+285,"Garrett, Williams and Mason",Retail,EMEA,SMB,2026-01-24,Direct Sales
+286,Duncan Inc,Manufacturing,North America,SMB,2025-08-15,Direct Sales
+287,"Williams, Garcia and Stevens",Manufacturing,APAC,Enterprise,2023-10-08,Partner
+288,Burton-Daniels,Finance,EMEA,Mid-Market,2025-11-08,Direct Sales
+289,Edwards Inc,Technology,North America,Mid-Market,2025-10-04,Partner
+290,Ashley-Johnson,Manufacturing,LATAM,Enterprise,2024-09-25,Self-Service
+291,Clark-Clark,Manufacturing,EMEA,Mid-Market,2025-02-05,Self-Service
+292,Parsons PLC,Healthcare,EMEA,Mid-Market,2024-07-21,Self-Service
+293,Webb-Patton,Healthcare,LATAM,Enterprise,2025-12-26,Partner
+294,"Mitchell, Parker and Andrews",Manufacturing,North America,Enterprise,2023-09-17,Partner
+295,"Evans, Clark and Randall",Technology,APAC,SMB,2024-04-09,Partner
+296,"Kline, Martin and Cruz",Finance,LATAM,Enterprise,2023-06-04,Direct Sales
+297,"Olson, White and Wright",Healthcare,North America,Enterprise,2025-01-06,Direct Sales
+298,Mcclain-Melton,Technology,APAC,SMB,2025-10-07,Partner
+299,"Rodriguez, Rivera and Harris",Healthcare,LATAM,SMB,2023-07-09,Self-Service
+300,Miller-Hall,Manufacturing,LATAM,SMB,2024-05-13,Partner
+301,Fuentes LLC,Retail,EMEA,SMB,2026-05-06,Self-Service
+302,Joyce-Cross,Manufacturing,LATAM,SMB,2024-08-24,Direct Sales
+303,"Walton, Murray and Nguyen",Manufacturing,North America,Enterprise,2024-10-08,Direct Sales
+304,Mitchell-Camacho,Technology,LATAM,Enterprise,2024-09-05,Direct Sales
+305,Murphy-Hall,Manufacturing,North America,Mid-Market,2026-05-04,Partner
+306,Hendricks PLC,Healthcare,EMEA,Mid-Market,2026-01-07,Partner
+307,"Sosa, Smith and Vaughn",Finance,North America,Mid-Market,2025-10-18,Self-Service
+308,"Horne, Freeman and Kelley",Manufacturing,LATAM,Enterprise,2024-01-23,Partner
+309,Parker-Lewis,Manufacturing,APAC,Mid-Market,2025-04-18,Self-Service
+310,Collins-Cruz,Healthcare,EMEA,Enterprise,2025-10-04,Direct Sales
+311,Peterson PLC,Manufacturing,EMEA,Mid-Market,2024-12-04,Self-Service
+312,"Morrison, Roy and Bradford",Retail,EMEA,SMB,2025-07-18,Direct Sales
+313,"Mccann, Evans and Howard",Manufacturing,EMEA,Enterprise,2024-01-25,Self-Service
+314,Rodriguez-Bonilla,Technology,LATAM,SMB,2026-01-15,Partner
+315,Chen-Hunt,Retail,LATAM,Mid-Market,2026-04-27,Self-Service
+316,Hernandez Inc,Retail,North America,Mid-Market,2023-06-20,Direct Sales
+317,Berry Ltd,Manufacturing,APAC,SMB,2024-05-05,Partner
+318,"Mitchell, Johnson and Graham",Finance,LATAM,Enterprise,2024-11-29,Partner
+319,Scott Ltd,Technology,LATAM,Enterprise,2024-10-26,Direct Sales
+320,Melton PLC,Retail,LATAM,SMB,2024-03-27,Partner
+321,Blackwell Ltd,Manufacturing,APAC,SMB,2024-02-23,Partner
+322,Davis-Mitchell,Manufacturing,APAC,Mid-Market,2024-09-07,Direct Sales
+323,Byrd Group,Manufacturing,North America,Enterprise,2023-10-19,Partner
+324,Flynn PLC,Technology,LATAM,Enterprise,2023-05-28,Direct Sales
+325,Trujillo Ltd,Retail,EMEA,Enterprise,2024-02-20,Partner
+326,Hernandez-Nguyen,Technology,APAC,Enterprise,2025-06-19,Partner
+327,Welch Ltd,Technology,North America,Enterprise,2025-12-04,Self-Service
+328,"Thomas, Grimes and Harris",Manufacturing,EMEA,Mid-Market,2023-08-19,Self-Service
+329,Murphy-Davis,Healthcare,LATAM,Mid-Market,2025-06-12,Self-Service
+330,"Mcmahon, Warner and Rodriguez",Retail,APAC,SMB,2026-04-21,Direct Sales
+331,Wong Ltd,Healthcare,North America,Mid-Market,2023-10-14,Direct Sales
+332,"Garcia, Randall and Glover",Finance,APAC,Mid-Market,2024-08-13,Partner
+333,Zhang Ltd,Healthcare,North America,Enterprise,2024-01-25,Partner
+334,Maldonado and Sons,Technology,APAC,Enterprise,2025-06-06,Self-Service
+335,Mendoza-Kim,Finance,EMEA,Mid-Market,2025-05-15,Self-Service
+336,Figueroa Inc,Retail,EMEA,SMB,2026-03-16,Partner
+337,"Hall, Rowe and Wright",Technology,LATAM,Enterprise,2024-01-06,Self-Service
+338,Hernandez PLC,Finance,EMEA,Mid-Market,2024-07-02,Self-Service
+339,"Green, Thompson and Gibson",Healthcare,LATAM,Enterprise,2023-06-06,Direct Sales
+340,Ortega Ltd,Retail,APAC,SMB,2026-01-31,Partner
+341,Robinson-Malone,Manufacturing,EMEA,SMB,2025-04-08,Self-Service
+342,Torres-Conley,Technology,APAC,SMB,2026-02-22,Direct Sales
+343,Boone-Gutierrez,Retail,APAC,Enterprise,2025-10-24,Self-Service
+344,Dougherty-Smith,Retail,North America,SMB,2023-08-05,Partner
+345,Jones-Cox,Finance,EMEA,Enterprise,2024-03-13,Direct Sales
+346,"Porter, Johnson and Sutton",Technology,APAC,Enterprise,2026-03-30,Direct Sales
+347,"Morris, Taylor and Becker",Retail,APAC,Mid-Market,2024-03-05,Self-Service
+348,Garcia Ltd,Healthcare,EMEA,SMB,2023-08-18,Direct Sales
+349,"Meyer, Harrison and Steele",Finance,North America,SMB,2024-02-14,Partner
+350,Martin Ltd,Technology,EMEA,SMB,2025-05-31,Partner
+351,Jenkins and Sons,Retail,LATAM,Mid-Market,2023-07-13,Self-Service
+352,"Stevens, Silva and Huff",Technology,APAC,Mid-Market,2023-05-22,Self-Service
+353,"Adams, Smith and Robinson",Retail,LATAM,Enterprise,2026-04-01,Direct Sales
+354,"Le, Gordon and Williams",Retail,EMEA,Mid-Market,2026-02-10,Direct Sales
+355,Stuart-Reese,Retail,North America,Enterprise,2025-02-02,Self-Service
+356,"Smith, Griffith and Brown",Healthcare,APAC,SMB,2025-11-28,Direct Sales
+357,Yu-Pearson,Finance,APAC,SMB,2025-06-21,Self-Service
+358,Collins Group,Healthcare,LATAM,Mid-Market,2024-03-29,Partner
+359,Bates-Mcclain,Technology,North America,Mid-Market,2024-06-22,Direct Sales
+360,"Munoz, Stewart and Doyle",Technology,APAC,Enterprise,2024-05-30,Self-Service
+361,Jordan LLC,Healthcare,LATAM,Mid-Market,2025-03-26,Direct Sales
+362,"Pena, Hodges and Lara",Finance,APAC,Enterprise,2024-06-14,Direct Sales
+363,Rose-Payne,Healthcare,North America,Mid-Market,2026-02-26,Self-Service
+364,Coleman Group,Finance,EMEA,Mid-Market,2024-03-20,Partner
+365,Weaver Inc,Healthcare,LATAM,Enterprise,2025-04-16,Self-Service
+366,"Mcdowell, Cardenas and Holmes",Finance,EMEA,Mid-Market,2024-05-25,Partner
+367,"Boyd, Casey and Rivera",Finance,APAC,Enterprise,2024-06-16,Direct Sales
+368,Smith-James,Finance,LATAM,Enterprise,2025-04-11,Self-Service
+369,Smith Group,Retail,North America,SMB,2026-05-06,Partner
+370,"Edwards, Thornton and Lawrence",Manufacturing,APAC,Enterprise,2025-11-14,Direct Sales
+371,Baker-Jefferson,Finance,EMEA,Enterprise,2024-05-05,Self-Service
+372,Carson and Sons,Healthcare,LATAM,Enterprise,2025-01-05,Self-Service
+373,Moore Inc,Healthcare,EMEA,SMB,2025-08-08,Self-Service
+374,"Mcbride, Mcbride and Richardson",Manufacturing,LATAM,SMB,2024-09-18,Direct Sales
+375,"Williams, Martin and Fields",Technology,LATAM,SMB,2024-03-25,Direct Sales
+376,"Richardson, Torres and Humphrey",Healthcare,North America,Enterprise,2024-01-29,Partner
+377,Johnston and Sons,Finance,North America,Mid-Market,2023-11-06,Self-Service
+378,"Bentley, Hunt and Kelly",Technology,APAC,SMB,2024-11-11,Partner
+379,"Garrett, Miller and Johnson",Retail,LATAM,Enterprise,2024-10-27,Self-Service
+380,"Blankenship, Chang and West",Healthcare,EMEA,SMB,2025-04-24,Self-Service
+381,Adams-Rodriguez,Manufacturing,North America,Mid-Market,2025-06-01,Direct Sales
+382,Vazquez-Villa,Healthcare,North America,Mid-Market,2023-09-04,Partner
+383,Frye Group,Manufacturing,North America,Mid-Market,2025-01-09,Direct Sales
+384,"Briggs, Maynard and Martin",Healthcare,EMEA,Mid-Market,2026-02-05,Partner
+385,"Grant, Schwartz and Torres",Healthcare,EMEA,SMB,2023-12-12,Partner
+386,Kidd-Lawson,Manufacturing,APAC,SMB,2025-08-18,Self-Service
+387,"Gonzalez, Calhoun and Harris",Technology,APAC,Enterprise,2024-02-22,Self-Service
+388,Morales Inc,Finance,North America,SMB,2023-11-25,Self-Service
+389,"Douglas, Fisher and Cervantes",Manufacturing,North America,SMB,2024-02-15,Partner
+390,"Wang, Ellis and Turner",Retail,North America,Enterprise,2025-10-28,Partner
+391,"Alvarez, Hunter and Martin",Retail,LATAM,Enterprise,2023-05-28,Direct Sales
+392,Schneider LLC,Manufacturing,EMEA,SMB,2023-10-04,Self-Service
+393,Powers LLC,Technology,North America,SMB,2025-11-25,Self-Service
+394,Johnson and Sons,Technology,APAC,SMB,2025-01-05,Self-Service
+395,Wilson-Lewis,Finance,North America,SMB,2024-10-07,Partner
+396,"Ramirez, Stewart and Black",Technology,North America,Enterprise,2025-04-09,Self-Service
+397,Cunningham LLC,Retail,APAC,Mid-Market,2026-04-19,Partner
+398,Malone-Glenn,Retail,North America,Mid-Market,2024-04-14,Self-Service
+399,Dodson Inc,Retail,APAC,Mid-Market,2025-03-19,Self-Service
+400,Baird-Butler,Manufacturing,APAC,Enterprise,2024-03-29,Self-Service
+401,Elliott Inc,Retail,APAC,Enterprise,2024-03-02,Direct Sales
+402,Roman-Edwards,Manufacturing,APAC,Mid-Market,2024-11-20,Direct Sales
+403,Hill-Alexander,Healthcare,LATAM,Mid-Market,2024-11-26,Partner
+404,"Scott, Harris and Santiago",Finance,North America,Mid-Market,2024-04-06,Partner
+405,"Mcdonald, Miller and Lewis",Healthcare,APAC,Mid-Market,2025-05-08,Partner
+406,"Hansen, Caldwell and Stevens",Retail,APAC,Mid-Market,2024-05-30,Partner
+407,"Holmes, Richard and Baldwin",Manufacturing,APAC,Mid-Market,2024-05-04,Self-Service
+408,Johnson and Sons,Manufacturing,North America,Enterprise,2023-07-26,Partner
+409,Duncan and Sons,Technology,North America,SMB,2025-08-03,Direct Sales
+410,Anderson Group,Technology,APAC,Enterprise,2024-12-10,Direct Sales
+411,"Young, Wilkerson and Rogers",Technology,North America,Mid-Market,2024-08-28,Self-Service
+412,"Mcmahon, Durham and Johnson",Healthcare,LATAM,Enterprise,2025-09-21,Direct Sales
+413,Harvey-Santiago,Finance,North America,Mid-Market,2026-03-20,Partner
+414,Howard LLC,Healthcare,North America,SMB,2023-10-17,Partner
+415,Larson Inc,Finance,North America,Mid-Market,2024-11-27,Partner
+416,"Johnson, Dillon and Alexander",Healthcare,North America,Enterprise,2026-05-06,Self-Service
+417,"Gates, Brennan and Caldwell",Technology,North America,Enterprise,2023-09-17,Partner
+418,Carter-Thomas,Healthcare,North America,SMB,2023-11-10,Partner
+419,"Gibson, Perkins and Hunt",Retail,LATAM,SMB,2024-11-01,Partner
+420,Hatfield Ltd,Healthcare,EMEA,SMB,2023-05-23,Partner
+421,Hughes and Sons,Finance,North America,SMB,2026-03-24,Self-Service
+422,Johnson-Greer,Manufacturing,LATAM,Mid-Market,2025-07-08,Direct Sales
+423,Howard Group,Finance,APAC,SMB,2025-09-06,Self-Service
+424,"Anderson, Wells and Reyes",Healthcare,APAC,Enterprise,2023-07-21,Direct Sales
+425,"Lopez, Garcia and Hodges",Technology,North America,Mid-Market,2023-12-08,Self-Service
+426,"Yoder, Rhodes and Frazier",Technology,APAC,Enterprise,2023-09-19,Self-Service
+427,"Dickerson, Long and Flores",Technology,North America,Mid-Market,2025-08-15,Partner
+428,Ray LLC,Retail,EMEA,SMB,2023-08-03,Self-Service
+429,Green-Rodgers,Healthcare,APAC,Enterprise,2025-03-13,Partner
+430,Mendez LLC,Manufacturing,APAC,Mid-Market,2025-02-05,Self-Service
+431,"Zuniga, Davis and Chan",Finance,North America,Mid-Market,2024-08-01,Self-Service
+432,Richardson PLC,Finance,LATAM,SMB,2024-11-11,Partner
+433,Rodriguez-Flores,Technology,LATAM,SMB,2025-05-20,Direct Sales
+434,Black-Holt,Manufacturing,EMEA,SMB,2024-05-02,Direct Sales
+435,Robles and Sons,Finance,LATAM,SMB,2024-03-05,Partner
+436,Estrada Inc,Healthcare,EMEA,Mid-Market,2024-05-31,Direct Sales
+437,Parsons Inc,Retail,LATAM,SMB,2024-10-09,Partner
+438,Faulkner-Werner,Finance,North America,Enterprise,2026-04-14,Direct Sales
+439,"Sanders, Anderson and Howard",Finance,EMEA,Mid-Market,2024-09-24,Self-Service
+440,Simpson-Thomas,Retail,LATAM,SMB,2024-04-14,Direct Sales
+441,"Jacobs, Schmidt and Mitchell",Finance,North America,Mid-Market,2025-10-05,Partner
+442,"Wilson, Mcdonald and Becker",Manufacturing,EMEA,Mid-Market,2024-09-01,Direct Sales
+443,"Noble, Erickson and Wallace",Retail,North America,SMB,2024-10-16,Self-Service
+444,Morales-Bauer,Healthcare,LATAM,Mid-Market,2025-05-23,Direct Sales
+445,"Irwin, Richards and Richards",Healthcare,North America,SMB,2026-01-16,Direct Sales
+446,Hahn Ltd,Technology,APAC,Enterprise,2024-11-21,Self-Service
+447,Brennan-Taylor,Manufacturing,LATAM,SMB,2024-07-03,Partner
+448,Sellers-Huffman,Finance,EMEA,Mid-Market,2023-09-06,Direct Sales
+449,"George, Griffin and Ramirez",Finance,LATAM,Mid-Market,2023-12-23,Self-Service
+450,"Santiago, Richards and Richardson",Finance,APAC,SMB,2024-08-19,Partner
+451,Gray-Griffith,Retail,EMEA,Enterprise,2023-07-20,Self-Service
+452,Singh Ltd,Retail,APAC,Enterprise,2023-11-11,Partner
+453,Dalton Inc,Technology,North America,SMB,2026-02-12,Self-Service
+454,"Aguilar, Drake and Cook",Healthcare,LATAM,Mid-Market,2024-08-16,Direct Sales
+455,Mitchell-Gonzalez,Finance,North America,Enterprise,2023-12-12,Direct Sales
+456,Flores-Smith,Manufacturing,LATAM,SMB,2023-09-19,Partner
+457,Nelson-Martin,Manufacturing,North America,SMB,2023-08-22,Direct Sales
+458,"Brooks, Chavez and Romero",Manufacturing,North America,Enterprise,2026-03-10,Direct Sales
+459,Logan-Mata,Manufacturing,APAC,Mid-Market,2026-03-12,Partner
+460,"Hodge, Jones and Sosa",Healthcare,North America,Enterprise,2024-01-29,Direct Sales
+461,"Casey, Donovan and Frederick",Finance,LATAM,Enterprise,2023-08-01,Partner
+462,"Dixon, Moore and Juarez",Healthcare,North America,Enterprise,2026-02-11,Partner
+463,"Thomas, Bean and Thomas",Healthcare,North America,SMB,2025-01-18,Self-Service
+464,"York, Perez and Kim",Retail,North America,SMB,2023-09-08,Self-Service
+465,Singh PLC,Technology,APAC,SMB,2024-04-17,Direct Sales
+466,"Moore, Guzman and Dixon",Finance,APAC,Mid-Market,2023-11-12,Self-Service
+467,"Dalton, Farmer and Rangel",Manufacturing,APAC,Mid-Market,2024-06-29,Partner
+468,Harris-Holt,Retail,LATAM,Enterprise,2024-11-23,Self-Service
+469,"Bowman, Smith and Roth",Manufacturing,LATAM,SMB,2025-05-13,Self-Service
+470,Edwards LLC,Retail,EMEA,Enterprise,2025-10-31,Self-Service
+471,Blair-Hernandez,Technology,EMEA,Enterprise,2026-05-12,Partner
+472,Jensen LLC,Technology,EMEA,SMB,2023-11-06,Self-Service
+473,"Rhodes, Powell and Scott",Finance,EMEA,SMB,2023-11-21,Direct Sales
+474,"Barnes, Holt and Williams",Healthcare,North America,Enterprise,2025-08-20,Self-Service
+475,"Jenkins, Austin and Hurley",Technology,APAC,SMB,2023-07-21,Direct Sales
+476,Summers LLC,Finance,North America,Mid-Market,2024-03-18,Self-Service
+477,Harris and Sons,Manufacturing,North America,Enterprise,2025-07-06,Partner
+478,Robinson-Lamb,Manufacturing,EMEA,Enterprise,2025-02-14,Direct Sales
+479,"Walter, Hubbard and Bush",Retail,North America,Mid-Market,2025-02-03,Self-Service
+480,"Miller, Williams and Shea",Retail,LATAM,SMB,2025-02-26,Self-Service
+481,Thompson-Wilson,Retail,LATAM,Mid-Market,2023-12-05,Direct Sales
+482,Morris-Jackson,Retail,LATAM,SMB,2025-03-23,Self-Service
+483,"Lewis, Taylor and Hernandez",Healthcare,EMEA,Mid-Market,2025-06-29,Self-Service
+484,"Stevens, Turner and Clarke",Healthcare,LATAM,Mid-Market,2025-08-04,Partner
+485,Hernandez-Cooper,Finance,North America,SMB,2026-03-16,Self-Service
+486,"Knight, Avery and Harris",Manufacturing,APAC,Mid-Market,2024-05-01,Self-Service
+487,Young-Stevens,Finance,LATAM,SMB,2026-01-17,Direct Sales
+488,Oconnor PLC,Technology,APAC,SMB,2024-06-25,Direct Sales
+489,"Johnson, Reyes and Pennington",Finance,North America,SMB,2023-07-16,Direct Sales
+490,Riley Group,Healthcare,North America,SMB,2024-02-04,Partner
+491,"Marsh, Cervantes and Berry",Technology,EMEA,Mid-Market,2025-11-05,Self-Service
+492,Malone Inc,Manufacturing,APAC,Mid-Market,2023-07-31,Direct Sales
+493,Davis Inc,Technology,EMEA,Enterprise,2023-07-14,Partner
+494,Adams-Clarke,Finance,North America,Enterprise,2025-01-22,Self-Service
+495,Hardin PLC,Retail,EMEA,Mid-Market,2026-03-16,Direct Sales
+496,"Jones, Coleman and Blankenship",Healthcare,LATAM,Enterprise,2024-10-03,Direct Sales
+497,Oneill-Brown,Retail,LATAM,SMB,2025-06-11,Self-Service
+498,Bryan-Benson,Healthcare,EMEA,SMB,2024-11-29,Direct Sales
+499,Graves-Shah,Technology,LATAM,Mid-Market,2025-09-03,Direct Sales
+500,"Smith, Carpenter and Olson",Healthcare,EMEA,Mid-Market,2025-06-15,Self-Service
