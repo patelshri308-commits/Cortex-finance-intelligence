@@ -2,6 +2,8 @@
 
 AI-native finance analytics workspace designed to automate recurring SaaS finance workflows using multi-agent orchestration, semantic business context, and executive-ready reporting automation.
 
+**Live Demo:** https://cortex-finance-intelligence.streamlit.app/
+
 ⸻
 
 **Overview**
