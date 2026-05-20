@@ -1,0 +1,47 @@
+business_domain: SaaS Finance Analytics
+
+tables:
+  monthly_kpis:
+    source: data/monthly_kpis.csv
+    description: Monthly SaaS revenue KPI summary used for executive reporting.
+
+metrics:
+  total_arr:
+    display_name: Total ARR
+    definition: Annual recurring revenue across all customers for the selected month.
+    source_table: monthly_kpis
+    column: total_arr
+    aggregation: sum
+    business_question_examples:
+      - What is current ARR?
+      - How has ARR changed month over month?
+
+  total_bookings:
+    display_name: Total Bookings
+    definition: Total booked revenue for the selected month.
+    source_table: monthly_kpis
+    column: total_bookings
+    aggregation: sum
+    business_question_examples:
+      - How are bookings trending?
+      - Did bookings improve this month?
+
+  churned_revenue:
+    display_name: Churned Revenue
+    definition: Revenue lost from customers who churned during the period.
+    source_table: monthly_kpis
+    column: churned_revenue
+    aggregation: sum
+    business_question_examples:
+      - Is churn increasing?
+      - How much revenue was lost to churn?
+
+  expansion_revenue:
+    display_name: Expansion Revenue
+    definition: Additional revenue from upsells, cross-sells, or account expansion.
+    source_table: monthly_kpis
+    column: expansion_revenue
+    aggregation: sum
+    business_question_examples:
+      - Is expansion offsetting churn?
+      - How much revenue came from expansion?

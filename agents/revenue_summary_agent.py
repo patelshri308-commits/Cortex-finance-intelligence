@@ -6,6 +6,11 @@ import pandas as pd
 import yaml
 from dotenv import load_dotenv
 
+from utils.semantic_loader import (
+    load_semantic_model,
+    build_metric_context,
+)
+
 
 def calculate_growth(current_value, previous_value):
     if previous_value == 0:
@@ -51,6 +56,14 @@ def generate_revenue_summary() -> str:
         previous["total_bookings"]
     )
 
+    semantic_model = load_semantic_model(
+    "semantic_models/finance_metrics.yaml"
+    )
+
+    semantic_context = build_metric_context(
+        semantic_model
+    )
+
     context = f"""
 Latest revenue month: {latest['revenue_month'].date()}
 
@@ -66,6 +79,9 @@ Churned revenue: ${latest['churned_revenue']:,.2f}
 
     prompt = f"""
 {prompt_config["system_prompt"]}
+
+Business Metric Definitions:
+{semantic_context}
 
 {prompt_config["output_format"]}
 
