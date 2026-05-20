@@ -1,6 +1,14 @@
+import sys
+from pathlib import Path
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+sys.path.append(str(PROJECT_ROOT))
 import pandas as pd
 import plotly.express as px
 import streamlit as st
+from agents.router_agent import route_query
+from agents.revenue_summary_agent import generate_revenue_summary
+from agents.variance_analysis_agent import generate_variance_analysis
 
 st.set_page_config(
     page_title="Cortex Finance Intelligence",
@@ -103,3 +111,30 @@ if st.button("Run Revenue Summary Agent"):
 if st.button("Run Variance Analysis Agent"):
     with open("outputs/variance_analysis.txt", "r") as file:
         st.text(file.read())
+
+st.subheader("AI Finance Workspace")
+
+user_query = st.text_input(
+    "Ask a finance question",
+    placeholder="Example: Why did ARR decline this month?"
+)
+
+if st.button("Run AI Analysis"):
+    if not user_query.strip():
+        st.warning("Please enter a finance question.")
+    else:
+        selected_workflow = route_query(user_query)
+
+        st.info(f"Selected workflow: {selected_workflow}")
+
+        with st.spinner("Running AI workflow..."):
+            if selected_workflow == "revenue_summary":
+                result = generate_revenue_summary()
+
+            elif selected_workflow == "variance_analysis":
+                result = generate_variance_analysis()
+
+            else:
+                result = "Executive briefing agent is not built yet."
+
+        st.markdown(result)

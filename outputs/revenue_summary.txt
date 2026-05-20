@@ -1,12 +1,12 @@
-**Executive Summary:**
-* **ARR Contraction:** ARR closed at $40.38M, representing a slight contraction of -1.16%. While the business maintains a solid $40M+ foundation, this decline signals a deceleration in overall growth trajectory.
-* **Stable Bookings Velocity:** Total bookings reached $12.90M, representing near-flat growth (+0.09%). While new sales velocity is stable, it lacks the momentum required to drive positive ARR growth.
-* **Strong Net Expansion:** Customer expansion continues to be a major growth engine, with $5.21M in expansion revenue heavily outpacing churned revenue of $0.57M (a strong 9.2x coverage ratio). This indicates excellent product-market fit and account growth within the existing install base.
+**Executive Summary**
+* **ARR Contraction Amid Stagnation:** Total ARR closed at $40.38M, reflecting a -1.16% contraction. This downward trajectory indicates top-line pressure, compounded by flat bookings performance ($12.90M, up just +0.09%).
+* **Strong Net Expansion Dynamics:** The existing customer base remains highly resilient. Expansion revenue of $5.21M significantly outpaced churned revenue of $0.57M (a 9.2x coverage ratio), demonstrating strong product-market fit and effective account management. 
+* **Divergent Business Trajectory:** While net retention dynamics are healthy (driven by the $4.64M net expansion surplus), overall ARR declined. This divergence suggests that strong expansion is being offset by a severe deficit in new logo acquisition or significant non-churn down-sells.
 
-**Key Risks:**
-* **ARR Divergence Paradox:** Despite strong net expansion (expansion outpaces churn by $4.64M), total ARR still contracted by -1.16%. This indicates severe leakage elsewhere in the ARR bridge—likely driven by a sharp decline in new logo acquisition or significant customer contraction/down-sells.
-* **Stagnant Pipeline Momentum:** Near-flat bookings growth (+0.09%) indicates a potential bottleneck in the sales pipeline or declining win rates, threatening mid-term ARR recovery if top-of-funnel activity does not accelerate.
+**Key Risks**
+* **New Business Acquisition Headwinds:** Flat bookings growth (+0.09%) coupled with declining ARR suggests a stagnation in pipeline velocity and failure to secure new logos, leaving the growth engine overly reliant on the existing base.
+* **Hidden Revenue Leakage:** Despite low outright churn ($0.57M), the contraction in total ARR despite $5.21M in expansion points to substantial hidden contraction (downgrades, write-offs, or pricing concessions) that must be isolated.
 
-**Recommended Follow-Up:**
-* **Perform ARR Bridge Reconciliation:** Conduct an immediate, granular review of the Dec 2024 ARR bridge to isolate the exact drivers of the -1.16% ARR decline (e.g., quantifying the impact of new logo ARR vs. down-sells/contraction).
-* **Audit Pipeline and Sales Velocity:** Partner with Sales Leadership to review pipeline coverage, contract pricing structures, and sales cycle lengths to re-energize the $12.90M bookings engine and reverse the flat growth trend.
+**Recommended Follow-Up**
+* **Deconstruct the ARR Bridge:** Immediately perform a granular reconciliation of the ARR bridge to isolate the exact source of leakage (specifically distinguishing between New Logo ARR, Downgrades, and Churn).
+* **Audit Go-To-Market (GTM) Efficiency:** Review the Q1 2025 pipeline and sales capacity to address the stagnation in bookings and re-accelerate new business customer acquisition.

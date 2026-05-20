@@ -1,0 +1,18 @@
+### Executive Briefing
+* **ARR Contraction:** December ARR contracted by -1.16% MoM (-$475.9k) to close at $40.38M, reversing November’s growth momentum while bookings remained flat at $12.90M (+0.09%).
+* **Strong Net Expansion:** The existing customer base remains highly resilient, with $5.21M in expansion revenue outpacing $0.57M in outright churn (representing a strong 9.2x coverage ratio).
+* **Renewal and Contraction Headwinds:** Expansion gains (+$295.5k MoM) and new business growth (+$212.3k MoM) were entirely offset by a -$255.4k decline in renewal revenue and a +$181.5k increase in contraction (down-sells).
+* **Bookings-to-ARR Divergence:** Despite steady transactional bookings, total ARR declined, indicating potential implementation bottlenecks or deferred contract start dates that are delaying ARR recognition.
+
+### Business Trajectory
+* **Divergent Growth Dynamics:** While net retention dynamics are healthy and customer expansion is robust, flat bookings velocity (+0.09%) and a failure to secure new logos are stalling overall top-line ARR.
+* **Leaky Bucket Constraints:** Healthy expansion and customer acquisition efforts are being undermined by active down-sizing, year-end churn, and aggressive customer renegotiations at renewal.
+
+### Key Risks
+* **Renewal Down-sizing and NRR Exposure:** Systemic customer-side optimization, license consolidation, and contract down-sizing during renewals pose a direct threat to Q1 Net Retention Rate (NRR) targets.
+* **Pipeline Stagnation and Conversion Lags:** Growth is overly reliant on the existing base due to flat bookings pipeline velocity, compounded by implementation delays that push booked ARR into future quarters.
+
+### Recommended Leadership Actions
+* **Deconstruct ARR Bridge & Audit GTM:** Perform a granular reconciliation of the ARR bridge (separating New Logo ARR, Downgrades, and Churn) and review Q1 2025 pipeline capacity to re-accelerate new business acquisition.
+* **Execute Renewal Post-Mortem:** Task Customer Success and Account Management heads to audit the December cohort and identify specific accounts driving the $255.4k renewal decline and $181.5k contraction.
+* **Accelerate Bookings Provisioning:** Direct Operations and Professional Services teams to review all pending Q4 bookings, remove provisioning blockers, and accelerate the "bookings-to-ARR" conversion timeline.
