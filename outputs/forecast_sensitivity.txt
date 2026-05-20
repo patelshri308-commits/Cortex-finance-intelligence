@@ -1,0 +1,18 @@
+### Forecast Scenario Summary
+* **ARR Recovery Target:** The projected scenario models a recovery to $42,403,723.95 in ARR, driven by a 5.00% ARR growth adjustment that reverses the current baseline ARR contraction of -1.16% (where ARR declined from $40,860,381.00 to $40,384,499.00).
+* **Bookings Acceleration:** Bookings are projected to rise to $13,286,516.93 under a 3.00% growth adjustment, significantly accelerating past the nearly flat baseline bookings growth of 0.09% (from $12,888,356.00 to $12,899,531.00).
+* **Net Revenue Contribution:** Net revenue impact from expansion, churn, and contraction is projected at a positive $2,212,035.60, driven by expansion revenue increasing to $5,474,193.90, which offsets contraction and the rising churn.
+
+### Upside / Downside Drivers
+* **Expansion Revenue Performance (Upside):** A projected 5.00% increase in expansion revenue to $5,474,193.90 (up from the current baseline of $5,213,518.00) serves as the primary engine for net ARR expansion.
+* **Elevated Churn Sensitivity (Downside):** Churned revenue is modeled to increase by 10.00% to $625,529.30 (up from $568,663.00), representing an immediate headwind to net retention.
+* **Persistent Contraction Drag (Downside):** Contraction revenue remains flat at $2,636,629.00 (0.00% change), continuing to act as a significant drag that is more than four times larger than projected churn.
+
+### Key Risks
+* **Reversing Baseline Momentum:** Overcoming the negative baseline ARR growth (-1.16%) and flat baseline bookings growth (0.09%) requires immediate execution to realize the projected growth adjustments of 5.00% and 3.00% respectively.
+* **Concentrated Revenue Leakage:** Combined projected losses from contraction ($2,636,629.00) and churn ($625,529.30) total $3,262,158.30, highlighting substantial retention and downsell risk within the existing customer base.
+
+### Recommended Leadership Actions
+* **Mitigate Customer Contraction and Churn:** Launch targeted customer success campaigns to stabilize accounts, specifically focusing on mitigating the flat but high $2,636,629.00 contraction baseline and the projected 10.00% increase in churned revenue.
+* **Operationalize Expansion Pipelines:** Direct account management teams to execute campaigns aimed at securing the projected 5.00% expansion target of $5,474,193.90.
+* **Align Sales Enablement to Bookings Growth:** Optimize the sales pipeline to transition from the historical 0.09% baseline bookings growth to the projected 3.00% growth target, securing the projected $13,286,516.93 in bookings.
