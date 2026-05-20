@@ -287,13 +287,21 @@ python3 exports/excel_exporter.py
 Repository Structure
 
 agents/                 # AI finance workflow agents
+
 app/                    # Streamlit application
+
 exports/                # Reporting/export automation
+
 semantic_models/        # Semantic KPI definitions
+
 sql/                    # SQL warehouse models/views
+
 prompts/                # YAML prompt skill files
+
 outputs/                # Generated workflow outputs
+
 scripts/                # Synthetic dataset generation
+
 utils/                  # Shared utilities
 
 ⸻
