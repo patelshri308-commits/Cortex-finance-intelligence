@@ -62,11 +62,13 @@ This allows AI workflows to reason about business metrics more consistently and 
 
 Example:
 
+```yaml
 metric: total_arr
 definition:
   Annual recurring revenue across active customers.
 interpretation:
   Higher ARR indicates stronger recurring SaaS revenue performance.
+```
 
 ⸻
 
@@ -109,25 +111,27 @@ This simulates real finance reporting workflows used by:
 
 **Architecture**
 
+```
 Synthetic SaaS Finance Data
-            ↓
+         ↓
 Databricks Warehouse Layer
-            ↓
+         ↓
 SQL KPI Models / Views
-            ↓
+         ↓
 Semantic Metrics Layer
-            ↓
+         ↓
 Router / Orchestration Layer
-            ↓
+         ↓
 Specialized AI Finance Agents
-            ↓
+         ↓
 Gemini LLM Reasoning
-            ↓
+         ↓
 Executive Commentary Generation
-            ↓
+         ↓
 Streamlit Analytics Workspace
-            ↓
+         ↓
 Excel Reporting Export
+```
 
 ⸻
 
@@ -180,23 +184,27 @@ Instead of manually recreating the same analyses each week, the platform encodes
 
 Example user prompt:
 
+```
 What happens if churn increases by 10%?
+```
 
 System flow:
 
+```
 User Question
-      ↓
+     ↓
 Router Agent
-      ↓
+     ↓
 Forecast Sensitivity Agent
-      ↓
+     ↓
 Semantic Business Context Injection
-      ↓
+     ↓
 Gemini Reasoning
-      ↓
+     ↓
 Executive Forecast Commentary
-      ↓
+     ↓
 Excel / Streamlit Output
+```
 
 ⸻
 
@@ -242,13 +250,17 @@ Planned future enhancements include migration toward:
 
 Install Dependencies
 
+```bash
 pip install -r requirements.txt
+```
 
 ⸻
 
 **Generate Synthetic SaaS Data**
 
+```bash
 python3 scripts/generate_saas_data.py
+```
 
 ⸻
 
@@ -256,53 +268,59 @@ python3 scripts/generate_saas_data.py
 
 Revenue Summary
 
+```bash
 python3 agents/revenue_summary_agent.py
+```
 
 Variance Analysis
 
+```bash
 python3 agents/variance_analysis_agent.py
+```
 
 Forecast Sensitivity
 
+```bash
 python3 agents/forecast_sensitivity_agent.py
+```
 
 Executive Briefing
 
+```bash
 python3 agents/executive_briefing_agent.py
+```
 
 ⸻
 
 **Launch Streamlit Workspace**
 
+```bash
 streamlit run app/main.py
+```
 
 ⸻
 
 **Generate Excel Finance Report**
 
+```bash
 python3 exports/excel_exporter.py
+```
 
 ⸻
 
-Repository Structure
+**Repository Structure**
 
+```
 agents/                 # AI finance workflow agents
-
 app/                    # Streamlit application
-
 exports/                # Reporting/export automation
-
 semantic_models/        # Semantic KPI definitions
-
 sql/                    # SQL warehouse models/views
-
 prompts/                # YAML prompt skill files
-
 outputs/                # Generated workflow outputs
-
 scripts/                # Synthetic dataset generation
-
 utils/                  # Shared utilities
+```
 
 ⸻
 
