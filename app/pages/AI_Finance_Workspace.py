@@ -13,6 +13,7 @@ from agents.router_agent import route_query
 from agents.variance_analysis_agent import generate_variance_analysis
 from exports.excel_exporter import export_finance_report
 
+
 st.set_page_config(
     page_title="AI Finance Workspace",
     layout="wide"
@@ -81,3 +82,65 @@ if st.button("Generate Finance Report"):
             file_name="cortex_finance_report.xlsx",
             mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
         )
+
+st.divider()
+
+st.subheader("Interactive Forecast Scenario")
+
+st.write(
+    "Adjust forecast assumptions and generate AI-powered scenario commentary."
+)
+
+col1, col2 = st.columns(2)
+
+with col1:
+    arr_growth_adjustment = st.slider(
+        "ARR Growth Adjustment (%)",
+        min_value=-20,
+        max_value=20,
+        value=5
+    )
+
+    bookings_growth_adjustment = st.slider(
+        "Bookings Growth Adjustment (%)",
+        min_value=-20,
+        max_value=20,
+        value=3
+    )
+
+    churn_change = st.slider(
+        "Churned Revenue Change (%)",
+        min_value=-50,
+        max_value=50,
+        value=10
+    )
+
+with col2:
+    expansion_change = st.slider(
+        "Expansion Revenue Change (%)",
+        min_value=-50,
+        max_value=50,
+        value=5
+    )
+
+    contraction_change = st.slider(
+        "Contraction Revenue Change (%)",
+        min_value=-50,
+        max_value=50,
+        value=0
+    )
+
+if st.button("Run Forecast Scenario"):
+    with st.spinner("Running forecast sensitivity analysis..."):
+        forecast_result = generate_forecast_sensitivity(
+            arr_growth_adjustment_pct=arr_growth_adjustment,
+            bookings_growth_adjustment_pct=bookings_growth_adjustment,
+            churn_change_pct=churn_change,
+            expansion_change_pct=expansion_change,
+            contraction_change_pct=contraction_change,
+        )
+
+    st.success("Forecast scenario generated.")
+
+    with st.container(border=True):
+        st.markdown(forecast_result)
