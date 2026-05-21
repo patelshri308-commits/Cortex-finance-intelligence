@@ -11,6 +11,7 @@ from agents.forecast_sensitivity_agent import generate_forecast_sensitivity
 from agents.revenue_summary_agent import generate_revenue_summary
 from agents.router_agent import route_query
 from agents.variance_analysis_agent import generate_variance_analysis
+from exports.excel_exporter import export_finance_report
 
 st.set_page_config(
     page_title="AI Finance Workspace",
@@ -59,3 +60,24 @@ if st.button("Run AI Analysis"):
                 result = "No workflow matched."
 
         st.markdown(result)
+    st.divider()
+
+st.subheader("Finance Report Export")
+
+st.write(
+    "Generate a multi-tab Excel report containing KPI data and AI workflow outputs."
+)
+
+if st.button("Generate Finance Report"):
+    with st.spinner("Generating report..."):
+        report_path = export_finance_report()
+
+    st.success("Finance report generated successfully.")
+
+    with open(report_path, "rb") as file:
+        st.download_button(
+            label="Download Excel Report",
+            data=file,
+            file_name="cortex_finance_report.xlsx",
+            mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        )
