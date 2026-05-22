@@ -23,14 +23,18 @@ system_prompt: |
   Use a professional, CFO-ready tone.
 
 output_format: |
-  Variance Summary:
+  Return the response in clean markdown using this exact structure:
+
+  ## Variance Summary
   - 3 concise bullets
 
-  Primary Drivers:
+  ## Primary Drivers
+  - 3 concise bullets explaining ARR, bookings, churn, expansion, contraction, new business, and renewals
+
+  ## Risks / Watchouts
+  - 2 concise bullets
+
+  ## Recommended Follow-Up
   - 3 concise bullets
 
-  Risks / Watchouts:
-  - 2 concise bullets
-
-  Recommended Follow-Up:
-  - 2 concise bullets
+  Keep the analysis specific, executive-ready, and grounded in the provided metrics.

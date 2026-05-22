@@ -10,6 +10,8 @@ from dotenv import load_dotenv
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.append(str(PROJECT_ROOT))
 
+from utils.schema_validation import validate_monthly_kpis
+
 
 def load_prompt_config(path):
     with open(path, "r") as file:
@@ -44,6 +46,7 @@ def generate_forecast_sensitivity(
     prompt_config = load_prompt_config("prompts/forecast_sensitivity.yaml")
 
     df = pd.read_csv("data/monthly_kpis.csv")
+    validate_monthly_kpis(df)
 
     df["revenue_month"] = pd.to_datetime(df["revenue_month"])
     df = df.sort_values("revenue_month")

@@ -12,6 +12,7 @@ from agents.revenue_summary_agent import generate_revenue_summary
 from agents.router_agent import route_query
 from agents.variance_analysis_agent import generate_variance_analysis
 from exports.excel_exporter import export_finance_report
+from datetime import datetime
 
 
 st.set_page_config(
@@ -20,6 +21,9 @@ st.set_page_config(
 )
 
 st.title("AI Finance Workspace")
+
+if "workflow_history" not in st.session_state:
+    st.session_state.workflow_history = []
 
 st.write(
     "Ask a finance question and the router will select the correct AI workflow."
@@ -61,6 +65,20 @@ if st.button("Run AI Analysis"):
                 result = "No workflow matched."
 
         st.markdown(result)
+
+        st.session_state.workflow_history.insert(
+    0,
+    {
+        "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        "query": user_query,
+        "workflow": selected_workflow,
+        "result": result,
+    }
+)
+
+    st.session_state.workflow_history = st.session_state.workflow_history[:5]
+
+        
     st.divider()
 
 st.subheader("Finance Report Export")
@@ -144,3 +162,17 @@ if st.button("Run Forecast Scenario"):
 
     with st.container(border=True):
         st.markdown(forecast_result)
+
+
+st.divider()
+
+st.subheader("Recent AI Analyses")
+
+if not st.session_state.workflow_history:
+    st.caption("No analyses have been run yet.")
+else:
+    for item in st.session_state.workflow_history:
+        with st.expander(
+            f"{item['timestamp']} · {item['workflow']} · {item['query']}"
+        ):
+            st.markdown(item["result"])

@@ -11,6 +11,8 @@ from utils.semantic_loader import (
     build_metric_context,
 )
 
+from utils.schema_validation import validate_monthly_kpis
+
 
 def calculate_growth(current_value, previous_value):
     if previous_value == 0:
@@ -39,6 +41,7 @@ def generate_revenue_summary() -> str:
     prompt_config = load_prompt_config("prompts/revenue_summary.yaml")
 
     df = pd.read_csv("data/monthly_kpis.csv")
+    validate_monthly_kpis(df)
 
     df["revenue_month"] = pd.to_datetime(df["revenue_month"])
     df = df.sort_values("revenue_month")

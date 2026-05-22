@@ -14,6 +14,8 @@ from dotenv import load_dotenv
 from agents.revenue_summary_agent import generate_revenue_summary
 from agents.variance_analysis_agent import generate_variance_analysis
 
+from utils.schema_validation import validate_monthly_kpis
+
 
 def load_prompt_config(path):
     with open(path, "r") as file:

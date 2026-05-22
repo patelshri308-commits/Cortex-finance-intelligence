@@ -1,18 +1,18 @@
-### Forecast Scenario Summary
-* **Projected ARR Decline:** Under the modeled scenario, projected ARR declines to $38,769,119.04, driven by a -4.00% growth adjustment applied to the baseline ARR of $40,384,499.00 (which was already down -1.16% from the previous period).
-* **Positive Bookings Trajectory:** In contrast to ARR, projected bookings increase to $13,286,516.93, benefiting from a positive 3.00% growth adjustment over the baseline bookings of $12,899,531.00. 
-* **Net Revenue Impact:** The combined impact of expansion, churn, and contraction yields a net positive contribution of $2,212,035.60, supported by expansion revenue increasing 5.00% to $5,474,193.90.
+## Executive Summary
+- **ARR Turnaround**: The projected scenario reverses the baseline ARR decline of -1.16% (dropping from $40.86M to $40.38M) to achieve a projected ARR of $42,403,723.95, driven by a 5.00% growth adjustment.
+- **Bookings Acceleration**: Bookings trajectory shifts from a near-flat baseline growth of 0.09% (reaching $12.90M) to a projected $13,286,516.93, catalyzed by a 3.00% growth adjustment.
+- **Net Expansion Cushion**: Despite a projected 10.00% increase in churned revenue, the net revenue impact from expansion, churn, and contraction remains highly positive at $2,212,035.60, supported by $5,474,193.90 in projected expansion revenue.
 
-### Upside / Downside Drivers
-* **Expansion Revenue Acceleration (Upside):** Projected expansion revenue grows by 5.00% to $5,474,193.90 (up from $5,213,518.00), serving as the primary lever to offset revenue losses.
-* **New Bookings Growth (Upside):** Bookings are projected to rise to $13,286,516.93, indicating resilient upfront demand despite contraction in the broader ARR base.
-* **Escalating Churn (Downside):** Churned revenue is modeled to increase by 10.00% to $625,529.30 (up from $568,663.00), compounding the downward pressure on total ARR.
+## Scenario Impact
+- **Projected ARR and Bookings Movement**: Projected ARR increases to $42,403,723.95 (up from $40,384,499.00 baseline) and projected bookings rise to $13,286,516.93, representing a strong departure from the historical baseline growth rates of -1.16% and 0.09% respectively.
+- **Expansion vs. Contraction Dynamics**: Projected expansion revenue increases by 5.00% to $5,474,193.90, which comfortably outpaces the flat, unadjusted contraction revenue of $2,636,629.00 to drive positive net momentum.
+- **Churn Sensitivity**: Churned revenue is projected to rise by 10.00% to $625,529.30 (up from $568,663.00), yet the overall portfolio health remains protected as expansion gains outvalue this churn increase by more than 8-to-1.
 
-### Key Risks
-* **Significant Contraction Exposure:** Contraction revenue remains completely flat and unmitigated at $2,636,629.00; this represents a major exposure that is more than four times larger than the projected churned revenue ($625,529.30).
-* **Compounded ARR Erosion:** The combined effect of the baseline ARR decline (-1.16%) and the modeled -4.00% adjustment risks dragging total ARR down from $40.38M to $38.77M.
+## Key Risks
+- **Elevated Churn Exposure**: The 10.00% increase in churned revenue to $625,529.30 indicates growing customer attrition pressure that must be actively managed to protect the projected net revenue impact.
+- **Persistent Contraction Drag**: Contraction revenue remains flat at a high baseline of $2,636,629.00, representing a significant revenue leak that is more than four times the size of the projected churned revenue.
 
-### Recommended Leadership Actions
-* **Execute Targeted Contraction Mitigation:** Prioritize account management initiatives to stabilize the $2,636,629.00 contraction exposure, as it remains the single largest drag on net revenue dynamics.
-* **Capitalize on Bookings Momentum:** Align sales resources to secure the projected 3.00% bookings increase to $13,286,516.93, helping to bridge the gap caused by the ARR contraction.
-* **Institutionalize Churn Controls:** Implement proactive customer success interventions to defend the customer base against the modeled 10.00% churn increase, ensuring projected churn does not exceed the $625,529.30 threshold.
+## Strategic Recommendations
+- **Operationalize Expansion Pipelines**: Task customer success and account management teams with securing the projected $5,474,193.90 in expansion revenue (a 5.00% increase) to offset the ongoing $2.64M contraction drag.
+- **Deploy Churn Intervention Programs**: Implement targeted retention plays to mitigate the projected 10.00% churn increase, aiming to keep churned revenue below the projected ceiling of $625,529.30.
+- **Exceed Bookings Targets**: Align sales incentives to secure the projected bookings of $13,286,516.93, capitalizing on the 3.00% growth adjustment to permanently break out of the flat 0.09% baseline bookings growth pattern.

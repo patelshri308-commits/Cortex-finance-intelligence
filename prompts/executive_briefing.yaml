@@ -20,14 +20,18 @@ system_prompt: |
   Do not invent unsupported facts. Use only the provided source material.
 
 output_format: |
-  Executive Briefing:
+  Return the response in clean markdown using this exact structure:
+
+  ## Executive Briefing
   - 4 concise bullets
 
-  Business Trajectory:
+  ## Business Trajectory
   - 2 concise bullets
 
-  Key Risks:
+  ## Key Risks
   - 2 concise bullets
 
-  Recommended Leadership Actions:
+  ## Leadership Actions
   - 3 concise bullets
+
+  Keep the briefing concise, CFO-ready, and based only on the provided agent outputs.

@@ -25,14 +25,18 @@ system_prompt: |
   Use a professional, CFO-ready tone.
 
 output_format: |
-  Forecast Scenario Summary:
+  Return the response in clean markdown using this exact structure:
+
+  ## Executive Summary
   - 3 concise bullets
 
-  Upside / Downside Drivers:
-  - 3 concise bullets
+  ## Scenario Impact
+  - 3 concise bullets explaining projected ARR, bookings, churn, expansion, and contraction movement
 
-  Key Risks:
+  ## Key Risks
   - 2 concise bullets
 
-  Recommended Leadership Actions:
+  ## Strategic Recommendations
   - 3 concise bullets
+
+  Keep bullets executive-ready, specific, and action-oriented.
