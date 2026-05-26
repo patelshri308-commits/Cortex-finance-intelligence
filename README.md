@@ -114,7 +114,7 @@ This simulates real finance reporting workflows used by:
 ```
 Synthetic SaaS Finance Data
          ↓
-Databricks Warehouse Layer
+Snowflake Cortex CLI
          ↓
 SQL KPI Models / Views
          ↓
@@ -124,7 +124,7 @@ Router / Orchestration Layer
          ↓
 Specialized AI Finance Agents
          ↓
-Gemini LLM Reasoning
+Snowflake Cortex AI Reasoning
          ↓
 Executive Commentary Generation
          ↓
@@ -142,12 +142,12 @@ Data / Analytics
 * Python
 * Pandas
 * SQL
-* Databricks
+* Snowflake Cortex CLI
 * Faker (synthetic data generation)
 
 AI / Workflow Orchestration
 
-* Google Gemini API
+* Snowflake Cortex AI
 * YAML-based prompt skill architecture
 * Multi-agent workflow orchestration
 * Semantic business context injection
@@ -199,7 +199,7 @@ Forecast Sensitivity Agent
      ↓
 Semantic Business Context Injection
      ↓
-Gemini Reasoning
+Snowflake Cortex AI Reasoning
      ↓
 Executive Forecast Commentary
      ↓
@@ -232,17 +232,15 @@ The architecture and workflows are designed to simulate realistic enterprise fin
 
 ⸻
 
-**Future Snowflake Migration Goals**
+**Powered by Snowflake Cortex**
 
-Planned future enhancements include migration toward:
+This platform leverages Snowflake as the central data and AI engine through:
 
-* Snowflake Cortex Analyst
-* Cortex Agents
-* Dynamic Tables
-* semantic views
-* Snowflake-native Streamlit deployment
-* warehouse-native AI orchestration
-* natural-language semantic querying
+* Snowflake Cortex CLI for semantic analysis and SQL KPI models
+* Native Snowflake SQL for warehouse transformations
+* Cortex AI integration for intelligent financial reasoning
+* Seamless data governance and security across the platform
+* Scalable enterprise warehouse architecture
 
 ⸻
 
