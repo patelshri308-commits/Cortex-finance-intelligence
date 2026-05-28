@@ -1,3 +1,4 @@
+import json
 import subprocess
 import textwrap
 
@@ -9,16 +10,23 @@ def run_cortex(prompt: str, model: str = "llama3.1-70b") -> str:
     SELECT SNOWFLAKE.CORTEX.AI_COMPLETE(
         '{model}',
         '{escaped_prompt}'
-    );
+    ) AS response;
     """
 
     result = subprocess.run(
-        ["snow", "sql", "-q", textwrap.dedent(sql)],
+        ["snow", "sql", "-q", textwrap.dedent(sql), "--format", "json"],
         capture_output=True,
         text=True
     )
 
     if result.returncode != 0:
-        raise RuntimeError(result.stderr)
+        raise RuntimeError(
+            f"Cortex call failed.\nSTDOUT:\n{result.stdout}\nSTDERR:\n{result.stderr}"
+        )
 
-    return result.stdout
+    data = json.loads(result.stdout)
+
+    if not data:
+        return ""
+
+    return data[0]["RESPONSE"]

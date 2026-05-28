@@ -1,3 +1,4 @@
+from src.workflow_logger import log_agent_run
 from src.agent_loader import load_agent
 from src.cortex_runner import run_cortex
 
@@ -30,6 +31,14 @@ Infrastructure costs increased by 22%
 response = run_cortex(
     prompt=prompt,
     model=agent["model"]
+)
+
+log_agent_run(
+    agent_name=agent["agent_name"],
+    model_name=agent["model"],
+    workflow_type="revenue_analysis_test",
+    prompt=prompt,
+    response=response
 )
 
 print("\n===== CORTEX AGENT RESPONSE =====\n")
