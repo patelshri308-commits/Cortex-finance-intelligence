@@ -3,6 +3,6 @@ pandas
 plotly
 pyyaml
 python-dotenv
-google-generativeai
 openpyxl
 faker
+snowflake-cli-labs
