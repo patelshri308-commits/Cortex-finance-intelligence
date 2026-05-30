@@ -1,10 +1,13 @@
-import os
+import sys
 from pathlib import Path
 
-import google.generativeai as genai
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+sys.path.append(str(PROJECT_ROOT))
+
 import pandas as pd
 import yaml
-from dotenv import load_dotenv
+
+from src.cortex_runner import run_cortex
 
 from utils.semantic_loader import (
     load_semantic_model,
@@ -27,17 +30,6 @@ def load_prompt_config(path):
 
 
 def generate_revenue_summary() -> str:
-    load_dotenv()
-
-    api_key = os.getenv("GEMINI_API_KEY")
-
-    if not api_key:
-        raise ValueError("GEMINI_API_KEY is missing. Add it to your .env file.")
-
-    genai.configure(api_key=api_key)
-
-    model = genai.GenerativeModel("gemini-3.5-flash")
-
     prompt_config = load_prompt_config("prompts/revenue_summary.yaml")
 
     df = pd.read_csv("data/monthly_kpis.csv")
@@ -60,7 +52,7 @@ def generate_revenue_summary() -> str:
     )
 
     semantic_model = load_semantic_model(
-    "semantic_models/finance_metrics.yaml"
+        "semantic_models/finance_metrics.yaml"
     )
 
     semantic_context = build_metric_context(
@@ -92,7 +84,7 @@ Metrics:
 {context}
 """
 
-    response = model.generate_content(prompt)
+    response = run_cortex(prompt, model="llama3.1-70b")
 
     output_dir = Path("outputs")
     output_dir.mkdir(exist_ok=True)
@@ -100,9 +92,9 @@ Metrics:
     output_path = output_dir / "revenue_summary.txt"
 
     with open(output_path, "w") as file:
-        file.write(response.text)
+        file.write(response)
 
-    return response.text
+    return response
 
 
 def main():

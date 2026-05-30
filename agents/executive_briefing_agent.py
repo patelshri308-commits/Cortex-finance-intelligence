@@ -4,17 +4,11 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.append(str(PROJECT_ROOT))
 
-import os
-from pathlib import Path
-
-import google.generativeai as genai
+from src.cortex_runner import run_cortex
 import yaml
-from dotenv import load_dotenv
 
 from agents.revenue_summary_agent import generate_revenue_summary
 from agents.variance_analysis_agent import generate_variance_analysis
-
-from utils.schema_validation import validate_monthly_kpis
 
 
 def load_prompt_config(path):
@@ -23,17 +17,6 @@ def load_prompt_config(path):
 
 
 def generate_executive_briefing() -> str:
-    load_dotenv()
-
-    api_key = os.getenv("GEMINI_API_KEY")
-
-    if not api_key:
-        raise ValueError("GEMINI_API_KEY is missing. Add it to your .env file.")
-
-    genai.configure(api_key=api_key)
-
-    model = genai.GenerativeModel("gemini-3.5-flash")
-
     prompt_config = load_prompt_config("prompts/executive_briefing.yaml")
 
     revenue_summary = generate_revenue_summary()
@@ -57,7 +40,7 @@ Use the following agent outputs as source material.
 {context}
 """
 
-    response = model.generate_content(prompt)
+    response = run_cortex(prompt, model="llama3.1-70b")
 
     output_dir = Path("outputs")
     output_dir.mkdir(exist_ok=True)
@@ -65,9 +48,9 @@ Use the following agent outputs as source material.
     output_path = output_dir / "executive_briefing.txt"
 
     with open(output_path, "w") as file:
-        file.write(response.text)
+        file.write(response)
 
-    return response.text
+    return response
 
 
 def main():

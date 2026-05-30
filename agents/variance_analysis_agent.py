@@ -1,13 +1,14 @@
-import os
+import sys
 from pathlib import Path
 
-import google.generativeai as genai
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+sys.path.append(str(PROJECT_ROOT))
+
 import pandas as pd
 import yaml
-from dotenv import load_dotenv
 
+from src.cortex_runner import run_cortex
 from utils.schema_validation import validate_monthly_kpis
-
 
 
 def calculate_growth(current_value, previous_value):
@@ -27,23 +28,10 @@ def load_prompt_config(path):
 
 
 def generate_variance_analysis() -> str:
-    load_dotenv()
-
-    api_key = os.getenv("GEMINI_API_KEY")
-
-    if not api_key:
-        raise ValueError("GEMINI_API_KEY is missing. Add it to your .env file.")
-
-    genai.configure(api_key=api_key)
-
-    model = genai.GenerativeModel("gemini-3.5-flash")
-
     prompt_config = load_prompt_config("prompts/variance_analysis.yaml")
 
     df = pd.read_csv("data/monthly_kpis.csv")
     validate_monthly_kpis(df)
-
-
 
     df["revenue_month"] = pd.to_datetime(df["revenue_month"])
     df = df.sort_values("revenue_month")
@@ -129,7 +117,7 @@ Metrics:
 {context}
 """
 
-    response = model.generate_content(prompt)
+    response = run_cortex(prompt, model="llama3.1-70b")
 
     output_dir = Path("outputs")
     output_dir.mkdir(exist_ok=True)
@@ -137,9 +125,9 @@ Metrics:
     output_path = output_dir / "variance_analysis.txt"
 
     with open(output_path, "w") as file:
-        file.write(response.text)
+        file.write(response)
 
-    return response.text
+    return response
 
 
 def main():
