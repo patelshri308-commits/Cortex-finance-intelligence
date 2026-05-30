@@ -15,6 +15,7 @@ from utils.semantic_loader import (
 )
 
 from utils.schema_validation import validate_monthly_kpis
+from src.snowflake_query import query_snowflake_to_df
 
 
 def calculate_growth(current_value, previous_value):
@@ -32,7 +33,11 @@ def load_prompt_config(path):
 def generate_revenue_summary() -> str:
     prompt_config = load_prompt_config("prompts/revenue_summary.yaml")
 
-    df = pd.read_csv("data/monthly_kpis.csv")
+    df = query_snowflake_to_df("""
+    SELECT *
+    FROM FINANCE_AI.RAW.MONTHLY_KPIS
+    ORDER BY REVENUE_MONTH;
+    """)
     validate_monthly_kpis(df)
 
     df["revenue_month"] = pd.to_datetime(df["revenue_month"])
