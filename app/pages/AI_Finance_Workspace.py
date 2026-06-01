@@ -6,6 +6,8 @@ from typing import Dict, List, Tuple
 
 import pandas as pd
 import streamlit as st
+from cryptography.hazmat.backends import default_backend
+from cryptography.hazmat.primitives import serialization
 
 try:
     import snowflake.connector
@@ -50,17 +52,47 @@ WORKFLOW_LABELS = {
 
 
 def get_connection():
+    """Create a Snowflake connection.
+
+    Public Streamlit deployments should use Snowflake key-pair auth through
+    SNOWFLAKE_PRIVATE_KEY so MFA does not block the app. Password auth is kept
+    only as a local/dev fallback.
+    """
     if snowflake is None:
         raise RuntimeError("snowflake-connector-python is not installed.")
 
+    private_key_text = st.secrets.get("SNOWFLAKE_PRIVATE_KEY")
+
+    connection_kwargs = {
+        "account": st.secrets["SNOWFLAKE_ACCOUNT"],
+        "user": st.secrets["SNOWFLAKE_USER"],
+        "warehouse": st.secrets["SNOWFLAKE_WAREHOUSE"],
+        "database": st.secrets["SNOWFLAKE_DATABASE"],
+        "schema": st.secrets["SNOWFLAKE_SCHEMA"],
+        "role": st.secrets.get("SNOWFLAKE_ROLE"),
+    }
+
+    if private_key_text:
+        private_key = serialization.load_pem_private_key(
+            private_key_text.encode("utf-8"),
+            password=None,
+            backend=default_backend(),
+        )
+
+        private_key_der = private_key.private_bytes(
+            encoding=serialization.Encoding.DER,
+            format=serialization.PrivateFormat.PKCS8,
+            encryption_algorithm=serialization.NoEncryption(),
+        )
+
+        return snowflake.connector.connect(
+            **connection_kwargs,
+            private_key=private_key_der,
+        )
+
     return snowflake.connector.connect(
-        account=st.secrets["SNOWFLAKE_ACCOUNT"],
-        user=st.secrets["SNOWFLAKE_USER"],
+        **connection_kwargs,
         password=st.secrets["SNOWFLAKE_PASSWORD"],
-        warehouse=st.secrets["SNOWFLAKE_WAREHOUSE"],
-        database=st.secrets["SNOWFLAKE_DATABASE"],
-        schema=st.secrets["SNOWFLAKE_SCHEMA"],
-        role=st.secrets.get("SNOWFLAKE_ROLE"),
     )
 
 
@@ -135,14 +167,12 @@ def route_query(user_query: str) -> str:
 
 def cortex_complete(prompt: str) -> str:
     """Run Snowflake Cortex COMPLETE through the Snowflake Python connector."""
-    escaped_prompt = prompt.replace("'", "''")
-    escaped_model = CORTEX_MODEL.replace("'", "''")
-    sql = f"SELECT SNOWFLAKE.CORTEX.COMPLETE('{escaped_model}', '{escaped_prompt}') AS RESPONSE"
+    sql = "SELECT SNOWFLAKE.CORTEX.COMPLETE(%s, %s) AS RESPONSE"
 
     with get_connection() as conn:
         cur = conn.cursor()
         try:
-            cur.execute(sql)
+            cur.execute(sql, (CORTEX_MODEL, prompt))
             return cur.fetchone()[0]
         finally:
             cur.close()

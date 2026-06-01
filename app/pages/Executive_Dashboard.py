@@ -3,6 +3,8 @@ from pathlib import Path
 import pandas as pd
 import plotly.express as px
 import streamlit as st
+from cryptography.hazmat.backends import default_backend
+from cryptography.hazmat.primitives import serialization
 
 try:
     import snowflake.connector
@@ -16,17 +18,47 @@ LOCAL_KPI_PATH = Path("data/monthly_kpis.csv")
 
 
 def get_connection():
+    """Create a Snowflake connection.
+
+    Public Streamlit deployments should use Snowflake key-pair auth through
+    SNOWFLAKE_PRIVATE_KEY so MFA does not block the app. Password auth is kept
+    only as a local/dev fallback.
+    """
     if snowflake is None:
         raise RuntimeError("snowflake-connector-python is not installed.")
 
+    private_key_text = st.secrets.get("SNOWFLAKE_PRIVATE_KEY")
+
+    connection_kwargs = {
+        "account": st.secrets["SNOWFLAKE_ACCOUNT"],
+        "user": st.secrets["SNOWFLAKE_USER"],
+        "warehouse": st.secrets["SNOWFLAKE_WAREHOUSE"],
+        "database": st.secrets["SNOWFLAKE_DATABASE"],
+        "schema": st.secrets["SNOWFLAKE_SCHEMA"],
+        "role": st.secrets.get("SNOWFLAKE_ROLE"),
+    }
+
+    if private_key_text:
+        private_key = serialization.load_pem_private_key(
+            private_key_text.encode("utf-8"),
+            password=None,
+            backend=default_backend(),
+        )
+
+        private_key_der = private_key.private_bytes(
+            encoding=serialization.Encoding.DER,
+            format=serialization.PrivateFormat.PKCS8,
+            encryption_algorithm=serialization.NoEncryption(),
+        )
+
+        return snowflake.connector.connect(
+            **connection_kwargs,
+            private_key=private_key_der,
+        )
+
     return snowflake.connector.connect(
-        account=st.secrets["SNOWFLAKE_ACCOUNT"],
-        user=st.secrets["SNOWFLAKE_USER"],
+        **connection_kwargs,
         password=st.secrets["SNOWFLAKE_PASSWORD"],
-        warehouse=st.secrets["SNOWFLAKE_WAREHOUSE"],
-        database=st.secrets["SNOWFLAKE_DATABASE"],
-        schema=st.secrets["SNOWFLAKE_SCHEMA"],
-        role=st.secrets.get("SNOWFLAKE_ROLE"),
     )
 
 
