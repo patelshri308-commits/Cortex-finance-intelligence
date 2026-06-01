@@ -1,16 +1,58 @@
+from pathlib import Path
+
 import pandas as pd
 import plotly.express as px
 import streamlit as st
 
-st.set_page_config(
-    page_title="Executive Dashboard",
-    layout="wide"
-)
+try:
+    import snowflake.connector
+except ImportError:
+    snowflake = None
+
+st.set_page_config(page_title="Executive Dashboard", layout="wide")
+
+KPI_TABLE = st.secrets.get("SNOWFLAKE_KPI_TABLE", "MONTHLY_KPIS")
+LOCAL_KPI_PATH = Path("data/monthly_kpis.csv")
+
+
+def get_connection():
+    if snowflake is None:
+        raise RuntimeError("snowflake-connector-python is not installed.")
+
+    return snowflake.connector.connect(
+        account=st.secrets["SNOWFLAKE_ACCOUNT"],
+        user=st.secrets["SNOWFLAKE_USER"],
+        password=st.secrets["SNOWFLAKE_PASSWORD"],
+        warehouse=st.secrets["SNOWFLAKE_WAREHOUSE"],
+        database=st.secrets["SNOWFLAKE_DATABASE"],
+        schema=st.secrets["SNOWFLAKE_SCHEMA"],
+        role=st.secrets.get("SNOWFLAKE_ROLE"),
+    )
+
+
+@st.cache_data(ttl=600)
+def load_kpis() -> pd.DataFrame:
+    try:
+        with get_connection() as conn:
+            return pd.read_sql(f"SELECT * FROM {KPI_TABLE} ORDER BY revenue_month", conn)
+    except Exception as exc:
+        if LOCAL_KPI_PATH.exists():
+            st.warning(f"Using local demo CSV because Snowflake KPI load failed: {exc}")
+            return pd.read_csv(LOCAL_KPI_PATH)
+        raise
+
+
+def normalize_columns(df: pd.DataFrame) -> pd.DataFrame:
+    df = df.copy()
+    df.columns = [col.lower() for col in df.columns]
+    df["revenue_month"] = pd.to_datetime(df["revenue_month"])
+    return df
+
 
 st.title("Executive Dashboard")
+st.caption("Snowflake finance KPI layer for SaaS revenue analytics.")
 
-df = pd.read_csv("data/monthly_kpis.csv")
-df["revenue_month"] = pd.to_datetime(df["revenue_month"])
+df = normalize_columns(load_kpis())
 
 latest = df.iloc[-1]
 previous = df.iloc[-2]
@@ -26,23 +68,10 @@ col3.metric("Expansion Revenue", f"${latest['expansion_revenue']:,.0f}")
 col4.metric("Churned Revenue", f"${latest['churned_revenue']:,.0f}")
 
 st.subheader("ARR Trend")
-
-arr_fig = px.line(
-    df,
-    x="revenue_month",
-    y="total_arr",
-    title="Monthly ARR"
-)
-
-st.plotly_chart(arr_fig, width="stretch")
+st.plotly_chart(px.line(df, x="revenue_month", y="total_arr", title="Monthly ARR"), width="stretch")
 
 st.subheader("Bookings Trend")
+st.plotly_chart(px.line(df, x="revenue_month", y="total_bookings", title="Monthly Bookings"), width="stretch")
 
-bookings_fig = px.line(
-    df,
-    x="revenue_month",
-    y="total_bookings",
-    title="Monthly Bookings"
-)
-
-st.plotly_chart(bookings_fig, width="stretch")
+with st.expander("View KPI data"):
+    st.dataframe(df, use_container_width=True)
