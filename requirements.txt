@@ -6,3 +6,4 @@ google-generativeai
 PyYAML
 plotly
 python-dotenv
+tabulate
