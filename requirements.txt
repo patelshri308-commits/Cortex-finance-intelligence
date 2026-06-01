@@ -1,8 +1,8 @@
 streamlit
 pandas
+numpy
+snowflake-connector-python
+google-generativeai
+PyYAML
 plotly
-pyyaml
 python-dotenv
-openpyxl
-faker
-snowflake-cli-labs
