@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from datetime import datetime
 from pathlib import Path
-from typing import Dict, List, Tuple
+from typing import Dict
 
 import pandas as pd
 import streamlit as st
@@ -11,13 +11,12 @@ from cryptography.hazmat.primitives import serialization
 
 try:
     import snowflake.connector
-except ImportError:  # keeps the page readable if dependencies are not installed yet
+except ImportError:
     snowflake = None
 
 st.set_page_config(page_title="AI Finance Workspace", layout="wide")
 
 CORTEX_MODEL = st.secrets.get("CORTEX_MODEL", "llama3.1-70b")
-KPI_TABLE = st.secrets.get("SNOWFLAKE_KPI_TABLE", "MONTHLY_KPIS")
 LOCAL_KPI_PATH = Path("data/monthly_kpis.csv")
 
 AGENT_INSTRUCTIONS: Dict[str, str] = {
@@ -51,13 +50,18 @@ WORKFLOW_LABELS = {
 }
 
 
-def get_connection():
-    """Create a Snowflake connection.
+def get_kpi_table_name() -> str:
+    database = st.secrets.get("SNOWFLAKE_DATABASE", "FINANCE_AI")
+    schema = st.secrets.get("SNOWFLAKE_SCHEMA", "RAW")
+    table = st.secrets.get("SNOWFLAKE_KPI_TABLE", "MONTHLY_KPIS")
 
-    Public Streamlit deployments should use Snowflake key-pair auth through
-    SNOWFLAKE_PRIVATE_KEY so MFA does not block the app. Password auth is kept
-    only as a local/dev fallback.
-    """
+    if "." not in table:
+        return f"{database}.{schema}.{table}"
+
+    return table
+
+
+def get_connection():
     if snowflake is None:
         raise RuntimeError("snowflake-connector-python is not installed.")
 
@@ -98,11 +102,12 @@ def get_connection():
 
 @st.cache_data(ttl=600)
 def load_kpis() -> pd.DataFrame:
-    """Load KPI data from Snowflake. Fall back to local synthetic CSV for demo resilience."""
     try:
         with get_connection() as conn:
-            query = f"SELECT * FROM {KPI_TABLE} ORDER BY revenue_month"
+            table = get_kpi_table_name()
+            query = f"SELECT * FROM {table} ORDER BY revenue_month"
             return pd.read_sql(query, conn)
+
     except Exception as exc:
         if LOCAL_KPI_PATH.exists():
             st.warning(f"Using local demo CSV because Snowflake KPI load failed: {exc}")
@@ -166,7 +171,6 @@ def route_query(user_query: str) -> str:
 
 
 def cortex_complete(prompt: str) -> str:
-    """Run Snowflake Cortex COMPLETE through the Snowflake Python connector."""
     sql = "SELECT SNOWFLAKE.CORTEX.COMPLETE(%s, %s) AS RESPONSE"
 
     with get_connection() as conn:
@@ -227,7 +231,7 @@ if "workflow_history" not in st.session_state:
 with st.sidebar:
     st.subheader("Cortex Settings")
     st.write(f"Model: `{CORTEX_MODEL}`")
-    st.write(f"KPI table: `{KPI_TABLE}`")
+    st.write(f"KPI table: `{get_kpi_table_name()}`")
 
 st.write("Ask a finance question and the router will select the correct specialized Cortex workflow.")
 
