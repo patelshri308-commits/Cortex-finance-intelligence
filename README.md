@@ -1,4 +1,4 @@
-****Cortex Finance Intelligence****
+**Cortex Finance Intelligence**
 
 AI-native finance analytics workspace designed to automate recurring SaaS finance workflows using multi-agent orchestration, semantic business context, and executive-ready reporting automation.
 
@@ -35,16 +35,17 @@ The project was intentionally designed to mirror concepts emphasized in modern e
 
 **Core Features**
 
-Multi-Agent Finance Analytics System
+**Multi-Agent Finance Analytics System**
 
 The platform includes specialized finance workflow agents:
 
-Agent	Purpose
-Revenue Summary Agent	Generates executive SaaS revenue commentary
-Variance Analysis Agent	Explains month-over-month business changes
-Forecast Sensitivity Agent	Simulates scenario-based revenue forecasts
-Executive Briefing Agent	Synthesizes multiple workflows into CFO-style briefings
-Router Agent	Dynamically selects the correct workflow based on business intent
+| Agent | Purpose |
+|-------|---------|
+| Revenue Summary Agent | Generates executive SaaS revenue commentary |
+| Variance Analysis Agent | Explains month-over-month business changes |
+| Forecast Sensitivity Agent | Simulates scenario-based revenue forecasts |
+| Executive Briefing Agent | Synthesizes multiple workflows into CFO-style briefings |
+| Router Agent | Dynamically selects the correct workflow based on business intent |
 
 ⸻
 
@@ -69,43 +70,6 @@ definition:
 interpretation:
   Higher ARR indicates stronger recurring SaaS revenue performance.
 ```
-
-⸻
-
-**AI Finance Workspace**
-
-Users interact with the system through a multi-page Streamlit application.
-
-Workflows include:
-
-* Executive KPI dashboard
-* Natural-language finance analysis workspace
-* Revenue performance analysis
-* Variance commentary
-* Forecast sensitivity modeling
-* Executive briefing generation
-* Excel reporting exports
-
-⸻
-
-**Reporting Automation**
-
-The platform supports automated multi-tab Excel export generation.
-
-Generated reports consolidate:
-
-* KPI datasets
-* AI-generated executive summaries
-* variance analysis
-* forecast sensitivity analysis
-* executive leadership briefings
-
-This simulates real finance reporting workflows used by:
-
-* Strategic Finance
-* FP&A
-* Revenue Operations
-* Executive leadership teams
 
 ⸻
 
@@ -135,151 +99,164 @@ Excel Reporting Export
 
 The platform uses a router-agent architecture built on Snowflake Cortex.
 
+```
 User Query
-→ Router Agent
-→ Semantic Resolver
-→ KPI Context Layer
-→ Specialized Finance Agent
-→ Response
+     ↓
+Router Agent
+     ↓
+Semantic Resolver
+     ↓
+KPI Context Layer
+     ↓
+Specialized Finance Agent
+     ↓
+Response
+```
 
 Specialized agents include:
 
-- Revenue Summary Agent
-- Variance Analysis Agent
-- Forecast Sensitivity Agent
-- Executive Briefing Agent
+* Revenue Summary Agent
+* Variance Analysis Agent
+* Forecast Sensitivity Agent
+* Executive Briefing Agent
 
 This design allows finance questions to be routed to purpose-built workflows instead of relying on a single general-purpose prompt.
 
 ⸻
 
-** Semantic Business Metric Layer**
+**Semantic Business Metric Layer**
 
 The platform includes a semantic finance layer that translates business concepts into relevant KPI context.
 
 Examples:
 
 Revenue Health
+```
 → ARR
 → New ARR Bookings
 → Expansion ARR
 → Churned ARR
 → Contraction ARR
 → Net Revenue Impact
+```
 
 Revenue Quality
+```
 → Expansion ARR
 → Churned ARR
 → Contraction ARR
 → Renewal Revenue
+```
 
 The semantic layer uses deterministic parent-child concept expansion to improve natural-language understanding and ensure consistent KPI analysis.
 
-**Tech Stack**
+⸻
 
-Data / Analytics
+**AI Finance Workspace**
 
-* Python
-* Pandas
-* SQL
-* Snowflake Cortex CLI
-* Faker (synthetic data generation)
+Users interact with the system through a multi-page Streamlit application.
 
-AI / Workflow Orchestration
+Workflows include:
 
-* Snowflake Cortex AI
-* YAML-based prompt skill architecture
-* Multi-agent workflow orchestration
-* Semantic business context injection
-
-Frontend
-
-* Streamlit
-* Plotly
-
-Reporting Automation
-
-* OpenPyXL
-* Excel export generation
+* Executive KPI dashboard
+* Natural-language finance analysis workspace
+* Revenue performance analysis
+* Variance commentary
+* Forecast sensitivity modeling
+* Executive briefing generation
+* Excel reporting exports
 
 ⸻
 
-**Why This Project Exists**
-
-Traditional finance workflows often involve:
-
-* repetitive SQL analysis
-* spreadsheet-heavy reporting
-* manual executive commentary
-* repetitive forecast packaging
-* disconnected analytics workflows
-
-This project explores how AI-native workflow systems can operationalize and accelerate recurring finance analytics processes.
-
-Instead of manually recreating the same analyses each week, the platform encodes finance workflows into reusable AI agents.
-
-⸻
-
-**## Evaluation Framework
-
-The project includes a multi-layer evaluation framework designed to measure AI workflow quality.
-
-### Router Evaluation
-
-Validates that finance questions are routed to the correct specialized agent.
-
-Current Performance:
-- 20/20 test cases passed
-- 100% routing accuracy
-
-### Semantic Evaluation
-
-Validates semantic concept detection and parent-child metric expansion.
-
-Current Performance:
-- 4/4 test cases passed
-- 100% semantic accuracy
-
-### End-to-End Evaluation
-
-Validates generated responses against expected business concepts and quality requirements.
-
-Current Performance:
-- 3/3 test cases passed
-- 100% pass rate
-
-## Executive Dashboard
+**Executive Dashboard**
 
 The Streamlit dashboard provides executive-level finance visibility including:
 
-- KPI scorecards
-- ARR trend analysis
-- Monthly growth metrics
-- ARR Bridge analysis
-- Underlying KPI data inspection
+* KPI scorecards
+* ARR trend analysis
+* Monthly growth metrics
+* ARR Bridge analysis
+* Underlying KPI data inspection
 
 ARR Bridge analysis helps explain how recurring revenue changed over time:
 
+```
 Ending ARR =
 Starting ARR
 + New ARR Bookings
 + Expansion ARR
 - Churned ARR
 - Contraction ARR
+```
 
-**## Forecast Sensitivity Analysis
+⸻
+
+**Forecast Sensitivity Analysis**
 
 The platform supports interactive forecast scenarios through a dedicated Forecast Sensitivity Agent.
 
 Users can model changes to:
 
-- ARR Growth
-- New ARR Bookings
-- Expansion ARR
-- Churned ARR
-- Contraction ARR
+* ARR Growth
+* New ARR Bookings
+* Expansion ARR
+* Churned ARR
+* Contraction ARR
 
-The system generates executive-ready commentary describing financial impact, revenue risk, and potential business outcomes.**
+The system generates executive-ready commentary describing financial impact, revenue risk, and potential business outcomes.
+
+⸻
+
+**Reporting Automation**
+
+The platform supports automated multi-tab Excel export generation.
+
+Generated reports consolidate:
+
+* KPI datasets
+* AI-generated executive summaries
+* variance analysis
+* forecast sensitivity analysis
+* executive leadership briefings
+
+This simulates real finance reporting workflows used by:
+
+* Strategic Finance
+* FP&A
+* Revenue Operations
+* Executive leadership teams
+
+⸻
+
+**Evaluation Framework**
+
+The project includes a multi-layer evaluation framework designed to measure AI workflow quality.
+
+**Router Evaluation**
+
+Validates that finance questions are routed to the correct specialized agent.
+
+Current Performance:
+* 20/20 test cases passed
+* 100% routing accuracy
+
+**Semantic Evaluation**
+
+Validates semantic concept detection and parent-child metric expansion.
+
+Current Performance:
+* 4/4 test cases passed
+* 100% semantic accuracy
+
+**End-to-End Evaluation**
+
+Validates generated responses against expected business concepts and quality requirements.
+
+Current Performance:
+* 3/3 test cases passed
+* 100% pass rate
+
+⸻
 
 **Example Workflow**
 
@@ -306,6 +283,51 @@ Executive Forecast Commentary
      ↓
 Excel / Streamlit Output
 ```
+
+⸻
+
+**Tech Stack**
+
+**Data / Analytics**
+
+* Python
+* Pandas
+* SQL
+* Snowflake Cortex CLI
+* Faker (synthetic data generation)
+
+**AI / Workflow Orchestration**
+
+* Snowflake Cortex AI
+* YAML-based prompt skill architecture
+* Multi-agent workflow orchestration
+* Semantic business context injection
+
+**Frontend**
+
+* Streamlit
+* Plotly
+
+**Reporting Automation**
+
+* OpenPyXL
+* Excel export generation
+
+⸻
+
+**Why This Project Exists**
+
+Traditional finance workflows often involve:
+
+* repetitive SQL analysis
+* spreadsheet-heavy reporting
+* manual executive commentary
+* repetitive forecast packaging
+* disconnected analytics workflows
+
+This project explores how AI-native workflow systems can operationalize and accelerate recurring finance analytics processes.
+
+Instead of manually recreating the same analyses each week, the platform encodes finance workflows into reusable AI agents.
 
 ⸻
 
@@ -347,7 +369,7 @@ This platform leverages Snowflake as the central data and AI engine through:
 
 **Running The Project**
 
-Install Dependencies
+**Install Dependencies**
 
 ```bash
 pip install -r requirements.txt
@@ -365,25 +387,25 @@ python3 scripts/generate_saas_data.py
 
 **Run AI Agents**
 
-Revenue Summary
+**Revenue Summary**
 
 ```bash
 python3 agents/revenue_summary_agent.py
 ```
 
-Variance Analysis
+**Variance Analysis**
 
 ```bash
 python3 agents/variance_analysis_agent.py
 ```
 
-Forecast Sensitivity
+**Forecast Sensitivity**
 
 ```bash
 python3 agents/forecast_sensitivity_agent.py
 ```
 
-Executive Briefing
+**Executive Briefing**
 
 ```bash
 python3 agents/executive_briefing_agent.py
@@ -441,7 +463,7 @@ The emphasis of the project is on workflow engineering and operational analytics
 
 ⸻
 
-****Author****
+**Author**
 
 **Shri Patel**
 
