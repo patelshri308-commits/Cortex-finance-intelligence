@@ -151,6 +151,15 @@ def build_semantic_context(user_query: str) -> str:
 
     lines = ["Semantic Business Context:"]
 
+    if "churn_analysis" in resolved["detected_concepts"]:
+        lines.append(
+            "- Churn analysis data boundary: The current dataset supports churned ARR trend "
+            "and financial-impact analysis, but not definitive customer-level root-cause "
+            "analysis. Do not infer unsupported causes such as pricing, product quality, "
+            "customer satisfaction, market competition, geography, industry, product usage, "
+            "or cancellation reasons unless those attributes are present in the KPI context."
+        )
+
     for key in detected:
         info = get_metric_definition(key)
         if not info:

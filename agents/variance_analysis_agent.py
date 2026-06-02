@@ -30,7 +30,7 @@ def load_prompt_config(path):
         return yaml.safe_load(file)
 
 
-def generate_variance_analysis() -> str:
+def generate_variance_analysis(user_query: str = "latest revenue performance") -> str:
     prompt_config = load_prompt_config("prompts/variance_analysis.yaml")
 
     df = query_snowflake_to_df("""
@@ -93,8 +93,7 @@ Revenue Drivers:
 Metrics:
 {context}
 """
-    # Inject semantic business context for LLMs (no user query available)
-    semantic_context_block = build_semantic_context("latest revenue performance")
+    semantic_context_block = build_semantic_context(user_query)
 
     prompt = f"""
 {prompt_config["system_prompt"]}

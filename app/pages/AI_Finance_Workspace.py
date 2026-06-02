@@ -69,7 +69,7 @@ if submitted:
                 if selected_workflow == "revenue_summary":
                     result = generate_revenue_summary()
                 elif selected_workflow == "variance_analysis":
-                    result = generate_variance_analysis()
+                    result = generate_variance_analysis(user_query)
                 elif selected_workflow == "forecast_sensitivity":
                     result = generate_forecast_sensitivity_from_question(user_query)
                 elif selected_workflow == "executive_briefing":

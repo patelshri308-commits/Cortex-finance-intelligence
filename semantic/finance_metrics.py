@@ -26,6 +26,13 @@ CONCEPT_EXPANSIONS: Dict[str, List[str]] = {
         "renewal_revenue",
         "net_revenue_impact",
     ],
+    "churn_analysis": [
+        "churned_revenue",
+        "contraction_revenue",
+        "expansion_revenue",
+        "arr",
+        "net_revenue_impact",
+    ],
 }
 
 
@@ -80,15 +87,22 @@ FINANCE_METRICS: Dict[str, Dict] = {
 
     "churned_revenue": {
         "name": "Churned Revenue",
-        "aliases": ["churn", "churned revenue", "lost recurring revenue"],
+        "aliases": [
+            "churn",
+            "churned revenue",
+            "lost recurring revenue",
+            "churn trends",
+            "churn analysis",
+        ],
         "definition": (
             "Recurring revenue lost from customers that fully cancel their subscriptions "
             "in the period."
         ),
         "related_metrics": ["arr", "net_revenue_impact", "contraction_revenue"],
         "analysis_guidance": (
-            "Distinguish voluntary vs. involuntary churn if available. Quantify the dollars "
-            "lost and express as a percent of ARR to prioritize retention efforts."
+            "Use churned revenue for trend and financial-impact analysis. Do not infer "
+            "customer-level churn causes unless cancellation reasons, customer attributes, "
+            "product usage, geography, support, satisfaction, or similar data is present."
         ),
     },
 
@@ -177,6 +191,35 @@ FINANCE_METRICS: Dict[str, Dict] = {
         "analysis_guidance": (
             "Summarize revenue health by combining trend (ARR growth), retention (renewals/churn), "
             "and concentration signals. Provide clear numeric indicators and any leading risks."
+        ),
+    },
+
+    "churn_analysis": {
+        "name": "Churn Analysis",
+        "aliases": [
+            "churn drivers",
+            "causes of churn",
+            "cause of churn",
+            "what caused churn",
+            "what is driving churn",
+            "what drove churn",
+            "why customers churn",
+            "why are customers churning",
+            "churn trends",
+            "churn analysis",
+        ],
+        "definition": (
+            "Analysis of churned ARR trends, financial impact, and relationships to "
+            "expansion ARR, contraction ARR, ARR, and net revenue impact."
+        ),
+        "related_metrics": CONCEPT_EXPANSIONS["churn_analysis"],
+        "analysis_guidance": (
+            "Trend analysis is supported by the current aggregate KPI dataset; definitive "
+            "root-cause analysis is not supported. Explicitly state that the dataset lacks "
+            "customer-level attributes such as industry, product usage, geography, customer "
+            "satisfaction, support history, and cancellation reasons. Prioritize churned ARR "
+            "trend, churn as a share of ARR when computable, churn versus expansion ARR, "
+            "churn versus contraction ARR, and net revenue impact."
         ),
     },
 }
