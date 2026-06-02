@@ -11,6 +11,7 @@ from src.cortex_runner import run_cortex
 from utils.schema_validation import validate_monthly_kpis
 from src.snowflake_query import query_snowflake_to_df
 from utils.semantic_loader import compute_kpi_metrics, build_kpi_context
+from semantic.context_builder import build_semantic_context
 
 
 def load_prompt_config(path):
@@ -96,6 +97,20 @@ Projected Scenario:
 Metrics:
 {context}
 """
+    # Inject semantic business context for LLMs (no user query available)
+    semantic_context_block = build_semantic_context("latest revenue performance")
+
+    prompt = f"""
+{prompt_config["system_prompt"]}
+
+Semantic Business Context:
+{semantic_context_block}
+
+{prompt_config["output_format"]}
+
+Metrics:
+{context}
+"""
 
     response = run_cortex(prompt, model="llama3.1-70b")
 
@@ -121,6 +136,8 @@ def generate_forecast_sensitivity_from_question(user_query: str) -> str:
     previous = df.iloc[-2] if len(df) > 1 else latest
 
     metrics = compute_kpi_metrics(latest, previous)
+
+    semantic_context_block = build_semantic_context(user_query)
 
     prompt = f"""
 You are the Forecast Sensitivity Agent for a SaaS finance analytics workflow.
@@ -158,6 +175,9 @@ BAD:    Line breaks in numbers (568,663 split across lines)
 BAD:    Using LaTeX or mathematical rendering
 
 Use the KPI data below to estimate the impact of the user's requested scenario.
+
+Semantic Business Context:
+{semantic_context_block}
 
 {build_kpi_context(metrics, latest_month=latest['revenue_month'], previous_month=previous['revenue_month'])}
 

@@ -11,6 +11,7 @@ from src.cortex_runner import run_cortex
 from utils.schema_validation import validate_monthly_kpis
 from src.snowflake_query import query_snowflake_to_df
 from utils.semantic_loader import compute_kpi_metrics, build_kpi_context, format_currency
+from semantic.context_builder import build_semantic_context
 
 
 def calculate_growth(current_value, previous_value):
@@ -86,6 +87,20 @@ Revenue Drivers:
 
     prompt = f"""
 {prompt_config["system_prompt"]}
+
+{prompt_config["output_format"]}
+
+Metrics:
+{context}
+"""
+    # Inject semantic business context for LLMs (no user query available)
+    semantic_context_block = build_semantic_context("latest revenue performance")
+
+    prompt = f"""
+{prompt_config["system_prompt"]}
+
+Semantic Business Context:
+{semantic_context_block}
 
 {prompt_config["output_format"]}
 

@@ -9,6 +9,7 @@ import yaml
 
 from agents.revenue_summary_agent import generate_revenue_summary
 from agents.variance_analysis_agent import generate_variance_analysis
+from semantic.context_builder import build_semantic_context
 
 
 def load_prompt_config(path):
@@ -29,9 +30,14 @@ Revenue Summary Agent Output:
 Variance Analysis Agent Output:
 {variance_analysis}
 """
+    # Build semantic business context for the briefing
+    semantic_context_block = build_semantic_context("latest revenue performance")
 
     prompt = f"""
 {prompt_config["system_prompt"]}
+
+Semantic Business Context:
+{semantic_context_block}
 
 {prompt_config["output_format"]}
 

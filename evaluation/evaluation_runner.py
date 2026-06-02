@@ -8,6 +8,8 @@ sys.path.append(str(PROJECT_ROOT))
 
 from evaluation.router_tests import run_router_tests
 from evaluation.end_to_end_tests import run_all_end_to_end_tests, print_detailed_report
+from evaluation.secret_loader import load_streamlit_secrets_into_env
+from evaluation.semantic_tests import run_semantic_tests
 
 
 def main():
@@ -17,7 +19,7 @@ def main():
     parser = argparse.ArgumentParser(description="Run evaluation tests")
     parser.add_argument(
         "--mode",
-        choices=["router", "end-to-end", "all"],
+        choices=["router", "semantic", "end-to-end", "all"],
         default="router",
         help="Which tests to run (default: router)",
     )
@@ -51,14 +53,34 @@ def main():
         print("\nNote: End-to-end tests require Snowflake configuration.")
         print("Set SNOWFLAKE_ACCOUNT, SNOWFLAKE_USER, SNOWFLAKE_PASSWORD, SNOWFLAKE_WAREHOUSE\n")
 
+        # Attempt to load Streamlit secrets into environment so local runs work
+        project_root = Path(__file__).resolve().parents[1]
+        loaded = load_streamlit_secrets_into_env(project_root)
+        if loaded:
+            print("Loaded Snowflake secrets from .streamlit/secrets.toml for evaluation:")
+            for k, v in loaded.items():
+                print(f"  {k} set from secrets.toml")
+
         e2e_results = run_all_end_to_end_tests()
 
         if args.verbose:
             print_detailed_report(e2e_results)
 
+    if args.mode in ["semantic", "all"]:
+        print("\n" + "=" * 80)
+        print("RUNNING SEMANTIC METRIC TESTS")
+        print("=" * 80)
+        semantic_results = run_semantic_tests()
+
+    # Final return behavior: return a dict for the mode most recently run, or router results for router
+    if args.mode == "router":
+        return router_results
+    if args.mode == "semantic":
+        return semantic_results
+    if args.mode in ["end-to-end", "all"]:
         return e2e_results
 
-    return router_results if args.mode == "router" else None
+    return None
 
 
 if __name__ == "__main__":

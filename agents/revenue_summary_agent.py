@@ -15,6 +15,7 @@ from utils.semantic_loader import (
     compute_kpi_metrics,
     build_kpi_context,
 )
+from semantic.context_builder import build_semantic_context
 
 from utils.schema_validation import validate_monthly_kpis
 from src.snowflake_query import query_snowflake_to_df
@@ -68,6 +69,23 @@ def generate_revenue_summary() -> str:
 
     prompt = f"""
 {prompt_config["system_prompt"]}
+
+Business Metric Definitions:
+{semantic_context}
+
+{prompt_config["output_format"]}
+
+Metrics:
+{context}
+"""
+    # Inject semantic business context for LLMs (no user query available)
+    semantic_context_block = build_semantic_context("latest revenue performance")
+
+    prompt = f"""
+{prompt_config["system_prompt"]}
+
+Semantic Business Context:
+{semantic_context_block}
 
 Business Metric Definitions:
 {semantic_context}
