@@ -1,32 +1,20 @@
-import json
-import subprocess
-import textwrap
+import streamlit as st
+
+from src.snowflake_query import get_connection
 
 
-def run_cortex(prompt: str, model: str = "llama3.1-70b") -> str:
-    escaped_prompt = prompt.replace("'", "''")
+def run_cortex(prompt: str, model: str | None = None) -> str:
+    model = model or st.secrets.get("CORTEX_MODEL", "llama3.1-70b")
 
-    sql = f"""
-    SELECT SNOWFLAKE.CORTEX.AI_COMPLETE(
-        '{model}',
-        '{escaped_prompt}'
-    ) AS response;
+    sql = """
+        SELECT SNOWFLAKE.CORTEX.COMPLETE(%s, %s) AS response
     """
 
-    result = subprocess.run(
-        ["snow", "sql", "-q", textwrap.dedent(sql), "--format", "json"],
-        capture_output=True,
-        text=True
-    )
-
-    if result.returncode != 0:
-        raise RuntimeError(
-            f"Cortex call failed.\nSTDOUT:\n{result.stdout}\nSTDERR:\n{result.stderr}"
-        )
-
-    data = json.loads(result.stdout)
-
-    if not data:
-        return ""
-
-    return data[0]["RESPONSE"]
+    with get_connection() as conn:
+        cur = conn.cursor()
+        try:
+            cur.execute(sql, (model, prompt))
+            row = cur.fetchone()
+            return row[0] if row else ""
+        finally:
+            cur.close()

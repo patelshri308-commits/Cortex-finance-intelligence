@@ -1,33 +1,54 @@
-import json
-import subprocess
-
 import pandas as pd
+import streamlit as st
+import snowflake.connector
+
+from cryptography.hazmat.backends import default_backend
+from cryptography.hazmat.primitives import serialization
+
+
+def get_connection():
+    private_key_text = st.secrets.get("SNOWFLAKE_PRIVATE_KEY")
+
+    connection_kwargs = {
+        "account": st.secrets["SNOWFLAKE_ACCOUNT"],
+        "user": st.secrets["SNOWFLAKE_USER"],
+        "warehouse": st.secrets["SNOWFLAKE_WAREHOUSE"],
+        "role": st.secrets["SNOWFLAKE_ROLE"],
+    }
+
+    if private_key_text:
+        private_key = serialization.load_pem_private_key(
+            private_key_text.encode("utf-8"),
+            password=None,
+            backend=default_backend(),
+        )
+
+        private_key_der = private_key.private_bytes(
+            encoding=serialization.Encoding.DER,
+            format=serialization.PrivateFormat.PKCS8,
+            encryption_algorithm=serialization.NoEncryption(),
+        )
+
+        return snowflake.connector.connect(
+            **connection_kwargs,
+            private_key=private_key_der,
+        )
+
+    return snowflake.connector.connect(
+        **connection_kwargs,
+        password=st.secrets["SNOWFLAKE_PASSWORD"],
+    )
 
 
 def query_snowflake_to_df(sql: str) -> pd.DataFrame:
-    result = subprocess.run(
-        ["snow", "sql", "-q", sql, "--format", "json"],
-        capture_output=True,
-        text=True
-    )
+    with get_connection() as conn:
+        df = pd.read_sql(sql, conn)
 
-    if result.returncode != 0:
-        raise RuntimeError(
-            f"Snowflake query failed.\nSTDOUT:\n{result.stdout}\nSTDERR:\n{result.stderr}"
-        )
-
-    data = json.loads(result.stdout)
-
-    df = pd.DataFrame(data)
-
-    # Normalize Snowflake uppercase columns to existing app lowercase columns
     df.columns = [col.lower() for col in df.columns]
 
-    # Convert dates
     if "revenue_month" in df.columns:
         df["revenue_month"] = pd.to_datetime(df["revenue_month"])
 
-    # Convert numeric strings from Snowflake CLI JSON output
     numeric_columns = [
         "total_arr",
         "total_mrr",
