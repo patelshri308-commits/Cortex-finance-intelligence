@@ -17,6 +17,7 @@ from agents.forecast_sensitivity_agent import (
 from agents.revenue_summary_agent import generate_revenue_summary
 from agents.router_agent import route_query
 from agents.variance_analysis_agent import generate_variance_analysis
+from evaluation.evaluation_history import get_latest_evaluation
 from exports.excel_exporter import export_finance_report
 
 st.set_page_config(page_title="AI Finance Workspace", layout="wide")
@@ -28,15 +29,35 @@ WORKFLOW_LABELS = {
     "executive_briefing": "Executive Briefing Agent",
 }
 
+
+def _format_eval_pass_rate(summary: dict | None) -> str:
+    if not summary:
+        return "N/A"
+    return f"{summary.get('pass_rate', 0):.0f}%"
+
+
+def _get_latest_evaluation_status() -> dict | None:
+    try:
+        return get_latest_evaluation()
+    except Exception:
+        return None
+
+
 st.title("AI Finance Workspace")
 st.caption("Router-agent finance analytics powered by Snowflake Cortex.")
 
 with st.container(border=True):
-    st.markdown(
-        "**AI Quality Checks:** Router 100% · Semantic 100% · E2E 100%  \n"
-        "_Validated through the local evaluation framework; evaluations are not run live in the app._  \n"
-        "`evaluation_runner.py`"
-    )
+    latest_evaluation = _get_latest_evaluation_status()
+    if latest_evaluation:
+        router_rate = _format_eval_pass_rate(latest_evaluation.get("router"))
+        semantic_rate = _format_eval_pass_rate(latest_evaluation.get("semantic"))
+        e2e_rate = _format_eval_pass_rate(latest_evaluation.get("end_to_end"))
+        st.markdown(
+            f"**AI Quality Checks:** Router {router_rate} · Semantic {semantic_rate} · E2E {e2e_rate}  \n"
+            f"_Latest local evaluation: {latest_evaluation.get('timestamp', 'Unknown')}_"
+        )
+    else:
+        st.markdown("**AI Quality Checks:** run evaluation_runner.py to generate latest status.")
 
 if "workflow_history" not in st.session_state:
     st.session_state.workflow_history = []

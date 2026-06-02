@@ -1,0 +1,23 @@
+[
+  {
+    "timestamp": "2026-06-02T10:55:38",
+    "mode": "all",
+    "router": {
+      "passed": 20,
+      "total": 20,
+      "pass_rate": 100.0
+    },
+    "semantic": {
+      "passed": 4,
+      "total": 4,
+      "pass_rate": 100.0
+    },
+    "end_to_end": {
+      "passed": 2,
+      "total": 3,
+      "skipped": 0,
+      "pass_rate": 66.66666666666666
+    },
+    "overall_status": "FAIL"
+  }
+]
