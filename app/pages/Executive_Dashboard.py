@@ -17,6 +17,32 @@ st.set_page_config(page_title="Executive Dashboard", layout="wide")
 LOCAL_KPI_PATH = Path("data/monthly_kpis.csv")
 
 
+def format_month_label(value) -> str:
+    month = pd.to_datetime(value, errors="coerce")
+    if pd.isna(month):
+        return "Unknown"
+    return month.strftime("%b %Y")
+
+
+def format_month_range(df: pd.DataFrame) -> str:
+    if "revenue_month" not in df.columns or df.empty:
+        return "range unavailable"
+
+    revenue_months = pd.to_datetime(df["revenue_month"], errors="coerce").dropna()
+    if revenue_months.empty:
+        return "range unavailable"
+
+    start_month = revenue_months.min().strftime("%b %Y")
+    end_month = revenue_months.max().strftime("%b %Y")
+    return f"{start_month} - {end_month}"
+
+
+def get_latest_month_label(df: pd.DataFrame) -> str:
+    if "revenue_month" not in df.columns or df.empty:
+        return "Unknown"
+    return format_month_label(df["revenue_month"].max())
+
+
 def load_dashboard_data() -> pd.DataFrame:
     table = st.secrets.get("SNOWFLAKE_KPI_TABLE", "FINANCE_AI.RAW.MONTHLY_KPIS")
     query = f"SELECT * FROM {table} ORDER BY revenue_month"
@@ -37,6 +63,9 @@ st.title("Executive Dashboard")
 st.caption("Snowflake-backed SaaS finance KPI dashboard.")
 
 df = load_dashboard_data().sort_values("revenue_month")
+df["revenue_month"] = pd.to_datetime(df["revenue_month"], errors="coerce")
+data_range = format_month_range(df)
+latest_month_label = get_latest_month_label(df)
 
 latest = df.iloc[-1]
 previous = df.iloc[-2]
@@ -46,15 +75,26 @@ bookings_growth = ((latest["total_bookings"] - previous["total_bookings"]) / pre
 
 col1, col2, col3, col4 = st.columns(4)
 
-col1.metric("Total ARR", f"${latest['total_arr']:,.0f}", f"{arr_growth:.2f}%")
-col2.metric("Bookings", f"${latest['total_bookings']:,.0f}", f"{bookings_growth:.2f}%")
+st.caption(f"Latest month: {latest_month_label} · Comparison: prior month")
+
+col1.metric("Total ARR", f"${latest['total_arr']:,.0f}", f"{arr_growth:.2f}% MoM Change")
+col2.metric("Bookings", f"${latest['total_bookings']:,.0f}", f"{bookings_growth:.2f}% MoM Change")
 col3.metric("Expansion Revenue", f"${latest['expansion_revenue']:,.0f}")
 col4.metric("Churned Revenue", f"${latest['churned_revenue']:,.0f}")
 
 st.subheader("ARR Trend")
-arr_fig = px.line(df, x="revenue_month", y="total_arr", title="Monthly ARR")
+arr_fig = px.line(df, x="revenue_month", y="total_arr", title=f"Monthly ARR Trend: {data_range}")
 st.plotly_chart(arr_fig, width="stretch")
 
 st.subheader("Bookings Trend")
-bookings_fig = px.line(df, x="revenue_month", y="total_bookings", title="Monthly Bookings")
+bookings_fig = px.line(
+    df,
+    x="revenue_month",
+    y="total_bookings",
+    title=f"Monthly Bookings Trend: {data_range}",
+)
 st.plotly_chart(bookings_fig, width="stretch")
+
+with st.expander("View underlying KPI data"):
+    st.caption(f"Dashboard source data range: {data_range}")
+    st.dataframe(df, width="stretch")
