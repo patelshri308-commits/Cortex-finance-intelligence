@@ -1,1 +1,18 @@
-"## Variance Summary\n- ARR declined by 1.16% to $40,384,499, primarily driven by contraction and churn.\n- Bookings growth was flat, increasing by 0.09% to $12,899,531, despite a modest increase in new business revenue.\n- Revenue drivers were mixed, with expansion revenue growth offset by contraction and churn.\n\n## Primary Drivers\n- ARR decline was primarily driven by a $181,490 contraction in revenue and a $47,946 increase in churned revenue, partially offset by a $295,460 expansion in revenue.\n- Bookings growth was driven by a $212,261 increase in new business revenue, which was largely offset by a $255,435 decline in renewal revenue.\n- The modest bookings growth rate of 0.09% suggests that the sales team is facing challenges in driving significant new business growth.\n\n## Risks / Watchouts\n- The decline in ARR and renewal revenue may indicate a trend of customers reducing their spend, which could be a sign of a broader market slowdown.\n- The increase in churned revenue is a concern, as it may indicate issues with customer satisfaction or retention.\n\n## Recommended Follow-Up\n- Conduct a deeper analysis of the drivers behind the contraction and churn in revenue to identify potential areas for improvement.\n- Review sales team performance and strategies to drive new business growth and improve renewal rates.\n- Monitor customer satisfaction and retention metrics to address any potential issues and mitigate the risk of further churn."
+## Variance Summary
+- ARR declined by $475,882 (-1.16%) from $40,860,381 to $40,384,499.
+- Bookings increased by $11,175 (0.09%) from $12,888,356 to $12,899,531.
+- Net Revenue Impact was $2,008,226, driven by expansion, contraction, and churn.
+
+## Primary Drivers
+- The largest negative contributor to ARR decline was Renewal Revenue, which decreased by $255,435.
+- Expansion Revenue increased by $295,460, partially offsetting the decline in ARR.
+- Churned Revenue decreased by $47,946, while Contraction Revenue increased by $181,490, contributing to the Net Revenue Impact.
+
+## Risks / Watchouts
+- Renewal Revenue decline may indicate potential issues with customer retention or pricing strategy, warranting further analysis.
+- Contraction Revenue increase may signal a trend of customers reducing their commitments, which could impact future ARR growth.
+
+## Recommended Follow-Up
+- Analyze Renewal Revenue trends to understand the drivers behind the decline and identify opportunities for improvement.
+- Investigate the causes of the Contraction Revenue increase to determine if it's a one-time event or a emerging trend.
+- Review the Expansion Revenue growth to identify areas for further investment and potential upside opportunities.

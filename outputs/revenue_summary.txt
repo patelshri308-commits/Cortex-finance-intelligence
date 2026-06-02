@@ -1,1 +1,17 @@
-"## Executive Summary\n* Our total ARR stands at $40.38M as of December 2024, reflecting a -1.16% growth rate, indicating a slight decline in recurring revenue.\n* Bookings performance was relatively flat, with a 0.09% growth rate, totaling $12.90M for the month.\n* Expansion revenue outpaced churned revenue, with $5.21M in additional revenue from upsells and cross-sells, compared to $568,663 in lost revenue from churned customers.\n\n## Revenue Performance\n* Total ARR declined by 1.16% to $40.38M, indicating a need to re-examine customer retention and acquisition strategies.\n* Bookings growth was nearly flat, with a 0.09% increase to $12.90M, suggesting a potential slowdown in new business acquisition.\n* Expansion revenue contributed positively, with $5.21M in additional revenue, while churned revenue totaled $568,663, resulting in a net positive expansion revenue of $4.64M.\n\n## Key Risks\n* Churn risk remains a concern, with $568,663 in lost revenue from churned customers, highlighting the need for proactive customer retention efforts.\n* The decline in ARR growth rate may indicate a larger issue with customer acquisition and retention, requiring a thorough review of sales and marketing strategies.\n\n## Recommended Follow-Up\n* Conduct a thorough analysis of customer churn to identify root causes and develop targeted retention strategies.\n* Review sales and marketing performance to identify areas for improvement and optimize customer acquisition efforts.\n* Develop a plan to accelerate expansion revenue growth, focusing on upsell and cross-sell opportunities to offset potential churn risk."
+## Observed Performance
+- Current ARR is $40,384,499.00, with a 1.16% decrease from the previous month.
+- Total Bookings for the current month are $12,899,531.00, a 0.09% increase from the previous month.
+- Net Revenue Impact is $2,008,226.00, calculated as Expansion Revenue minus Churned Revenue minus Contraction Revenue.
+
+## Key Movements
+- ARR decreased by $475,882.00, a 1.16% decline from the previous month.
+- Expansion Revenue increased by $295,460.00, a 6.01% growth from the previous month.
+- Churned Revenue decreased by $47,946.00, a 7.78% decline from the previous month.
+
+## Risks
+- The decline in ARR by 1.16% may indicate a potential risk to revenue stability.
+- Contraction Revenue increased by $181,490.00, which could be a sign of potential customer dissatisfaction or pricing issues.
+
+## Follow-Up Analysis
+- Analyze the drivers behind the 1.16% decline in ARR to understand the root cause of the decrease.
+- Investigate the factors contributing to the increase in Contraction Revenue to identify potential areas for improvement.
