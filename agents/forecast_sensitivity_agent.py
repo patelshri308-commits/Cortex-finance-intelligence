@@ -151,11 +151,11 @@ Never use equation formatting.
 Use plain business language.
 
 Examples:
-✅ GOOD:   "568,663 × 1.10 = 625,529"
-✅ GOOD:   "Expansion revenue of $2.5M increases 8% to $2.7M"
-❌ BAD:    Use of $ symbols in equations or mathematical notation
-❌ BAD:    Line breaks in numbers (568,663 split across lines)
-❌ BAD:    Using LaTeX or mathematical rendering
+GOOD:   "568,663 × 1.10 = 625,529"
+GOOD:   "Expansion revenue of $2.5M increases 8% to $2.7M"
+BAD:    Use of $ symbols in equations or mathematical notation
+BAD:    Line breaks in numbers (568,663 split across lines)
+BAD:    Using LaTeX or mathematical rendering
 
 Use the KPI data below to estimate the impact of the user's requested scenario.
 

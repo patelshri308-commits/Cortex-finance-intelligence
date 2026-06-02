@@ -117,24 +117,67 @@ def run_all_end_to_end_tests():
             if result.get("is_skipped", False):
                 print(f" ⊘ SKIPPED (Snowflake not configured)")
                 skipped_count += 1
+                # Print concise skipped card
+                print("\nQuestion:")
+                print(f"  {result['question']}")
+                print("Expected Agent:")
+                print(f"  {result['expected_agent']}")
+                print("Selected Agent:")
+                print(f"  {result['selected_agent']}")
+                print("Routing Status: SKIPPED")
             else:
-                status = "✓ PASS" if result["overall_pass"] else "✗ FAIL"
+                status = "PASS" if result["overall_pass"] else "FAIL"
                 print(f" {status}")
 
-                print(f"  Question:       {result['question']}")
-                print(f"  Expected Agent: {result['expected_agent']}")
-                print(f"  Selected Agent: {result['selected_agent']}")
+                # Scorecard per requirements
+                print("\nQuestion:")
+                print(f"  {result['question']}")
+                print("Expected Agent:")
+                print(f"  {result['expected_agent']}")
+                print("Selected Agent:")
+                print(f"  {result['selected_agent']}")
+                print("Routing Status:")
+                print(f"  {'PASS' if result['routing_correct'] else 'FAIL'}")
 
-                if not result["routing_correct"]:
-                    print(f"    ⚠ Routing Error: Expected {result['expected_agent']}, got {result['selected_agent']}")
+                # Must contain section
+                must_contain = test_case.get('must_contain', [])
+                present = []
+                missing = []
+                resp_lower = result['quality_score'].get('response_text', '').lower() if result['quality_score'] else ''
+                # score_response already returns missing terms; reuse
+                missing = result['quality_score'].get('missing_terms', [])
+                for term in must_contain:
+                    if term not in missing:
+                        present.append(term)
 
-                if not result["quality_score"].get("passed", False):
-                    if result["quality_score"].get("missing_terms"):
-                        print(f"    ⚠ Missing terms: {result['quality_score']['missing_terms']}")
-                    if result["quality_score"].get("forbidden_terms_found"):
-                        print(f"    ⚠ Forbidden terms found: {result['quality_score']['forbidden_terms_found']}")
+                print("\nMust Contain:")
+                print(f"  Present terms: {present if present else 'None'}")
+                print(f"  Missing terms: {missing if missing else 'None'}")
 
-                if result["overall_pass"]:
+                # Forbidden terms
+                forbidden_found = result['quality_score'].get('forbidden_terms_found', [])
+                print("\nForbidden Terms:")
+                print(f"  Found: {forbidden_found if forbidden_found else 'None'}")
+                print(f"  Clean: { 'YES' if not forbidden_found else 'NO'}")
+
+                print("\nOverall Result:")
+                print(f"  {status}")
+
+                # Failure visibility
+                if status != 'PASS':
+                    print("\nFAILED TEST")
+                    print("Question:")
+                    print(f"  {result['question']}")
+                    print("Selected Agent:")
+                    print(f"  {result['selected_agent']}")
+                    if missing:
+                        print("Missing Terms:")
+                        print(f"  {missing}")
+                    if forbidden_found:
+                        print("Forbidden Terms Found:")
+                        print(f"  {forbidden_found}")
+
+                if status == 'PASS':
                     passed_count += 1
                 else:
                     failed_count += 1
@@ -156,9 +199,9 @@ def run_all_end_to_end_tests():
     evaluated_tests = passed_count + failed_count
     pass_rate = (passed_count / evaluated_tests * 100) if evaluated_tests > 0 else 0
 
-    print("\n" + "=" * 80)
-    print("SUMMARY REPORT")
-    print("=" * 80)
+    print("\n" + "=" * 50)
+    print("END-TO-END EVALUATION SUMMARY")
+    print("=" * 50 + "\n")
     print(f"Total Tests:    {total_tests}")
     if skipped_count > 0:
         print(f"Skipped:        {skipped_count} (Snowflake configuration required)")
@@ -167,7 +210,7 @@ def run_all_end_to_end_tests():
     print(f"Failed:         {failed_count}")
     if evaluated_tests > 0:
         print(f"Pass Rate:      {pass_rate:.1f}%")
-    print("=" * 80 + "\n")
+    print("\n" + "=" * 50 + "\n")
 
     return {
         "total_tests": total_tests,
