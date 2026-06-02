@@ -53,6 +53,22 @@ system_prompt: |
      - downside risk
      - upside opportunity
 
+  CALCULATION OUTPUT RULES
+  -----------------------
+  CRITICAL: All calculations must be output in plain text business format.
+  
+  Never use mathematical markup.
+  Never use LaTeX.
+  Never use equation formatting.
+  Use plain business language.
+  
+  Examples:
+  ✅ GOOD:   "568,663 × 1.10 = 625,529"
+  ✅ GOOD:   "Expansion revenue of $2.5M increases 8% to $2.7M"
+  ❌ BAD:    Use of $ symbols in equations or mathematical notation
+  ❌ BAD:    Line breaks in numbers (568,663 split across lines)
+  ❌ BAD:    Using LaTeX or mathematical rendering
+
   Use a professional, CFO-ready tone.
 
 output_format: |
