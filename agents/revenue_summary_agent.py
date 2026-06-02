@@ -12,6 +12,8 @@ from src.cortex_runner import run_cortex
 from utils.semantic_loader import (
     load_semantic_model,
     build_metric_context,
+    compute_kpi_metrics,
+    build_kpi_context,
 )
 
 from utils.schema_validation import validate_monthly_kpis
@@ -46,15 +48,9 @@ def generate_revenue_summary() -> str:
     latest = df.iloc[-1]
     previous = df.iloc[-2]
 
-    arr_growth = calculate_growth(
-        latest["total_arr"],
-        previous["total_arr"]
-    )
-
-    bookings_growth = calculate_growth(
-        latest["total_bookings"],
-        previous["total_bookings"]
-    )
+    # Pre-calculate business metrics in Python so the model receives a consistent KPI context
+    # and can focus on analysis and explanation instead of arithmetic.
+    metrics = compute_kpi_metrics(latest, previous)
 
     semantic_model = load_semantic_model(
         "semantic_models/finance_metrics.yaml"
@@ -64,18 +60,11 @@ def generate_revenue_summary() -> str:
         semantic_model
     )
 
-    context = f"""
-Latest revenue month: {latest['revenue_month'].date()}
-
-Total ARR: ${latest['total_arr']:,.2f}
-ARR growth rate: {arr_growth:.2f}%
-
-Total bookings: ${latest['total_bookings']:,.2f}
-Bookings growth rate: {bookings_growth:.2f}%
-
-Expansion revenue: ${latest['expansion_revenue']:,.2f}
-Churned revenue: ${latest['churned_revenue']:,.2f}
-"""
+    context = build_kpi_context(
+        metrics,
+        latest_month=latest['revenue_month'].date(),
+        previous_month=previous['revenue_month'].date(),
+    )
 
     prompt = f"""
 {prompt_config["system_prompt"]}

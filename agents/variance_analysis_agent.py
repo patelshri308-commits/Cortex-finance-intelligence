@@ -10,6 +10,7 @@ import yaml
 from src.cortex_runner import run_cortex
 from utils.schema_validation import validate_monthly_kpis
 from src.snowflake_query import query_snowflake_to_df
+from utils.semantic_loader import compute_kpi_metrics, build_kpi_context, format_currency
 
 
 def calculate_growth(current_value, previous_value):
@@ -44,25 +45,8 @@ def generate_variance_analysis() -> str:
     latest = df.iloc[-1]
     previous = df.iloc[-2]
 
-    arr_change = calculate_change(
-        latest["total_arr"],
-        previous["total_arr"]
-    )
-
-    arr_growth = calculate_growth(
-        latest["total_arr"],
-        previous["total_arr"]
-    )
-
-    bookings_change = calculate_change(
-        latest["total_bookings"],
-        previous["total_bookings"]
-    )
-
-    bookings_growth = calculate_growth(
-        latest["total_bookings"],
-        previous["total_bookings"]
-    )
+    # Pre-calculate KPI metrics in Python to reduce model arithmetic load and improve consistency.
+    metrics = compute_kpi_metrics(latest, previous)
 
     expansion_change = calculate_change(
         latest["expansion_revenue"],
@@ -90,27 +74,14 @@ def generate_variance_analysis() -> str:
     )
 
     context = f"""
-Current month: {latest['revenue_month'].date()}
-Previous month: {previous['revenue_month'].date()}
-
-ARR:
-- Previous ARR: ${previous['total_arr']:,.2f}
-- Current ARR: ${latest['total_arr']:,.2f}
-- ARR change: ${arr_change:,.2f}
-- ARR growth rate: {arr_growth:.2f}%
-
-Bookings:
-- Previous bookings: ${previous['total_bookings']:,.2f}
-- Current bookings: ${latest['total_bookings']:,.2f}
-- Bookings change: ${bookings_change:,.2f}
-- Bookings growth rate: {bookings_growth:.2f}%
+{build_kpi_context(metrics, latest_month=latest['revenue_month'].date(), previous_month=previous['revenue_month'].date())}
 
 Revenue Drivers:
-- Expansion revenue change: ${expansion_change:,.2f}
-- Contraction revenue change: ${contraction_change:,.2f}
-- Churned revenue change: ${churn_change:,.2f}
-- New business revenue change: ${new_business_change:,.2f}
-- Renewal revenue change: ${renewal_change:,.2f}
+- Expansion revenue change: {format_currency(expansion_change)}
+- Contraction revenue change: {format_currency(contraction_change)}
+- Churned revenue change: {format_currency(churn_change)}
+- New business revenue change: {format_currency(new_business_change)}
+- Renewal revenue change: {format_currency(renewal_change)}
 """
 
     prompt = f"""

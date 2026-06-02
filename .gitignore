@@ -10,3 +10,6 @@ rsa_key.p8
 rsa_key.pub
 streamlit_demo_key.p8
 streamlit_demo_key.pub
+*.tar.gz
+*.p8
+*.pub

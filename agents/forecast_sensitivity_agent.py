@@ -10,6 +10,7 @@ sys.path.append(str(PROJECT_ROOT))
 from src.cortex_runner import run_cortex
 from utils.schema_validation import validate_monthly_kpis
 from src.snowflake_query import query_snowflake_to_df
+from utils.semantic_loader import compute_kpi_metrics, build_kpi_context
 
 
 def load_prompt_config(path):
@@ -46,15 +47,9 @@ def generate_forecast_sensitivity(
     latest = df.iloc[-1]
     previous = df.iloc[-2]
 
-    baseline_arr_growth = calculate_growth(
-        latest["total_arr"],
-        previous["total_arr"]
-    )
-
-    baseline_bookings_growth = calculate_growth(
-        latest["total_bookings"],
-        previous["total_bookings"]
-    )
+    # Pre-calculate business metrics in Python so the agent receives a structured KPI context
+    # and the model can focus on explanation and insight rather than arithmetic.
+    metrics = compute_kpi_metrics(latest, previous)
 
     projected_arr = latest["total_arr"] * (1 + arr_growth_adjustment_pct / 100)
     projected_bookings = latest["total_bookings"] * (
@@ -75,18 +70,7 @@ def generate_forecast_sensitivity(
     )
 
     context = f"""
-Latest actual month: {latest['revenue_month'].date()}
-
-Baseline Metrics:
-- Current ARR: ${latest['total_arr']:,.2f}
-- Previous ARR: ${previous['total_arr']:,.2f}
-- Baseline ARR growth: {baseline_arr_growth:.2f}%
-- Current bookings: ${latest['total_bookings']:,.2f}
-- Previous bookings: ${previous['total_bookings']:,.2f}
-- Baseline bookings growth: {baseline_bookings_growth:.2f}%
-- Current churned revenue: ${latest['churned_revenue']:,.2f}
-- Current expansion revenue: ${latest['expansion_revenue']:,.2f}
-- Current contraction revenue: ${latest['contraction_revenue']:,.2f}
+{build_kpi_context(metrics, latest_month=latest['revenue_month'].date(), previous_month=previous['revenue_month'].date())}
 
 Scenario Assumptions:
 - ARR growth adjustment: {arr_growth_adjustment_pct:.2f}%
@@ -136,6 +120,8 @@ def generate_forecast_sensitivity_from_question(user_query: str) -> str:
     latest = df.iloc[-1]
     previous = df.iloc[-2] if len(df) > 1 else latest
 
+    metrics = compute_kpi_metrics(latest, previous)
+
     prompt = f"""
 You are the Forecast Sensitivity Agent for a SaaS finance analytics workflow.
 
@@ -144,35 +130,36 @@ The user asked:
 
 Important instruction:
 This is a written user question, not an interactive slider scenario.
-Do not use default slider values.
-Do not assume ARR growth adjustment, bookings growth adjustment, expansion change, churn change, or contraction change unless the user explicitly states them.
+Always use KPI values provided in the context.
+Show calculations explicitly.
+When a user changes one metric, isolate that metric first.
+Do not assume changes to other KPIs.
+Do not estimate ARR impact unless the calculation can be directly derived from the provided KPI values.
+Do not invent ranges like 4–6%.
+Use plain-text arithmetic only.
+Distinguish observed impact from possible implications.
+Use numeric reasoning before recommendations.
+Do not mention pricing issues, customer satisfaction, customer success, product quality, or customer loyalty unless those metrics are explicitly present in the data.
 
 Use the KPI data below to estimate the impact of the user's requested scenario.
 
-Latest KPI values:
-- Revenue month: {latest.get('revenue_month', 'N/A')}
-- Total ARR: {latest.get('total_arr', 'N/A')}
-- Total bookings: {latest.get('total_bookings', 'N/A')}
-- Expansion revenue: {latest.get('expansion_revenue', 'N/A')}
-- Churned revenue: {latest.get('churned_revenue', 'N/A')}
-- Contraction revenue: {latest.get('contraction_revenue', 'N/A')}
-
-Prior month KPI values:
-- Revenue month: {previous.get('revenue_month', 'N/A')}
-- Total ARR: {previous.get('total_arr', 'N/A')}
-- Total bookings: {previous.get('total_bookings', 'N/A')}
-- Expansion revenue: {previous.get('expansion_revenue', 'N/A')}
-- Churned revenue: {previous.get('churned_revenue', 'N/A')}
-- Contraction revenue: {previous.get('contraction_revenue', 'N/A')}
+{build_kpi_context(metrics, latest_month=latest['revenue_month'], previous_month=previous['revenue_month'])}
 
 Response rules:
 - Directly answer the user's scenario.
 - If the user changes one metric, isolate that metric first.
 - Use numeric values from the KPI data.
 - Do not discuss slider assumptions.
-- Do not invent changes to other metrics.
+- Do not assume changes to other metrics.
 - Explain the impact on ARR quality and revenue risk.
 - Keep the answer executive-ready.
+
+Required Output Format:
+Direct Impact:
+Financial Impact:
+ARR Quality Impact:
+Key Risk:
+Executive Takeaway:
 """
     return run_cortex(prompt)
 
