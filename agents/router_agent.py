@@ -11,13 +11,11 @@ def route_query(user_query: str) -> str:
         "simulate",
         "assumption",
         "assumptions",
-        "increase",
-        "decrease",
-        "increases",
-        "decreases",
         "if churn",
         "churn increases",
         "churn decreases",
+        "increase by",
+        "decrease by",
     ]
 
     executive_keywords = [
@@ -27,6 +25,19 @@ def route_query(user_query: str) -> str:
         "cfo",
         "board",
         "qbr",
+        "board-level",
+    ]
+
+    revenue_summary_keywords = [
+        "summary",
+        "summarize",
+        "overview",
+        "recap",
+        "latest performance",
+        "current performance",
+        "revenue summary",
+        "monthly summary",
+        "performance summary",
     ]
 
     variance_keywords = [
@@ -38,41 +49,36 @@ def route_query(user_query: str) -> str:
         "why",
         "driver",
         "drivers",
-        "explain",
+        "explain why",
+        "what caused",
+        "what drove",
+        "cause",
     ]
 
-    revenue_keywords = [
-        "summary",
-        "performance",
-        "revenue",
-        "arr",
-        "bookings",
-        "trend",
-    ]
-
-    if any(keyword in query for keyword in forecast_keywords):
-        return "forecast_sensitivity"
-
+    # Executive always wins
     if any(keyword in query for keyword in executive_keywords):
         return "executive_briefing"
 
+    # Forecast always wins
+    if any(keyword in query for keyword in forecast_keywords):
+        return "forecast_sensitivity"
+
+    # Summary should beat variance unless user explicitly asks WHY
+    if any(keyword in query for keyword in revenue_summary_keywords):
+        if not any(
+            keyword in query
+            for keyword in [
+                "why",
+                "driver",
+                "drivers",
+                "what caused",
+                "what drove",
+            ]
+        ):
+            return "revenue_summary"
+
+    # Variance analysis
     if any(keyword in query for keyword in variance_keywords):
         return "variance_analysis"
 
-    if any(keyword in query for keyword in revenue_keywords):
-        return "revenue_summary"
-
     return "revenue_summary"
-
-
-if __name__ == "__main__":
-    test_queries = [
-        "Analyze current revenue performance",
-        "Why did ARR decline?",
-        "Create an executive briefing",
-        "What happens if churn increases by 10%?",
-        "Run a forecast scenario",
-    ]
-
-    for query in test_queries:
-        print(f"{query} → {route_query(query)}")
