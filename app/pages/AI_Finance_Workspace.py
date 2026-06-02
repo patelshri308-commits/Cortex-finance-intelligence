@@ -5,7 +5,6 @@ from datetime import datetime
 from pathlib import Path
 
 import streamlit as st
-import streamlit.components.v1 as components
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 sys.path.append(str(PROJECT_ROOT))
@@ -32,37 +31,12 @@ WORKFLOW_LABELS = {
 st.title("AI Finance Workspace")
 st.caption("Router-agent finance analytics powered by Snowflake Cortex.")
 
-components.html(
-    """
-    <style>
-      .quality-badge {
-        display: inline-flex;
-        align-items: center;
-        padding: 4px 10px;
-        border: 1px solid rgba(49, 151, 149, 0.35);
-        border-radius: 999px;
-        background: rgba(49, 151, 149, 0.08);
-        color: #1f6f6d;
-        font-size: 13px;
-        font-weight: 600;
-        font-family: sans-serif;
-        cursor: default;
-      }
-    </style>
-
-    <span
-      class="quality-badge"
-      title="Router Evaluation: 20/20 (100%)
-Semantic Evaluation: 4/4 (100%)
-End-to-End Evaluation: 3/3 (100%)
-
-Validated through evaluation_runner.py"
-    >
-      AI Quality ✓
-    </span>
-    """,
-    height=34,
-)
+with st.container(border=True):
+    st.markdown(
+        "**AI Quality Checks:** Router 100% · Semantic 100% · E2E 100%  \n"
+        "_Validated through the local evaluation framework; evaluations are not run live in the app._  \n"
+        "`evaluation_runner.py`"
+    )
 
 if "workflow_history" not in st.session_state:
     st.session_state.workflow_history = []
