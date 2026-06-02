@@ -98,35 +98,20 @@ def get_connection():
     )
 
 
-    @st.cache_data(ttl=600)
-    def load_kpis() -> pd.DataFrame:
-        try:
-            with get_connection() as conn:
+@st.cache_data(ttl=600)
+def load_kpis() -> pd.DataFrame:
+    """Load KPI data from Snowflake. Fall back to local synthetic CSV for demo resilience."""
+    try:
+        with get_connection() as conn:
+            table = get_kpi_table_name()
+            query = f"SELECT * FROM {table} ORDER BY revenue_month"
+            return pd.read_sql(query, conn)
 
-                debug = pd.read_sql("""
-                    SELECT
-                        CURRENT_USER() AS current_user,
-                        CURRENT_ROLE() AS current_role,
-                        CURRENT_ACCOUNT() AS current_account,
-                        CURRENT_WAREHOUSE() AS current_warehouse
-                """, conn)
-
-                st.write("Snowflake Session Debug")
-                st.dataframe(debug)
-
-                table = get_kpi_table_name()
-                query = f"SELECT * FROM {table} ORDER BY revenue_month"
-
-                st.write("Query being executed:")
-                st.code(query)
-
-                return pd.read_sql(query, conn)
-
-        except Exception as exc:
-            if LOCAL_KPI_PATH.exists():
-                st.warning(f"Using local demo CSV because Snowflake KPI load failed: {exc}")
-                return pd.read_csv(LOCAL_KPI_PATH)
-            raise
+    except Exception as exc:
+        if LOCAL_KPI_PATH.exists():
+            st.warning(f"Using local demo CSV because Snowflake KPI load failed: {exc}")
+            return pd.read_csv(LOCAL_KPI_PATH)
+        raise
 
 
 def normalize_kpi_columns(df: pd.DataFrame) -> pd.DataFrame:
