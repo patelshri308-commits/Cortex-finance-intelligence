@@ -71,8 +71,6 @@ def get_connection():
         "account": st.secrets["SNOWFLAKE_ACCOUNT"],
         "user": st.secrets["SNOWFLAKE_USER"],
         "warehouse": st.secrets["SNOWFLAKE_WAREHOUSE"],
-        "database": st.secrets["SNOWFLAKE_DATABASE"],
-        "schema": st.secrets["SNOWFLAKE_SCHEMA"],
         "role": st.secrets.get("SNOWFLAKE_ROLE"),
     }
 
