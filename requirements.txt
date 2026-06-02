@@ -1,10 +1,10 @@
 streamlit
 pandas
 numpy
-snowflake-connector-python
-google-generativeai
-PyYAML
 plotly
+PyYAML
 python-dotenv
-tabulate
+snowflake-connector-python
 cryptography
+tabulate
+openpyxl
