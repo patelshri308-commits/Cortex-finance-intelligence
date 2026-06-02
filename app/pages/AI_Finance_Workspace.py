@@ -123,12 +123,12 @@ col1, col2 = st.columns(2)
 
 with col1:
     arr_growth_adjustment = st.slider("ARR Growth Adjustment (%)", -20, 20, 5)
-    bookings_growth_adjustment = st.slider("Bookings Growth Adjustment (%)", -20, 20, 3)
-    churn_change = st.slider("Churned Revenue Change (%)", -50, 50, 10)
+    bookings_growth_adjustment = st.slider("New ARR Bookings Growth Adjustment (%)", -20, 20, 3)
+    churn_change = st.slider("Churned ARR Change (%)", -50, 50, 10)
 
 with col2:
-    expansion_change = st.slider("Expansion Revenue Change (%)", -50, 50, 5)
-    contraction_change = st.slider("Contraction Revenue Change (%)", -50, 50, 0)
+    expansion_change = st.slider("Expansion ARR Change (%)", -50, 50, 5)
+    contraction_change = st.slider("Contraction ARR Change (%)", -50, 50, 0)
 
 if st.button("Run Forecast Scenario"):
     with st.spinner("Running forecast sensitivity analysis with Snowflake Cortex..."):

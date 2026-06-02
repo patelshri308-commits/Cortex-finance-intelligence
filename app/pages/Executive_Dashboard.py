@@ -64,15 +64,15 @@ def build_arr_bridge_insight(
 ) -> str:
     if arr_movement < 0:
         if retention_headwinds > growth_drivers:
-            return "ARR declined primarily because churn and contraction exceeded expansion and new ARR bookings."
+            return "ARR declined primarily because churned ARR and contraction ARR exceeded expansion ARR and new ARR bookings."
         return (
-            "ARR declined month-over-month despite positive growth drivers; contraction and churn remain the "
+            "ARR declined month-over-month despite positive growth drivers; contraction ARR and churned ARR remain the "
             "main visible retention headwinds."
         )
 
     if expansion_revenue >= churned_revenue:
-        return "ARR growth was supported by expansion revenue offsetting churn pressure."
-    return "ARR grew month-over-month, with new ARR bookings carrying growth despite churn pressure."
+        return "ARR growth was supported by expansion ARR offsetting churned ARR pressure."
+    return "ARR grew month-over-month, with new ARR bookings carrying growth despite churned ARR pressure."
 
 
 def load_dashboard_data() -> pd.DataFrame:
@@ -109,10 +109,19 @@ col1, col2, col3, col4 = st.columns(4)
 
 st.caption(f"Latest month: {latest_month_label} · Comparison: prior month")
 
-col1.metric("Total ARR", f"${latest['total_arr']:,.0f}", f"{arr_growth:.2f}% MoM Change")
-col2.metric("Bookings", f"${latest['total_bookings']:,.0f}", f"{bookings_growth:.2f}% MoM Change")
-col3.metric("Expansion Revenue", f"${latest['expansion_revenue']:,.0f}")
-col4.metric("Churned Revenue", f"${latest['churned_revenue']:,.0f}")
+col1.metric("Ending ARR", f"${latest['total_arr']:,.0f}", f"{arr_growth:.2f}% MoM Change")
+col2.metric("New ARR Bookings", f"${latest['total_bookings']:,.0f}", f"{bookings_growth:.2f}% MoM Change")
+col3.metric("Expansion ARR", f"${latest['expansion_revenue']:,.0f}")
+col4.metric("Churned ARR", f"${latest['churned_revenue']:,.0f}")
+
+with st.expander("Finance metric definitions"):
+    st.markdown(
+        "- **New ARR Bookings** = new recurring revenue from new customers.\n"
+        "- **Expansion ARR** = additional recurring revenue from existing customers.\n"
+        "- **Churned ARR** = recurring revenue lost from customers who left.\n"
+        "- **Contraction ARR** = recurring revenue lost from existing customers reducing spend.\n"
+        "- **Ending ARR** = ARR balance at the end of the period."
+    )
 
 st.subheader("ARR Bridge")
 
@@ -146,18 +155,18 @@ driver_col, headwind_col = st.columns(2)
 with driver_col:
     st.success(
         f"+ New ARR Bookings: {format_currency_compact(new_arr_bookings)}\n\n"
-        f"+ Expansion Revenue: {format_currency_compact(expansion_revenue)}"
+        f"+ Expansion ARR: {format_currency_compact(expansion_revenue)}"
     )
 with headwind_col:
     st.error(
-        f"- Churned Revenue: {format_currency_compact(churned_revenue)}\n\n"
-        f"- Contraction Revenue: {format_currency_compact(contraction_revenue)}"
+        f"- Churned ARR: {format_currency_compact(churned_revenue)}\n\n"
+        f"- Contraction ARR: {format_currency_compact(contraction_revenue)}"
     )
 
 st.caption(
-    f"Growth Drivers = New ARR Bookings + Expansion Revenue "
+    f"Growth Drivers = New ARR Bookings + Expansion ARR "
     f"({format_currency_compact(growth_drivers)}) · "
-    f"Retention Headwinds = Churned Revenue + Contraction Revenue "
+    f"Retention Headwinds = Churned ARR + Contraction ARR "
     f"({format_currency_compact(retention_headwinds)})"
 )
 with st.container(border=True):
@@ -168,12 +177,12 @@ st.subheader("ARR Trend")
 arr_fig = px.line(df, x="revenue_month", y="total_arr", title=f"Monthly ARR Trend: {data_range}")
 st.plotly_chart(arr_fig, width="stretch")
 
-st.subheader("Bookings Trend")
+st.subheader("New ARR Bookings Trend")
 bookings_fig = px.line(
     df,
     x="revenue_month",
     y="total_bookings",
-    title=f"Monthly Bookings Trend: {data_range}",
+    title=f"Monthly New ARR Bookings Trend: {data_range}",
 )
 st.plotly_chart(bookings_fig, width="stretch")
 
