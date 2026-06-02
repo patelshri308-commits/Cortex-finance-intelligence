@@ -8,3 +8,4 @@ snowflake-connector-python
 cryptography
 tabulate
 openpyxl
+reportlab

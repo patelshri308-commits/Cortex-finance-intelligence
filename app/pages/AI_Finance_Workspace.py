@@ -19,6 +19,7 @@ from agents.router_agent import route_query
 from agents.variance_analysis_agent import generate_variance_analysis
 from evaluation.evaluation_history import get_latest_evaluation
 from exports.excel_exporter import export_finance_report
+from exports.pdf_exporter import generate_executive_pdf
 
 st.set_page_config(page_title="AI Finance Workspace", layout="wide")
 
@@ -170,6 +171,27 @@ if st.button("Generate Finance Report"):
                 )
         except Exception as exc:
             st.error(f"Report generation failed: {exc}")
+
+st.divider()
+
+st.subheader("Executive Briefing Export")
+st.write("Generate a PDF briefing suitable for finance leadership.")
+
+if st.button("Generate Executive PDF"):
+    with st.spinner("Generating executive PDF..."):
+        try:
+            pdf_path = generate_executive_pdf()
+            st.success("Executive PDF generated successfully.")
+
+            with open(pdf_path, "rb") as file:
+                st.download_button(
+                    label="Download Executive PDF",
+                    data=file,
+                    file_name="executive_briefing.pdf",
+                    mime="application/pdf",
+                )
+        except Exception as exc:
+            st.error(f"Executive PDF generation failed: {exc}")
 
 st.divider()
 
