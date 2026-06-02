@@ -1,17 +1,17 @@
 ## Observed Performance
 - Current ARR is $40,384,499.00, with a 1.16% decrease from the previous month.
 - Total bookings for the current month are $12,899,531.00, a 0.09% increase from the previous month.
-- Net revenue impact is $2,008,226.00, resulting from expansion, churn, and contraction.
+- Net Revenue Impact is $2,008,226.00, calculated as the sum of expansion revenue, minus churned revenue, and minus contraction revenue.
 
 ## Key Movements
 - ARR decreased by $475,882.00, a 1.16% decline from the previous month.
-- Expansion revenue increased by $295,460.00, while churned revenue decreased by $47,946.00.
-- Contraction revenue increased by $181,490.00, contributing to the net revenue impact.
+- Expansion revenue increased by $295,460.00, a positive contributor to Net Revenue Impact.
+- Contraction revenue increased by $181,490.00, a negative contributor to Net Revenue Impact.
 
 ## Risks
 - The 1.16% decline in ARR may indicate a trend of decreasing revenue.
-- The increase in contraction revenue by $181,490.00 could be a sign of customers reducing their subscription value.
+- The increase in contraction revenue by $181,490.00 may signal potential issues with customer retention or pricing strategy.
 
 ## Follow-Up Analysis
-- Analyze the drivers of the 1.16% decline in ARR to determine if it's a one-time event or a persistent trend.
-- Investigate the causes of the increase in contraction revenue to identify potential areas for improvement.
+- Analyze the drivers of the 1.16% decline in ARR, specifically the impact of churned revenue and contraction revenue on the overall ARR trend.
+- Investigate the factors contributing to the increase in contraction revenue, such as changes in customer behavior or market conditions, to inform potential mitigation strategies.

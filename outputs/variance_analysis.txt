@@ -1,21 +1,25 @@
 ## Variance Summary
 - What happened? ARR declined by $475,882, or 1.16%, from $40,860,381 to $40,384,499.
-- Why did it happen? The decline was driven by a combination of factors, including a significant decrease in renewal revenue and an increase in contraction revenue, which outweighed the positive impact of expansion revenue growth and a slight increase in bookings.
+- Why did it happen? The decline was driven by a combination of factors, including a significant decrease in renewal revenue and an increase in contraction revenue, which outweighed the positive impact of expansion revenue growth.
 - What was the primary driver? The primary driver of the ARR decline was the $255,435 decrease in renewal revenue.
 
 ## Growth Drivers
-- Expansion revenue: $295,460 increase, driven by upsells, cross-sells, or usage growth from existing customers.
-- New business revenue: $212,261 increase, resulting from new bookings.
-- Churned revenue: $47,946 decrease, indicating a reduction in recurring revenue lost from customers that fully canceled their subscriptions.
+- Expansion revenue increase: $295,460 (5.99% increase)
+- New business revenue increase: $212,261
+- Churned revenue decrease: $47,946
+
+Largest positive contributor: Expansion revenue increase ($295,460)
 
 ## Headwinds
-- Renewal revenue: $255,435 decrease, indicating a decline in revenue from existing customers renewing their subscriptions.
-- Contraction revenue: $181,490 increase, indicating a loss of recurring revenue from existing customers reducing their subscription value.
+- Renewal revenue decrease: $255,435
+- Contraction revenue increase: $181,490
+
+Largest negative contributor: Renewal revenue decrease ($255,435)
 
 ## Executive Interpretation
-ARR declined because retention-related headwinds, particularly the significant decrease in renewal revenue, outweighed the positive impact of growth drivers, including expansion revenue and new business revenue. The decline in renewal revenue was the primary contributor to the ARR decrease, highlighting the need to focus on improving customer retention and renewal rates.
+ARR declined because retention-related headwinds, particularly the significant decrease in renewal revenue, outweighed the positive impact of expansion revenue growth. The decline in renewal revenue was the primary driver of the ARR decrease, highlighting the need to focus on improving customer retention and renewal rates.
 
 ## Recommended Follow-Up
 - Investigate the root causes of the renewal revenue decline to identify opportunities for improvement.
-- Analyze the expansion revenue growth to understand the drivers and potential for further upsell and cross-sell opportunities.
-- Review the contraction revenue increase to determine the impact of pricing or product changes on customer behavior.
+- Analyze the expansion revenue growth to understand the drivers and potential for future growth.
+- Review the contraction revenue increase to determine if there are any opportunities to mitigate this trend.

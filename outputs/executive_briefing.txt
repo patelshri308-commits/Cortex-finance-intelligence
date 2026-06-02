@@ -1,22 +1,22 @@
 ## Headline
-The company's Annual Recurring Revenue (ARR) decreased by 1.16% to $40,384,499.00, despite a 0.09% increase in total bookings.
+The company's Annual Recurring Revenue (ARR) decreased by 1.16% to $40,384,499, a decline of $475,882 from the previous month.
 
 ## Performance Overview
-- New business bookings increased by 0.09% to $12,899,531.00.
-- Expansion revenue increased by $295,460.00, driven by upsells, cross-sells, or usage growth from existing customers.
-- Churned revenue decreased by $47,946.00, reflecting a slight improvement in customer retention.
-- Contraction revenue increased by $181,490.00, indicating a reduction in subscription value from existing customers.
-- Renewal revenue declined by $255,435.00, offsetting the positive impact of expansion revenue growth.
-- The net revenue impact was $2,008,226.00, resulting from the balance of positive and negative revenue drivers.
+- New business revenue increased by $212,261.
+- Expansion revenue increased by $295,460, a 5.99% growth.
+- Renewal revenue decreased by $255,435.
+- Contraction revenue increased by $181,490.
+- Churned revenue decreased by $47,946.
+- The net effect on ARR was a decline of $475,882, driven by the decrease in renewal revenue and increase in contraction revenue, which outweighed the positive impact of expansion revenue growth.
 
 ## Key Risk
-The data reveals a structural challenge in revenue retention, as evidenced by the decline in ARR despite a stable bookings pipeline. The significant increase in contraction revenue and decline in renewal revenue indicate potential issues with customer retention or pricing strategies.
+The structural challenge revealed by the data is the decline in renewal revenue, which was the primary driver of the ARR decrease, highlighting a potential issue with customer retention.
 
 ## Metrics To Monitor
-- Contraction Revenue: Increased by $181,490.00, indicating a trend of customers reducing their subscription value.
-- Renewal Revenue: Declined by $255,435.00, offsetting the positive impact of expansion revenue growth.
-- Churned Revenue: Decreased by $47,946.00, but still a concern due to the overall decline in ARR.
-- Expansion Revenue: Increased by $295,460.00, but may not be enough to offset the negative revenue drivers.
+- Renewal revenue: closely monitor the trend and investigate the root causes of the decline.
+- Contraction revenue: track the increase and determine if there are opportunities to mitigate this trend.
+- Expansion revenue: analyze the growth drivers to understand the potential for future growth.
+- Churned revenue: continue to monitor the trend and investigate the impact on ARR.
 
 ## Leadership Takeaway
-The company's revenue retention is a primary challenge, as evidenced by the decline in ARR and increase in contraction revenue, highlighting the need for a focused review of customer retention and pricing strategies.
+The primary challenge facing the company is the decline in renewal revenue, which highlights the need to focus on improving customer retention and renewal rates to stabilize and grow ARR.
