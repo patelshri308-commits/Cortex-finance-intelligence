@@ -31,9 +31,35 @@ WORKFLOW_LABELS = {
 
 
 def _format_eval_pass_rate(summary: dict | None) -> str:
-    if not summary:
+    if not isinstance(summary, dict):
         return "N/A"
-    return f"{summary.get('pass_rate', 0):.0f}%"
+    try:
+        return f"{float(summary.get('pass_rate', 0)):.0f}%"
+    except (TypeError, ValueError):
+        return "N/A"
+
+
+def _format_eval_status(latest_evaluation: dict) -> str:
+    status = latest_evaluation.get("overall_status")
+    if not status:
+        return "UNKNOWN"
+    return str(status).upper()
+
+
+def _format_eval_timestamp(timestamp: str | None) -> str:
+    if not timestamp:
+        return "Unknown"
+
+    try:
+        parsed_timestamp = datetime.fromisoformat(timestamp)
+    except ValueError:
+        return timestamp
+
+    month = parsed_timestamp.strftime("%b")
+    hour = parsed_timestamp.strftime("%I").lstrip("0") or "0"
+    minute = parsed_timestamp.strftime("%M")
+    period = parsed_timestamp.strftime("%p")
+    return f"{month} {parsed_timestamp.day}, {parsed_timestamp.year} {hour}:{minute} {period}"
 
 
 def _get_latest_evaluation_status() -> dict | None:
@@ -48,16 +74,26 @@ st.caption("Router-agent finance analytics powered by Snowflake Cortex.")
 
 with st.container(border=True):
     latest_evaluation = _get_latest_evaluation_status()
+    st.markdown("**AI Quality Checks**")
+
     if latest_evaluation:
         router_rate = _format_eval_pass_rate(latest_evaluation.get("router"))
         semantic_rate = _format_eval_pass_rate(latest_evaluation.get("semantic"))
         e2e_rate = _format_eval_pass_rate(latest_evaluation.get("end_to_end"))
-        st.markdown(
-            f"**AI Quality Checks:** Router {router_rate} · Semantic {semantic_rate} · E2E {e2e_rate}  \n"
-            f"_Latest local evaluation: {latest_evaluation.get('timestamp', 'Unknown')}_"
-        )
+        formatted_timestamp = _format_eval_timestamp(latest_evaluation.get("timestamp"))
+        status = _format_eval_status(latest_evaluation)
+
+        st.caption(f"Router {router_rate} · Semantic {semantic_rate} · E2E {e2e_rate}")
+        st.caption(f"Latest local validation: {formatted_timestamp}")
+
+        if status == "PASS":
+            st.success("Status: PASS")
+        elif status == "FAIL":
+            st.warning("Status: FAIL - Latest evaluation has failures. Review evaluation_runner.py output.")
+        else:
+            st.caption(f"Status: {status}")
     else:
-        st.markdown("**AI Quality Checks:** run evaluation_runner.py to generate latest status.")
+        st.caption("No local evaluation history found.")
 
 if "workflow_history" not in st.session_state:
     st.session_state.workflow_history = []
