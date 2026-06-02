@@ -98,13 +98,33 @@ def get_connection():
     )
 
 
-@st.cache_data(ttl=600)
 def load_kpis() -> pd.DataFrame:
-    """Load KPI data from Snowflake. Fall back to local synthetic CSV for demo resilience."""
     try:
         with get_connection() as conn:
+            session_debug = pd.read_sql(
+                """
+                SELECT
+                    CURRENT_USER() AS current_user,
+                    CURRENT_ROLE() AS current_role,
+                    CURRENT_ACCOUNT() AS current_account,
+                    CURRENT_WAREHOUSE() AS current_warehouse
+                """,
+                conn,
+            )
+
+            st.write("Snowflake session debug:")
+            st.dataframe(session_debug)
+
+            databases = pd.read_sql("SHOW DATABASES LIKE 'FINANCE_AI'", conn)
+            st.write("Visible FINANCE_AI database check:")
+            st.dataframe(databases)
+
             table = get_kpi_table_name()
             query = f"SELECT * FROM {table} ORDER BY revenue_month"
+
+            st.write("Query being executed:")
+            st.code(query)
+
             return pd.read_sql(query, conn)
 
     except Exception as exc:
