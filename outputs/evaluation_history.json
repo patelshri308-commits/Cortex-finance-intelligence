@@ -40,5 +40,26 @@
       "pass_rate": 66.66666666666666
     },
     "overall_status": "FAIL"
+  },
+  {
+    "timestamp": "2026-06-02T11:10:07",
+    "mode": "all",
+    "router": {
+      "passed": 20,
+      "total": 20,
+      "pass_rate": 100.0
+    },
+    "semantic": {
+      "passed": 4,
+      "total": 4,
+      "pass_rate": 100.0
+    },
+    "end_to_end": {
+      "passed": 3,
+      "total": 3,
+      "skipped": 0,
+      "pass_rate": 100.0
+    },
+    "overall_status": "PASS"
   }
 ]
