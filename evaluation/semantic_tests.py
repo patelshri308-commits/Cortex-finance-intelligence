@@ -1,6 +1,6 @@
 """Evaluation tests for the semantic business metric layer."""
 
-from semantic.context_builder import detect_finance_concepts
+from semantic.context_builder import resolve_semantic_context
 
 
 TEST_CASES = [
@@ -47,23 +47,33 @@ def run_semantic_tests():
 
     for i, tc in enumerate(TEST_CASES, 1):
         q = tc["question"]
-        expected = set(tc["expected"])
-        detected = set(detect_finance_concepts(q))
+        expected_terms = tc["expected"]
+        expected = set(expected_terms)
+        resolved = resolve_semantic_context(q)
+        all_relevant_terms = resolved["all_relevant_terms"]
+        detected = set(all_relevant_terms)
 
         missing = sorted(list(expected - detected))
         status = "PASS" if not missing else "FAIL"
 
         print(f"\n[Test {i}/{len(TEST_CASES)}] {status}")
         print(f"  Question: {q}")
-        print(f"  Expected: {sorted(list(expected))}")
-        print(f"  Detected: {sorted(list(detected))}")
+        print(f"  Expected Terms: {expected_terms}")
+        print(f"  Detected Concepts: {resolved['detected_concepts']}")
+        print(f"  Detected Metrics: {resolved['detected_metrics']}")
+        print(f"  Expanded Metrics: {resolved['expanded_metrics']}")
+        print(f"  All Relevant Terms: {all_relevant_terms}")
+        print(f"  Missing Terms: {missing}")
         if missing:
             print(f"  Missing: {missing}")
 
         results.append({
             "question": q,
-            "expected": sorted(list(expected)),
-            "detected": sorted(list(detected)),
+            "expected": expected_terms,
+            "detected_concepts": resolved["detected_concepts"],
+            "detected_metrics": resolved["detected_metrics"],
+            "expanded_metrics": resolved["expanded_metrics"],
+            "all_relevant_terms": all_relevant_terms,
             "missing": missing,
             "status": status,
         })

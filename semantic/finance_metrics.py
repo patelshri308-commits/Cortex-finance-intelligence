@@ -10,6 +10,25 @@ from __future__ import annotations
 from typing import Dict, List
 
 
+CONCEPT_EXPANSIONS: Dict[str, List[str]] = {
+    "revenue_health": [
+        "arr",
+        "bookings",
+        "expansion_revenue",
+        "churned_revenue",
+        "contraction_revenue",
+        "net_revenue_impact",
+    ],
+    "revenue_quality": [
+        "expansion_revenue",
+        "churned_revenue",
+        "contraction_revenue",
+        "renewal_revenue",
+        "net_revenue_impact",
+    ],
+}
+
+
 FINANCE_METRICS: Dict[str, Dict] = {
     "arr": {
         "name": "Annual Recurring Revenue",
@@ -122,12 +141,17 @@ FINANCE_METRICS: Dict[str, Dict] = {
 
     "revenue_quality": {
         "name": "Revenue Quality",
-        "aliases": ["revenue quality", "quality of revenue"],
+        "aliases": [
+            "revenue quality",
+            "quality of revenue",
+            "revenue quality issues",
+            "quality issues",
+        ],
         "definition": (
             "A qualitative assessment of how sustainable and predictable revenue streams are, "
             "often considering factors like contract length, churn risk, and concentration."
         ),
-        "related_metrics": ["arr", "renewal_revenue", "churned_revenue"],
+        "related_metrics": CONCEPT_EXPANSIONS["revenue_quality"],
         "analysis_guidance": (
             "Assess revenue quality by examining cohort retention, contract terms, customer "
             "concentration, and renewal behavior. Highlight risks that could make revenue "
@@ -137,12 +161,19 @@ FINANCE_METRICS: Dict[str, Dict] = {
 
     "revenue_health": {
         "name": "Revenue Health",
-        "aliases": ["revenue health", "health of revenue"],
+        "aliases": [
+            "revenue health",
+            "health of revenue",
+            "healthy revenue",
+            "healthy revenue growth",
+            "health of revenue growth",
+            "how healthy is revenue growth",
+        ],
         "definition": (
             "An aggregated view of the sustainability of a company's recurring revenue, "
             "combining growth, retention, and concentration metrics."
         ),
-        "related_metrics": ["arr", "net_revenue_impact", "revenue_quality"],
+        "related_metrics": CONCEPT_EXPANSIONS["revenue_health"],
         "analysis_guidance": (
             "Summarize revenue health by combining trend (ARR growth), retention (renewals/churn), "
             "and concentration signals. Provide clear numeric indicators and any leading risks."
