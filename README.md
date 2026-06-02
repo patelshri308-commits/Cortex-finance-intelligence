@@ -133,7 +133,47 @@ Streamlit Analytics Workspace
 Excel Reporting Export
 ```
 
+The platform uses a router-agent architecture built on Snowflake Cortex.
+
+User Query
+→ Router Agent
+→ Semantic Resolver
+→ KPI Context Layer
+→ Specialized Finance Agent
+→ Response
+
+Specialized agents include:
+
+- Revenue Summary Agent
+- Variance Analysis Agent
+- Forecast Sensitivity Agent
+- Executive Briefing Agent
+
+This design allows finance questions to be routed to purpose-built workflows instead of relying on a single general-purpose prompt.
+
 ⸻
+
+** Semantic Business Metric Layer**
+
+The platform includes a semantic finance layer that translates business concepts into relevant KPI context.
+
+Examples:
+
+Revenue Health
+→ ARR
+→ New ARR Bookings
+→ Expansion ARR
+→ Churned ARR
+→ Contraction ARR
+→ Net Revenue Impact
+
+Revenue Quality
+→ Expansion ARR
+→ Churned ARR
+→ Contraction ARR
+→ Renewal Revenue
+
+The semantic layer uses deterministic parent-child concept expansion to improve natural-language understanding and ensure consistent KPI analysis.
 
 **Tech Stack**
 
@@ -179,6 +219,67 @@ This project explores how AI-native workflow systems can operationalize and acce
 Instead of manually recreating the same analyses each week, the platform encodes finance workflows into reusable AI agents.
 
 ⸻
+
+**## Evaluation Framework
+
+The project includes a multi-layer evaluation framework designed to measure AI workflow quality.
+
+### Router Evaluation
+
+Validates that finance questions are routed to the correct specialized agent.
+
+Current Performance:
+- 20/20 test cases passed
+- 100% routing accuracy
+
+### Semantic Evaluation
+
+Validates semantic concept detection and parent-child metric expansion.
+
+Current Performance:
+- 4/4 test cases passed
+- 100% semantic accuracy
+
+### End-to-End Evaluation
+
+Validates generated responses against expected business concepts and quality requirements.
+
+Current Performance:
+- 3/3 test cases passed
+- 100% pass rate
+
+## Executive Dashboard
+
+The Streamlit dashboard provides executive-level finance visibility including:
+
+- KPI scorecards
+- ARR trend analysis
+- Monthly growth metrics
+- ARR Bridge analysis
+- Underlying KPI data inspection
+
+ARR Bridge analysis helps explain how recurring revenue changed over time:
+
+Ending ARR =
+Starting ARR
++ New ARR Bookings
++ Expansion ARR
+- Churned ARR
+- Contraction ARR
+
+**## Forecast Sensitivity Analysis
+
+The platform supports interactive forecast scenarios through a dedicated Forecast Sensitivity Agent.
+
+Users can model changes to:
+
+- ARR Growth
+- New ARR Bookings
+- Expansion ARR
+- Churned ARR
+- Contraction ARR
+
+The system generates executive-ready commentary describing financial impact, revenue risk, and potential business outcomes.**
 
 **Example Workflow**
 
