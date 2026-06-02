@@ -13,3 +13,4 @@ streamlit_demo_key.pub
 *.tar.gz
 *.p8
 *.pub
+.streamlit/secrets.toml
