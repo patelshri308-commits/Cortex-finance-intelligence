@@ -43,6 +43,38 @@ def get_latest_month_label(df: pd.DataFrame) -> str:
     return format_month_label(df["revenue_month"].max())
 
 
+def format_currency_compact(value: float) -> str:
+    amount = float(value)
+    sign = "-" if amount < 0 else ""
+    amount = abs(amount)
+
+    if amount >= 1_000_000:
+        return f"{sign}${amount / 1_000_000:.1f}M"
+    if amount >= 1_000:
+        return f"{sign}${amount / 1_000:.0f}K"
+    return f"{sign}${amount:,.0f}"
+
+
+def build_arr_bridge_insight(
+    arr_movement: float,
+    growth_drivers: float,
+    retention_headwinds: float,
+    expansion_revenue: float,
+    churned_revenue: float,
+) -> str:
+    if arr_movement < 0:
+        if retention_headwinds > growth_drivers:
+            return "ARR declined primarily because churn and contraction exceeded expansion and new ARR bookings."
+        return (
+            "ARR declined month-over-month despite positive growth drivers; contraction and churn remain the "
+            "main visible retention headwinds."
+        )
+
+    if expansion_revenue >= churned_revenue:
+        return "ARR growth was supported by expansion revenue offsetting churn pressure."
+    return "ARR grew month-over-month, with new ARR bookings carrying growth despite churn pressure."
+
+
 def load_dashboard_data() -> pd.DataFrame:
     table = st.secrets.get("SNOWFLAKE_KPI_TABLE", "FINANCE_AI.RAW.MONTHLY_KPIS")
     query = f"SELECT * FROM {table} ORDER BY revenue_month"
@@ -81,6 +113,56 @@ col1.metric("Total ARR", f"${latest['total_arr']:,.0f}", f"{arr_growth:.2f}% MoM
 col2.metric("Bookings", f"${latest['total_bookings']:,.0f}", f"{bookings_growth:.2f}% MoM Change")
 col3.metric("Expansion Revenue", f"${latest['expansion_revenue']:,.0f}")
 col4.metric("Churned Revenue", f"${latest['churned_revenue']:,.0f}")
+
+st.subheader("ARR Bridge")
+
+starting_arr = previous["total_arr"]
+ending_arr = latest["total_arr"]
+new_arr_bookings = latest.get("new_business_revenue", latest["total_bookings"])
+expansion_revenue = latest["expansion_revenue"]
+churned_revenue = latest["churned_revenue"]
+contraction_revenue = latest["contraction_revenue"]
+arr_movement = ending_arr - starting_arr
+growth_drivers = new_arr_bookings + expansion_revenue
+retention_headwinds = churned_revenue + contraction_revenue
+bridge_insight = build_arr_bridge_insight(
+    arr_movement,
+    growth_drivers,
+    retention_headwinds,
+    expansion_revenue,
+    churned_revenue,
+)
+
+bridge_col1, bridge_col2, bridge_col3 = st.columns(3)
+bridge_col1.metric("Starting ARR", format_currency_compact(starting_arr), help="Prior month ending ARR.")
+bridge_col2.metric(
+    "Ending ARR",
+    format_currency_compact(ending_arr),
+    f"{format_currency_compact(arr_movement)} vs Prior Month",
+)
+bridge_col3.metric("Net ARR Movement", format_currency_compact(arr_movement))
+
+driver_col, headwind_col = st.columns(2)
+with driver_col:
+    st.success(
+        f"+ New ARR Bookings: {format_currency_compact(new_arr_bookings)}\n\n"
+        f"+ Expansion Revenue: {format_currency_compact(expansion_revenue)}"
+    )
+with headwind_col:
+    st.error(
+        f"- Churned Revenue: {format_currency_compact(churned_revenue)}\n\n"
+        f"- Contraction Revenue: {format_currency_compact(contraction_revenue)}"
+    )
+
+st.caption(
+    f"Growth Drivers = New ARR Bookings + Expansion Revenue "
+    f"({format_currency_compact(growth_drivers)}) · "
+    f"Retention Headwinds = Churned Revenue + Contraction Revenue "
+    f"({format_currency_compact(retention_headwinds)})"
+)
+with st.container(border=True):
+    st.markdown("**Executive Insight**")
+    st.write(bridge_insight)
 
 st.subheader("ARR Trend")
 arr_fig = px.line(df, x="revenue_month", y="total_arr", title=f"Monthly ARR Trend: {data_range}")
