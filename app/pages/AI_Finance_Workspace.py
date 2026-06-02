@@ -50,12 +50,14 @@ with st.sidebar:
 
 st.write("Ask a finance question and the router will select the correct specialized Cortex workflow.")
 
-user_query = st.text_input(
-    "Ask a finance question",
-    placeholder="Example: Summarize the latest revenue performance and identify key risks.",
-)
+with st.form("ai_query_form"):
+    user_query = st.text_input(
+        "Ask a finance question",
+        placeholder="Example: Summarize the latest revenue performance and identify key risks.",
+    )
+    submitted = st.form_submit_button("Run AI Analysis", type="primary")
 
-if st.button("Run AI Analysis", type="primary"):
+if submitted:
     if not user_query.strip():
         st.warning("Please enter a finance question.")
     else:
