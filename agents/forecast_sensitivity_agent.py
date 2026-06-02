@@ -126,6 +126,57 @@ Metrics:
     return response
 
 
+def generate_forecast_sensitivity_from_question(user_query: str) -> str:
+    df = query_snowflake_to_df("""
+        SELECT *
+        FROM FINANCE_AI.RAW.MONTHLY_KPIS
+        ORDER BY revenue_month
+    """)
+
+    latest = df.iloc[-1]
+    previous = df.iloc[-2] if len(df) > 1 else latest
+
+    prompt = f"""
+You are the Forecast Sensitivity Agent for a SaaS finance analytics workflow.
+
+The user asked:
+{user_query}
+
+Important instruction:
+This is a written user question, not an interactive slider scenario.
+Do not use default slider values.
+Do not assume ARR growth adjustment, bookings growth adjustment, expansion change, churn change, or contraction change unless the user explicitly states them.
+
+Use the KPI data below to estimate the impact of the user's requested scenario.
+
+Latest KPI values:
+- Revenue month: {latest.get('revenue_month', 'N/A')}
+- Total ARR: {latest.get('total_arr', 'N/A')}
+- Total bookings: {latest.get('total_bookings', 'N/A')}
+- Expansion revenue: {latest.get('expansion_revenue', 'N/A')}
+- Churned revenue: {latest.get('churned_revenue', 'N/A')}
+- Contraction revenue: {latest.get('contraction_revenue', 'N/A')}
+
+Prior month KPI values:
+- Revenue month: {previous.get('revenue_month', 'N/A')}
+- Total ARR: {previous.get('total_arr', 'N/A')}
+- Total bookings: {previous.get('total_bookings', 'N/A')}
+- Expansion revenue: {previous.get('expansion_revenue', 'N/A')}
+- Churned revenue: {previous.get('churned_revenue', 'N/A')}
+- Contraction revenue: {previous.get('contraction_revenue', 'N/A')}
+
+Response rules:
+- Directly answer the user's scenario.
+- If the user changes one metric, isolate that metric first.
+- Use numeric values from the KPI data.
+- Do not discuss slider assumptions.
+- Do not invent changes to other metrics.
+- Explain the impact on ARR quality and revenue risk.
+- Keep the answer executive-ready.
+"""
+    return run_cortex(prompt)
+
+
 def main():
     summary = generate_forecast_sensitivity(
         arr_growth_adjustment_pct=5,

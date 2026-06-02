@@ -10,7 +10,10 @@ PROJECT_ROOT = Path(__file__).resolve().parents[2]
 sys.path.append(str(PROJECT_ROOT))
 
 from agents.executive_briefing_agent import generate_executive_briefing
-from agents.forecast_sensitivity_agent import generate_forecast_sensitivity
+from agents.forecast_sensitivity_agent import (
+    generate_forecast_sensitivity,
+    generate_forecast_sensitivity_from_question,
+)
 from agents.revenue_summary_agent import generate_revenue_summary
 from agents.router_agent import route_query
 from agents.variance_analysis_agent import generate_variance_analysis
@@ -59,13 +62,7 @@ if st.button("Run AI Analysis", type="primary"):
                 elif selected_workflow == "variance_analysis":
                     result = generate_variance_analysis()
                 elif selected_workflow == "forecast_sensitivity":
-                    result = generate_forecast_sensitivity(
-                        arr_growth_adjustment_pct=5,
-                        bookings_growth_adjustment_pct=3,
-                        churn_change_pct=10,
-                        expansion_change_pct=5,
-                        contraction_change_pct=0,
-                    )
+                    result = generate_forecast_sensitivity_from_question(user_query)
                 elif selected_workflow == "executive_briefing":
                     result = generate_executive_briefing()
                 else:
