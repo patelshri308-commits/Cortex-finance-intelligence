@@ -1,5 +1,5 @@
 def route_query(user_query: str) -> str:
-    query = user_query.lower()
+    query = user_query.lower().strip()
 
     forecast_keywords = [
         "forecast",
@@ -16,6 +16,8 @@ def route_query(user_query: str) -> str:
         "churn decreases",
         "increase by",
         "decrease by",
+        "increases by",
+        "decreases by",
     ]
 
     executive_keywords = [
@@ -26,6 +28,18 @@ def route_query(user_query: str) -> str:
         "board",
         "qbr",
         "board-level",
+        "investor",
+    ]
+
+    driver_intent_keywords = [
+        "what drove",
+        "what is driving",
+        "what are the drivers",
+        "drivers of",
+        "driver of",
+        "driven by",
+        "growth driver",
+        "growth drivers",
     ]
 
     revenue_summary_keywords = [
@@ -53,17 +67,18 @@ def route_query(user_query: str) -> str:
         "what caused",
         "what drove",
         "cause",
+        "movement",
     ]
 
-    # Executive always wins
     if any(keyword in query for keyword in executive_keywords):
         return "executive_briefing"
 
-    # Forecast always wins
     if any(keyword in query for keyword in forecast_keywords):
         return "forecast_sensitivity"
 
-    # Summary should beat variance unless user explicitly asks WHY
+    if any(keyword in query for keyword in driver_intent_keywords):
+        return "variance_analysis"
+
     if any(keyword in query for keyword in revenue_summary_keywords):
         if not any(
             keyword in query
@@ -73,12 +88,28 @@ def route_query(user_query: str) -> str:
                 "drivers",
                 "what caused",
                 "what drove",
+                "driven by",
             ]
         ):
             return "revenue_summary"
 
-    # Variance analysis
     if any(keyword in query for keyword in variance_keywords):
         return "variance_analysis"
 
     return "revenue_summary"
+
+
+if __name__ == "__main__":
+    test_queries = [
+        "Give me a revenue summary",
+        "Summarize latest ARR performance",
+        "Why did ARR decline?",
+        "What drove ARR growth?",
+        "Create an executive briefing",
+        "Board level revenue summary",
+        "What happens if churn increases by 10%?",
+        "Run a forecast sensitivity analysis",
+    ]
+
+    for query in test_queries:
+        print(f"{query} → {route_query(query)}")
