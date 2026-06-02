@@ -18,6 +18,21 @@ def route_query(user_query: str) -> str:
         "decrease by",
         "increases by",
         "decreases by",
+        "assume",
+        "rises",
+        "falls",
+        "rise",
+        "fall",
+        "rises by",
+        "falls by",
+        "churn rises",
+        "churn falls",
+        "expansion rises",
+        "expansion falls",
+        "bookings rise",
+        "bookings fall",
+        "revenue rises",
+        "revenue falls",
     ]
 
     executive_keywords = [
